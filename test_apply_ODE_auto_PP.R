@@ -9,9 +9,9 @@ source("Static_vegetation_parameters.R")
 
 source("Static_fauna_parameters.R")
 
-source("Evolution_vegetation.R")
+# source("Evolution_vegetation.R")
 
-source("equations_deers.R")
+source("test_model_equations.R")
 
 source("intermediate_res.R")
 
@@ -20,10 +20,20 @@ source("intermediate_res.R")
 # for each PP values
 result_df <- generate_parameter_dataframe()
 
+test_df <- result_df[1,]
+
 # In "result_df" are all the scenarios that I want to 
 # run the ode function on. 
 
-# Using the first row as an example
+pars  <- list(
+  v_croiss = v_croiss,
+  k_V = kVlow,
+  u_croiss = test_df$u_croiss,
+  k_U = test_df$kUpeak #NOT GOOD
+)
 
-ex <- result_df[1,]
 
+yini  <- c(V = 1, U = 2)
+times <- seq(0, 200, by = 1)
+out   <- ode(yini, times, equa_diff_sp_test, pars) %>% 
+  as.data.frame()
