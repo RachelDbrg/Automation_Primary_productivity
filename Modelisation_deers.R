@@ -3,7 +3,7 @@
 # foret boreale Canadienne
 # ==========================================================
 
-setwd("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf")
+setwd("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity")
 
 #   Ceci est le script "principal", qui lit et applique
 #   plusieurs autres scripts du projet.
@@ -69,25 +69,23 @@ tps <-seq (t0, tfinal, 0.25) # sequence de temps avec pas
 # whole_model <- function(PP){
 # 1. 
 # Chargement des conditions initiales
-
-source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Parametres_vegetation.R")
-# source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Evolution_vegetation.R")
-source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Parametres_animaux_deers.R")
+source("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/Parametres_vegetation.R")
+source("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/Parametres_animaux_deers.R")
 
 
 # Chargement des equations de croissance de la vegetation
-source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Evolution_vegetation.R")
+source("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/Evolution_vegetation.R")
 
 
 # 2.
 # Chargement des equations diff 
-source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/equations_deers.R")
+source("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/equations_deers.R")
 
 
 
 # Chargement des equations de reponse fonctionnelle
 # source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/rep_fonc.R")
-source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/intermediate_res.R")
+source("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/intermediate_res.R")
 
 # Chargement de la fonction qui declenche un event
 # source("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Trigger_fire.R")
@@ -182,7 +180,7 @@ filename <- paste(filename,".R",sep="")
 
 # fp_alt <- file.path ("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Simulation_results/Observed_vs_simulated")
 # fp_alt <- file.path ("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Simulation_results/functional_response")
-fp_alt <- file.path ("C:/Users/radub33/OneDrive - Université Laval/Model/R/Model_ungulate-wolf/Simulation_results/inflexion_point_posthoc")
+fp_alt <- file.path ("C:/Users/radub33/Documents/GitHub/Automation_Primary_productivity/Simulation_results")
 
 # tr <- paste0(fp,"/", filename)
 

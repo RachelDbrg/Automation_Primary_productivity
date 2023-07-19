@@ -45,7 +45,7 @@ ode_solver <- function(parameter, parameter1) {
   y0 <- c(x = 1)
   
   # Time points for integration
-  times <- seq(0, 1, by = 0.1)
+  times <- seq(0, 10, by = 0.1)
   
   # Solve the ODE
   ode_result <- ode(y = y0, times = times, func = your_ode_function, parms = parameter)
