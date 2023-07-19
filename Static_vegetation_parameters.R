@@ -31,6 +31,6 @@ kWstable_0 = 4500        # kg/km^2
 
 # Stock all the initials values of parameters of 
 # vegetation in a vector
-# initial_conditions_vegetation <- c(v_init, u_init)
+initial_conditions_vegetation <- c(v_init, u_init)
 # PP_dependant_vegetation <- c(u_croiss, kUpeak, kUstable, kWpeak, kWstable)
 
