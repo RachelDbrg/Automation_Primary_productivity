@@ -22,3 +22,8 @@ result_df <- generate_parameter_dataframe()
 
 # In "result_df" are all the scenarios that I want to 
 # run the ode function on. 
+
+# Using the first row as an example
+
+ex <- result_df[1,]
+
