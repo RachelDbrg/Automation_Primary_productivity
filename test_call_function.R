@@ -20,5 +20,11 @@ source("intermediate_res.R")
 # for each PP values
 result_df <- generate_parameter_dataframe()
 
+# TOUS les parametres qui sont PP-dependants: OK 
+
 # In "result_df" are all the scenarios that I want to 
 # run the ode function on. 
+
+
+# Maitenant, il faut tous les parametres dont les valeurs
+# dependent du temps 
