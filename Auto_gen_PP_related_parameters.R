@@ -26,18 +26,26 @@ calculate_parameters <- function(PP) {
   chi_C = c_croiss * 
     ((a_C*e_UC*kUpeak)/(1+a_C*h_UC*kUpeak)- mu_C)^-1
   
-  t_pertub = 100            # years
+  
+  
+  t_perturb = 100            # years
   # #t_pertub = 0
   
   # Definition des moments suivant la perturbation
-  t_low = t_pertub + 5           # years : temps pour atteindre le minimum de
+  t_low = t_perturb + 5           # years : temps pour atteindre le minimum de
   # biomasse apres une perturbation
   t_kpeak = t_low + (50 - 25*PP) # years :  temps pour atteindre le maximum de
   # biomasse apres une perturbation
   t_kstable = t_kpeak + 100      # years : temps pour atteindre une stabilité de
   
+  kUcoeff1 = (kUstable - kUpeak)/(t_kstable - t_kpeak)
+  kUcoeff2 = kUpeak - (kUstable - kUpeak)/(t_kstable - t_kpeak) * t_kpeak
+  kWcoeff1 = (kWstable - kWpeak)/(t_kstable - t_kpeak)
+  kWcoeff2 = kWpeak - (kWstable - kWpeak)/(t_kstable - t_kpeak) * t_kpeak
+  
   return(c(u_croiss, kUpeak, kUstable, w_0, kWpeak, kWstable,
-           k_m, k_c, chi_M, chi_C, t_low, t_kpeak,t_kstable))
+           k_m, k_c, chi_M, chi_C, t_low, t_kpeak,t_kstable,
+           kUcoeff1, kUcoeff2, kWcoeff1, kWcoeff2, t_perturb))
 }
 
 
@@ -74,9 +82,18 @@ generate_parameter_dataframe <- function() {
            "chi_C" = V10,
            "t_low" = V11,
            "t_kpeak" = V12,
-           "t_kstable" = V13) %>%
+           "t_kstable" = V13,
+           "kUcoeff1" = V14,
+           "kUcoeff2" = V15,
+           "kWcoeff1" = V16,
+           "kWcoeff2" = V17,
+           "t_perturb" = V18) %>%
     select(PP, everything())
   
   return(df_parameter_values)
 }
+
+# 
+# generate_parameter_dataframe()
+# 
 
