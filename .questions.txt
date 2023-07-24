@@ -1,0 +1,23 @@
+y0 = 0 composants qui sont v_init, u_init (statix vgtation para) et init des animaux (static_fauna-para)
+
+Pb: si je donne à la fct make_ODE un df avec une seule ligne, nested avec une colonne data
+qui regroupe les parametres, c'est OK. Il produit un df de 2 colonnes, de la meme taille
+que le vecteur initial y0 donc is oK.
+
+Par contre, si je donne a cette fct un df avec + d'une ligne (nbe de lignes =x),
+ca ne marche plus car il produit un df de xlines *2. --> POURQUOI
+
+A matrix of class deSolve with up to as many rows as elements in times and as many columns as
+elements in y plus the number of "global" values returned in the second element of the return from
+func, plus an additional column (the first) for the time value. There will be one row for each element
+in times unless the integrator returns with an unrecoverable error. If y has a names attribute, it will
+be used to label the columns of the output value.
+
+==> the problem comes from the parms section, where one paramter can have several values in the map format
+
+
+PROBLEME : t_low prends toutes les valeurs du df, et pas une seule par itération
+
+
+
+q?74>_*5xv2R$tx
