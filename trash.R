@@ -22,8 +22,6 @@ test <- result_df %>%
 
 
 
-
-
 evol_vg(1,9)
 
 ret <-  result_df %>% 
