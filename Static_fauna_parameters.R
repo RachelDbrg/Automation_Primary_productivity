@@ -166,6 +166,7 @@ initial_conditions_animals <- c(na_init, nj_init,
 y0 <- c(initial_conditions_vegetation
         ,initial_conditions_animals)
 
+y0_test <- c(initial_conditions_vegetation)
 
 # parametres_ax <- as.data.frame(do.call(rbind,list(initial_conditions_animals)))
 # 

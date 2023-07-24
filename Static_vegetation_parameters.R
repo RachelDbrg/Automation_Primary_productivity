@@ -1,5 +1,7 @@
 # ---- Initial conditions and parameters for vegetation ----
 
+t_perturb = 100 
+
 # Vegetaux
 # Lichen 
 v_init = 5e5 # qte initiale
