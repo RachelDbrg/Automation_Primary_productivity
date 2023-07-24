@@ -3,22 +3,24 @@
 
   # Calcul les evolutions des capacites de charge en fct 
   # de PP et du temps
-evol_vg <- function(t, y){
+evol_vg <- function(t,data){
+  
+  
+  
+# t = 1500
+# #Perturbation :
+# # Definition du moment de la perturbation
+# t_pertub = 100            # years
+# # #t_pertub = 0
+# 
+# # Definition des moments suivant la perturbation
+# t_low = t_pertub + 5           # years : temps pour atteindre le minimum de
+# # biomasse apres une perturbation
+# t_kpeak = t_low + (50 - 25*PP) # years :  temps pour atteindre le maximum de
+# # biomasse apres une perturbation
+# t_kstable = t_kpeak + 100      # years : temps pour atteindre une stabilité de
+# # biomasse apres une perturbation
 
-  # t = 1500
-  ##Perturbation :
-  # # Definition du moment de la perturbation
-  t_pertub = 100            # years
-  # #t_pertub = 0
-  
-  # Definition des moments suivant la perturbation
-  t_low = t_pertub + 5           # years : temps pour atteindre le minimum de
-  # biomasse apres une perturbation
-  t_kpeak = t_low + (50 - 25*PP) # years :  temps pour atteindre le maximum de
-  # biomasse apres une perturbation
-  t_kstable = t_kpeak + 100      # years : temps pour atteindre une stabilité de
-  # biomasse apres une perturbation
-  
   
   # ==============================================================================
     # ------------- Variations de k_U, k_W et k_V en fonction du temps  ------------
@@ -27,8 +29,8 @@ evol_vg <- function(t, y){
   # t_stable
   kUcoeff1 = (kUstable - kUpeak)/(t_kstable - t_kpeak)
   kUcoeff2 = kUpeak - (kUstable - kUpeak)/(t_kstable - t_kpeak) * t_kpeak
-  kWcoeff1 = (kWstable - kWpeak)/(t_kstable - t_kpeak)
-  kWcoeff2 = kWpeak - (kWstable - kWpeak)/(t_kstable - t_kpeak) * t_kpeak
+  # kWcoeff1 = (kWstable - kWpeak)/(t_kstable - t_kpeak)
+  # kWcoeff2 = kWpeak - (kWstable - kWpeak)/(t_kstable - t_kpeak) * t_kpeak
   
   
    if (t_pertub <= t & t < t_low) {
