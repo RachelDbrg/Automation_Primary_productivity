@@ -23,6 +23,10 @@ source("intermediate_res.R")
 # for each PP values
 result_df <- generate_parameter_dataframe()
 
+test_big_df <- result_df %>% 
+  group_by(PP) %>% 
+  nest()
+
 test_df <- result_df[1,]
 
 # In "result_df" are all the scenarios that I want to 
