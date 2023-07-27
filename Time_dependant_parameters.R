@@ -166,64 +166,64 @@ rte <- function(t_low,
 # Objectif: prendre les valeurs qui sont inscrites dans 
 # le df sortant de auto_gen_PP related parameters 
 
-
-
-evol_vg_light <- function(t, data){
-  
-  
-  if (t_perturb <= t & t < t_kpeak) {
-    k_U = 0
-    # k_W = 0
-    k_V = 0
-    # k_U = kUlow
-    # k_W = kWlow
-    # k_V = kVlow
-  } else {
-    k_U = 1.3
-    # k_W = 1.3
-    k_V = 1.3
-    # k_U = kUstable
-    # k_W = kWstable
-    # k_V = kVnorm
-  }
-  # return(list(c(k_U,k_W,k_V)))
-  # res <- c(k_U,k_W,k_V)
-  res <- c(k_U, k_V)
-}
-# 
-# # b <- evol_vg(1,y0)
-# # a <- evol_vg(100,y0)
 # 
 # 
-DF1
-
-
-
-# Make it vary in time
-rte_light <- function() {
-  
-  # Create a vector with "PP" values from 0 to 10 with incrementation of 0.1
-  times <- seq(0, 200, by = 1)
-  
-  # Use map_dfc() to calculate the parameters for each "PP" value and combine them into a data frame
-  jfregio <- map(times, ~evol_vg_light(.x))
-  
-  # map2tre <- pmap(times, result_df, ~evol_vg(.x,.y))
-  
-  # Add the "PP" column to the data frame
-  # df_parameter_values <- bind_cols(PP = pp_values, df_parameter_values)
-  rety <- as.data.frame(do.call(rbind, jfregio))
-  
-  
-  # Add the time column
-  rety$time <- times
-  
-  # Rename the columns and reorder with "time" column first
-  rety <- rety %>% 
-    rename("k_U" = V1,
-           "k_V" = V2) %>%
-    select(time, everything())
-  
-  return(rety)
-}
+# evol_vg_light <- function(t, data){
+#   
+#   
+#   if (t_perturb <= t & t < t_kpeak) {
+#     k_U = 0
+#     # k_W = 0
+#     k_V = 0
+#     # k_U = kUlow
+#     # k_W = kWlow
+#     # k_V = kVlow
+#   } else {
+#     k_U = 1.3
+#     # k_W = 1.3
+#     k_V = 1.3
+#     # k_U = kUstable
+#     # k_W = kWstable
+#     # k_V = kVnorm
+#   }
+#   # return(list(c(k_U,k_W,k_V)))
+#   # res <- c(k_U,k_W,k_V)
+#   res <- c(k_U, k_V)
+# }
+# # 
+# # # b <- evol_vg(1,y0)
+# # # a <- evol_vg(100,y0)
+# # 
+# # 
+# # DF1
 # 
+# 
+# 
+# # Make it vary in time
+# rte_light <- function() {
+#   
+#   # Create a vector with "PP" values from 0 to 10 with incrementation of 0.1
+#   times <- seq(0, 200, by = 1)
+#   
+#   # Use map_dfc() to calculate the parameters for each "PP" value and combine them into a data frame
+#   jfregio <- map(times, ~evol_vg_light(.x))
+#   
+#   # map2tre <- pmap(times, result_df, ~evol_vg(.x,.y))
+#   
+#   # Add the "PP" column to the data frame
+#   # df_parameter_values <- bind_cols(PP = pp_values, df_parameter_values)
+#   rety <- as.data.frame(do.call(rbind, jfregio))
+#   
+#   
+#   # Add the time column
+#   rety$time <- times
+#   
+#   # Rename the columns and reorder with "time" column first
+#   rety <- rety %>% 
+#     rename("k_U" = V1,
+#            "k_V" = V2) %>%
+#     select(time, everything())
+#   
+#   return(rety)
+# }
+# # 
