@@ -1,6 +1,6 @@
 # ---- Initial conditions and parameters for vegetation ----
 
-t_perturb = 100 
+t_perturb = 100
 
 # Vegetaux
 # Lichen 
