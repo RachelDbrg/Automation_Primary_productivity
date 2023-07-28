@@ -2,31 +2,46 @@
 library(tidyverse)
 
 # Function to calculate the parameters based on PP
+# Coming from the "Parametres_vegetation" original script
 calculate_parameters <- function(PP) {
   
-  u_croiss <-  (1+4*PP)*30000
+  ## Vegetation
+  # Deciduous growth rate 
+  u_croiss <-  (1+4*PP)*30000 
   
+  # Max deciduous carrying capacity 
   kUpeak  <-  (1 + PP/2)*kUpeak_0
   
+  # Stable deciduous carrying capacity 
   kUstable <- (1+(PP/2))* kUstable_0 * 2.4
   
+  # Shrubs growth rate 
   w_0 <-  (1+4*PP)*300      # kg/(km² an), taux de recroissance initial
   
+  # Max shrubs carrying capacity 
   kWpeak <- (1+PP/2)*kWpeak_0 # kg/km^2, pour t=t_kpeak
   
+  # Stable shrubs carrying capacity 
   kWstable <- (1 + PP/2)*kWstable_0 # kg/km^2, pour t=t_kstable
   
+  # --------------------------------------------------------
+  
+  ## Animals
+  # Moose carrying capacity
   k_m = ((2-0.84)*PP + 0.84) * coef
   
-  k_c= ((11.43-4.74)*PP +4.74) * coef
-  
+  # Moose growth rate
   chi_M = m_croiss * ((a_M * e_UM * kUpeak)/
                         (1+a_M * h_UM * kUpeak) - mu_M)^-1
   
+  # Dear carrying capacity
+  k_c= ((11.43-4.74)*PP +4.74) * coef
+  
+  # Deer growth rate
   chi_C = c_croiss * 
     ((a_C*e_UC*kUpeak)/(1+a_C*h_UC*kUpeak)- mu_C)^-1
   
-  
+  # --------------------------------------------------------
   
   t_perturb = 100            # years
   # #t_pertub = 0
