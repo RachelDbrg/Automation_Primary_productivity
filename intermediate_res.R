@@ -37,6 +37,57 @@ intermediate_res <-  function(y,parms){
   # Calcul des densites totales de cerfs
   C_tot <- Ca+Cj
   
+  # if (Mj < 0){
+  #   Mj = 0}
+  # 
+  # if (Ma < 0){
+  #   Ma = 0}
+  # 
+  # if (Na < 0){
+  #   Na = 0}
+  # 
+  # # PROVISOIRE
+  # if (any(is.na(Nj))) {
+  #   Nj[is.na(Nj)] <- 0
+  # }
+  # 
+  # if (Nj < 0) {
+  #   Nj = 0}
+  # 
+  # 
+  # if (Cj < 0){
+  #   Cj = 0}
+  # 
+  # if (Ca < 0){
+  #   Ca = 0}
+  # 
+  # print(Mj)
+  # print(Ma)
+  # print(Nj)
+  # print(Na)
+  
+  
+  # } else if (Ma < 0){
+  #   Ma <- 0
+  # } else if (Nj < 0){
+  #   Nj <- 0
+  # } else if (Na < 0){
+  #   Na <- 0
+  # } else if (Cj < 0){
+  #   Cj <- 0
+  # } else if (Ca < 0){
+  #   Ca <- 0}
+  
+  # Mj <- pmax(Mj, 0)
+  # Ma <- pmax(Ma, 0)
+  # Nj <- pmax(Nj, 0)
+  # Na <- pmax(Na, 0)
+  # Cj <- pmax(Cj, 0)
+  # Ca <- pmax(Ca, 0)
+  # 
+  
+  #   
+  
   # Calcul des densites totales de proies du systeme
   # proies_tot <- M_tot+N_tot+C_tot + 2
   proies_tot <- M_tot+N_tot+C_tot + 2.2204e-16
@@ -85,6 +136,15 @@ intermediate_res <-  function(y,parms){
     (pref_P_Cj * h_P_Cj * Cj +
        pref_P_Ca * h_P_Ca * Ca))
   
+  # print (den_rfonc_P,
+  #        a_P,
+  #        pref_P_Ma,
+  #        Ma,
+  #        scientific = TRUE)
+  
+  # formatted_value <- sprintf("%.10f", den_rfonc_P)
+  # print(den_rfonc_P, scientific = TRUE)
+  
   # Calcul des reponses fonctionnelles pour chaque espece
   # et chaque stade de vie
   rfonc_P_Ma <- (a_P * pref_P_Ma * Ma) / den_rfonc_P
@@ -127,6 +187,15 @@ intermediate_res <-  function(y,parms){
 
   # k_P = ((58.7 * (rfonc_tot - 0.03)) / (0.76 + rfonc_tot))/1000
   
+  # print(rfonc_P_Ma)
+  # print(rfonc_P_Mj)
+  
+  
+  # if (rfonc_P_Ma < 0) {
+  #   print("error")
+  # }
+  # 
+  
   # Conversion d'NRJ en jeunes loups que si NRJ intake > 
   # NRJ depensee pour metabolisme (mu_P)
   NRJ_intake = (rfonc_P_Ma + rfonc_P_Mj * (epsi_Maj)
@@ -136,6 +205,9 @@ intermediate_res <-  function(y,parms){
   
   
   surplus_NRJ = NRJ_intake-mu_P
+  
+  # print(NRJ_intake)
+  # print(surplus_NRJ)
   
   # Add of a condition that states that if wolf don't
   # have enough NRJ to complete their basal needs, 
@@ -176,11 +248,17 @@ intermediate_res <-  function(y,parms){
   #   chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
   # }
   
-  if (surplus_NRJ < 0 ){
-    chi_P = 0}
-  else{
-    chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
-  }
+  # TO UNCOMMENT !!!!!!!!!!!!!!!!
+  # if (surplus_NRJ < 0 ){
+  #   chi_P = 0}
+  # else{
+  #   chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
+  # }
+
+  # TO UNCOMMENT !!!!!!!!!!!!!!!!
+  
+  
+  chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
   
   k_P = abs(((58.7 * (rfonc_tot - 0.03)) / (0.76 + rfonc_tot))/1000)
   
