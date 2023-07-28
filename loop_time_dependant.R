@@ -42,8 +42,6 @@ res <- list()
 for (i in 1:nrow(test)){
   
   
-  # 
-
     t_low <-  test[i,"t_low"]
     t_kpeak <-  test[i,"t_kpeak"]
     t_kstable <- test[i,"t_kstable"]
