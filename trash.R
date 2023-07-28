@@ -185,4 +185,7 @@ out   <- ode(yini, times, LVmod, pars)
 summary(out)
 
 
+evol_vg(10, test$data, 1)
 
+
+test <- result_df[1:3,]
