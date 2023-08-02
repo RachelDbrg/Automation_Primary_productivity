@@ -70,7 +70,12 @@ equa_diff_sp <- function(t,y, Parms){
     #   Ca = 0}
     
     # Reponses fonctionnelle predateur-proie
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     int_rlt <- intermediate_res(y)
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    # int_rlt <- intermediate_res_DEBUG(y)
+    
     r_fonc <- int_rlt[[1]]
     
     rfonc_P_Mj <- r_fonc[1]
@@ -116,9 +121,9 @@ equa_diff_sp <- function(t,y, Parms){
     # print(PP)
     capacite_vg <- evol_vg(t,data, PP)
     k_U <- capacite_vg[[1]]
-    # k_W <- capacite_vg[[2]]
-    # k_V <- capacite_vg[[3]]
-    k_V <- capacite_vg[[2]] # A MODIFIER !!!!!!!!!!!
+    k_W <- capacite_vg[[2]]
+    k_V <- capacite_vg[[3]]
+    # k_V <- capacite_vg[[2]] # A MODIFIER !!!!!!!!!!!
     
     
     u_croiss = data$u_croiss

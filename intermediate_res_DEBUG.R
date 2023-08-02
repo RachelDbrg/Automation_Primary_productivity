@@ -5,7 +5,7 @@
 # predateur, 
 
 
-intermediate_res <-  function(y,parms){
+intermediate_res_DEBUG <-  function(y,parms){
   
   # Ma <- 0
   # Mj <- 0
@@ -30,6 +30,11 @@ intermediate_res <-  function(y,parms){
   Ca <- y[8]
   Cj <- y[9]
   
+  # print(V)
+  # print(Na)
+  # print(Nj)
+  # print(P)
+  # 
   # Calcul des densites totales d'orignaux
   M_tot <- Ma+Mj
   # Calcul des densites totales de caribous
@@ -37,6 +42,12 @@ intermediate_res <-  function(y,parms){
   # Calcul des densites totales de cerfs
   C_tot <- Ca+Cj
   
+  # if (V < 0){
+  #   V = 0}
+  # 
+  # if (P < 0){
+  #   P = 0}
+  # 
   # if (Mj < 0){
   #   Mj = 0}
   # 
@@ -47,9 +58,9 @@ intermediate_res <-  function(y,parms){
   #   Na = 0}
   # 
   # # PROVISOIRE
-  # if (any(is.na(Nj))) {
-  #   Nj[is.na(Nj)] <- 0
-  # }
+  # # if (any(is.na(Nj))) {
+  # #   Nj[is.na(Nj)] <- 0
+  # # }
   # 
   # if (Nj < 0) {
   #   Nj = 0}
@@ -60,23 +71,28 @@ intermediate_res <-  function(y,parms){
   # 
   # if (Ca < 0){
   #   Ca = 0}
-  # 
+
+
+  
+  # DOES NOT WORK
+  # if (Mj < 0){
+  #   Mj = 0
+  # } else if (Ma < 0){
+  #   Ma = 0
+  # } else if (Nj < 0){
+  #   Nj = 0
+  # } else if (Na < 0){
+  #   Na = 0
+  # } else if (Cj < 0){
+  #   Cj = 0
+  # } else if (Ca < 0){
+  #   Ca <- 0}
+
   # print(Mj)
   # print(Ma)
   # print(Nj)
   # print(Na)
   
-  
-  # } else if (Ma < 0){
-  #   Ma <- 0
-  # } else if (Nj < 0){
-  #   Nj <- 0
-  # } else if (Na < 0){
-  #   Na <- 0
-  # } else if (Cj < 0){
-  #   Cj <- 0
-  # } else if (Ca < 0){
-  #   Ca <- 0}
   
   # Mj <- pmax(Mj, 0)
   # Ma <- pmax(Ma, 0)

@@ -249,16 +249,16 @@ intermediate_res <-  function(y,parms){
   # }
   
   # TO UNCOMMENT !!!!!!!!!!!!!!!!
-  # if (surplus_NRJ < 0 ){
-  #   chi_P = 0}
-  # else{
-  #   chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
-  # }
+  if (surplus_NRJ < 0 ){
+    chi_P = 0}
+  else{
+    chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
+  }
 
   # TO UNCOMMENT !!!!!!!!!!!!!!!!
   
   
-  chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
+  # chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
   
   k_P = abs(((58.7 * (rfonc_tot - 0.03)) / (0.76 + rfonc_tot))/1000)
   

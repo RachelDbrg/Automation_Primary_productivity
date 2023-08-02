@@ -51,7 +51,8 @@ make_ODE <- function(PP, data){
              Ca = ca_init,
              Cj = cj_init)
   
-  times <- seq(0, 200, by = 1)
+  # times <- seq(0, 200, by = 1)
+  times <- seq(0, 800, by = 0.25)
   
   # PARS should be one value at a time
   # pars  <- c(
