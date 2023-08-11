@@ -81,6 +81,8 @@ make_ODE <- function(PP, data){
                  method = "rk4") %>% 
     as_tibble()
   
+  # Might be switched to "lsoda" or "vode"
+  
   
   # Vector to store new column names for columns 11 to 47
   # new_column_names <- c("new_column_11", "new_column_12", "new_column_13", "new_column_14")
