@@ -312,16 +312,11 @@ intermediate_res <-  function(y,parms){
               surplus_NRJ,
               rep_fonc_MU,
               croissance_loup,
-              pref_P_Ma_i,
-              pref_P_Mj_i,
-              pref_P_M,
-              pref_P_Mj,
-              pref_P_Ma,
-              den_rfonc_P,
               mu_P,
               test,
               test1,
-              test3,evol_P,
+              test3,
+              evol_P,
               test4))
   
 }
