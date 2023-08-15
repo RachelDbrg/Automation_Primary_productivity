@@ -1,16 +1,16 @@
-equa_diff_sp_test_nest <- function(t, y, parms){
-  V  <- y[1]
-  with(as.list(c(y, parms)), {
-
-    int_rlt <- intermediate_res(y)
-    r_fonc <- int_rlt[[1]]
-
-    rfonc_P_Mj <- r_fonc[1]
-
-    dVdt <- v_croiss * V * (1 - V/k_V)
-    return(list(c(dVdt)))
-  })
-}
+# equa_diff_sp_test_nest <- function(t, y, parms){
+#   V  <- y[1]
+#   with(as.list(c(y, parms)), {
+# 
+#     int_rlt <- intermediate_res(y)
+#     r_fonc <- int_rlt[[1]]
+# 
+#     rfonc_P_Mj <- r_fonc[1]
+# 
+#     dVdt <- v_croiss * V * (1 - V/k_V)
+#     return(list(c(dVdt)))
+#   })
+# }
 
 
 equa_diff_sp <- function(t,y, Parms){
@@ -70,12 +70,9 @@ equa_diff_sp <- function(t,y, Parms){
     #   Ca = 0}
     
     # Reponses fonctionnelle predateur-proie
-    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    
     int_rlt <- intermediate_res(y)
-    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
-    # int_rlt <- intermediate_res_DEBUG(y)
-    
     r_fonc <- int_rlt[[1]]
     
     rfonc_P_Mj <- r_fonc[1]
@@ -84,7 +81,7 @@ equa_diff_sp <- function(t,y, Parms){
     rfonc_P_Na <- r_fonc[4]
     rfonc_P_Cj <- r_fonc[5]
     rfonc_P_Ca <- r_fonc[6]
-    rfonc_tot <- r_fonc[7]
+    rfonc_tot <- r_fonc[7] 
     
     par_pref <- int_rlt[[2]]
     pref_P_Mj <- par_pref[1]
@@ -94,6 +91,7 @@ equa_diff_sp <- function(t,y, Parms){
     pref_P_Cj <- par_pref[5]
     pref_P_Ca <- par_pref[6]
     
+    den_rfonc_P <- int_rlt[[3]]
     k_P <- int_rlt[[4]]
     M_tot <- int_rlt [[5]]
     N_tot <- int_rlt [[6]]
@@ -103,18 +101,12 @@ equa_diff_sp <- function(t,y, Parms){
     surplus_NRJ <- int_rlt[[10]]
     rep_fonc_MU <- int_rlt[[11]]
     croissance_loup <- int_rlt[[12]]
-    pref_P_Ma_i <- int_rlt[[13]]
-    pref_P_Mj_i <- int_rlt[[14]]
-    pref_P_M <- int_rlt[[15]]
-    pref_P_Mj <- int_rlt[[16]]
-    pref_P_Ma <- int_rlt[[17]]
-    den_rfonc_P <- int_rlt[[18]]
-    mu_P <- int_rlt[[19]]
-    test <- int_rlt[[20]]
-    test1 <- int_rlt[[21]]
-    test3 <- int_rlt[[22]]
-    evol_P <- int_rlt[[23]]
-    test4 <- int_rlt[[24]]
+    mu_P <- int_rlt[[13]]
+    test <- int_rlt[[14]]
+    test1 <- int_rlt[[15]]
+    test3 <- int_rlt[[16]]
+    evol_P <- int_rlt[[17]]
+    test4 <- int_rlt[[18]]
     
     # Evolution des capacites de charge de la vgtation
     # en fct des perturbations
@@ -199,11 +191,17 @@ equa_diff_sp <- function(t,y, Parms){
                    dCadt, dCjdt),
                  pref_P_Mj,
                  pref_P_Ma,
+                 pref_P_Nj,
+                 pref_P_Na,
+                 pref_P_Cj,
+                 pref_P_Ca,
                  k_P,
                  rfonc_P_Mj,
                  rfonc_P_Ma,
                  rfonc_P_Nj,
                  rfonc_P_Na,
+                 rfonc_P_Cj,
+                 rfonc_P_Ca,
                  rfonc_tot,
                  chi_P,
                  surplus_NRJ,
@@ -217,9 +215,6 @@ equa_diff_sp <- function(t,y, Parms){
                  mu_P,
                  rep_fonc_MU,
                  croissance_loup,
-                 pref_P_Ma_i,
-                 pref_P_Mj_i,
-                 pref_P_M,
                  den_rfonc_P,
                  test,
                  test1,
