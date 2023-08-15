@@ -86,42 +86,94 @@ make_ODE <- function(PP, data){
   
   # Vector to store new column names for columns 11 to 47
   # new_column_names <- c("new_column_11", "new_column_12", "new_column_13", "new_column_14")
+  # Because the first columns take the vector y names
   
-  new_column_names <- c("pref_P_Mj", "pref_P_Ma", "k_P", "rfonc_P_Mj",  "rfonc_P_Ma",
-                 "rfonc_P_Nj",
-                 "rfonc_P_Na",
-                 "rfonc_tot",
-                 "chi_P",
-                 "surplus_NRJ",
-                 "N_tot",
-                 "M_tot",
-                 "C_tot",
-                 "proies_tot",
-                 "PP",
-                 "p_croiss",
-                 "a_P", 
-                 "mu_P",
-                 "rep_fonc_MU",
-                 "croissance_loup",
-                 "pref_P_Ma_i",
-                 "pref_P_Mj_i",
-                 "pref_P_M",
-                 "den_rfonc_P",
-                 "test",
-                 "test1",
-                 "test3",
-                 "evol_P",
-                 "ma_init",
-                 "na_init",
-                 "ca_init",
-                 "p_init",
-                 "test4",
-                 "k_U",
-                 "k_V")
   
+  # new_column_names <- c("pref_P_Mj",
+  #                       "pref_P_Ma",
+  #                       "k_P",
+  #                       "rfonc_P_Mj",
+  #                       "rfonc_P_Ma",
+  #                       "rfonc_P_Nj",
+  #                "rfonc_P_Na",
+  #                "rfonc_tot",
+  #                "chi_P",
+  #                "surplus_NRJ",
+  #                "N_tot",
+  #                "M_tot",
+  #                "C_tot",
+  #                "proies_tot",
+  #                "PP",
+  #                "p_croiss",
+  #                "a_P", 
+  #                "mu_P",
+  #                "rep_fonc_MU",
+  #                "croissance_loup",
+  #                "pref_P_Ma_i",
+  #                "pref_P_Mj_i",
+  #                "pref_P_M",
+  #                "den_rfonc_P",
+  #                "test",
+  #                "test1",
+  #                "test3",
+  #                "evol_P",
+  #                "ma_init",
+  #                "na_init",
+  #                "ca_init",
+  #                "p_init",
+  #                "test4",
+  #                "k_U",
+  #                "k_V",
+  #                "rfonc_P_Cj",
+  #                "rfonc_P_Ca")
+  
+  new_column_names <- c("pref_P_Mj",
+                        "pref_P_Ma",
+                        "pref_P_Nj",
+                        "pref_P_Na",
+                        "pref_P_Cj",
+                        "pref_P_Ca",
+                        "k_P",
+                        
+                        "rfonc_P_Mj",
+                        "rfonc_P_Ma",
+                        "rfonc_P_Nj",
+                        "rfonc_P_Na",
+                        "rfonc_P_Cj",
+                        "rfonc_P_Ca",
+                        "rfonc_tot",
+                        
+                        "chi_P",
+                        "surplus_NRJ",
+                        "M_tot",
+                        "N_tot",
+                        "C_tot",
+                        "proies_tot",
+                        "PP",
+                        "p_croiss",
+                        "a_P",
+                        "mu_P",
+                        "rep_fonc_MU",
+                        "croissance_loup",
+                        "den_rfonc_P",
+                        "test",
+                        "test1",
+                        "test3",
+                        "evol_P",
+                        "ma_init",
+                        "na_init",
+                        "ca_init",
+                        "p_init",
+                        "test4",
+                        "k_U",
+                        "k_V")
+  
+  
+  # 
+  # # 
   # Get the names of columns to rename (11 to 47)
-  columns_to_rename <- paste0("V", 11:45)
-  
+  columns_to_rename <- paste0("V", 11:48)
+
   # Rename specific columns using rename_at()
   res <- res %>%
     rename_at(vars(all_of(columns_to_rename)), ~ new_column_names)
