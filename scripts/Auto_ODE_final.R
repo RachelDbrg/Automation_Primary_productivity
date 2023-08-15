@@ -17,7 +17,7 @@ source("Static_fauna_parameters.R")
 
 source("Evolution_vegetation.R")
 
-source("test_model_equations.R")
+# source("test_model_equations.R")
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 source("intermediate_res.R")
