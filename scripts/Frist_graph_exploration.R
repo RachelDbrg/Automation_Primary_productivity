@@ -614,8 +614,8 @@ subdata_unnested <- all_simulations %>%
   map_dfr(as.data.frame)
 
 
-test <- subdata_unnested %>%
-# test <- subdata_unnested_wo_deer %>%
+# test <- subdata_unnested %>%
+test <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>% 
   group_by(PP) %>% 
   dplyr::select(1:10)
@@ -640,8 +640,8 @@ p <- ggplot(long_df_final_times, aes(x = PP, y = density)) +
 p
 
 # Define the file path and name for saving the plot
-# save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species_wo_deer.png"
-save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species.png"
+save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species_wo_deer.png"
+# save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species.png"
 # Save the plot as a PNG file
 ggsave(filename = save_path, plot = p, width = 8, height = 6)
 
@@ -660,3 +660,30 @@ fit_lm_and_extract_equation <- function(data) {
 equations <- p$data %>%
   split(.$species) %>%
   map(fit_lm_and_extract_equation)
+
+
+
+# ------------------------------------------------------------------------------¸
+# Safety in number -- apparent mutualism?
+
+apparent_mutualism <- subdata_unnested %>% 
+  mutate(all_prey_wo_caribou = Ma + Mj + Ca + Cj, 
+         rfonc_caribou = rfonc_P_Nj + rfonc_P_Na) %>% 
+  dplyr::select(PP, time, all_prey_wo_caribou, rfonc_P_Cj, rfonc_P_Ca,
+                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou) %>% 
+  mutate_all(as.numeric)
+
+apparent_mutualism_wo_deer <- subdata_unnested_wo_deer %>% 
+  mutate(all_prey_wo_caribou = Ma + Mj + Ca + Cj, 
+         rfonc_caribou = rfonc_P_Nj + rfonc_P_Na) %>% 
+  dplyr::select(PP, time, all_prey_wo_caribou, rfonc_P_Cj, rfonc_P_Ca,
+                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou) %>% 
+  mutate_all(as.numeric)
+
+
+
+apparent_mutualism_wo_deer %>% 
+  ggplot(aes(x = all_prey_wo_caribou,
+             y = rfonc_caribou,
+             color = as.factor(PP)))+
+  geom_point()
