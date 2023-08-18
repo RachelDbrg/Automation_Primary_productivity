@@ -6,11 +6,15 @@ library(tidyverse)
 
 # Load the df containing all the simulations 
 all_simulations <- readRDS ("all_simulations.R")
+all_simulations_wo_deer <- readRDS ("all_simulations_without_deer.R")
 
 # Subset the data
 # PP values that we want to look at
 
 subdata <- all_simulations %>% 
+  filter(PP %in% c(seq(0,10,1)))
+
+subdata_wo_deer <- all_simulations_wo_deer %>% 
   filter(PP %in% c(seq(0,10,1)))
 
 # For each of the PP scenarios, extract the final densities (ie the densities
@@ -25,8 +29,18 @@ subdata_unnested <- subdata %>%
   pull (outputs) %>% 
   map_dfr(as.data.frame)
 
+subdata_unnested_wo_deer <- subdata_wo_deer %>% 
+  pull (outputs) %>% 
+  map_dfr(as.data.frame)
+
 # Select only columns with species density
 test <- subdata_unnested %>% 
+  mutate_all(as.numeric) %>% 
+  group_by(PP) %>% 
+  dplyr::select(1:10)
+
+# Without deers
+test <- subdata_unnested_wo_deer %>% 
   mutate_all(as.numeric) %>% 
   group_by(PP) %>% 
   dplyr::select(1:10)
@@ -47,11 +61,18 @@ ggplot(long_df, aes(x = time, y = density, color = as.factor(PP))) +
   facet_wrap(~species, scales = "free")
 
 
+# ------------------------------------------------------------------------------
 # For each species, I want to plot the graph of the evolution of its 
 # density for different PP values
 
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/lichen.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/lichen_wo_deer.png"
+
+
 # Lichen
-lichen_time_serie <- subdata_unnested %>% 
+# lichen_time_serie <- subdata_unnested %>% 
+lichen_time_serie <- subdata_unnested_wo_deer %>%
   dplyr::select(c(PP,time, V)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(V),
@@ -67,9 +88,17 @@ lichen_time_serie <- subdata_unnested %>%
 # Display plot
 lichen_time_serie
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = lichen_time_serie, width = 8, height = 6)
+
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/deciduous.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/deciduous_wo_deer.png"
 
 # Deciduous
-deciduous_time_serie <- subdata_unnested %>% 
+# deciduous_time_serie <- subdata_unnested %>%
+deciduous_time_serie <- subdata_unnested_wo_deer %>% 
   dplyr::select(c(PP,time, U)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(U),
@@ -85,8 +114,17 @@ deciduous_time_serie <- subdata_unnested %>%
 # Display plot
 deciduous_time_serie
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = deciduous_time_serie, width = 8, height = 6)
+
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/moose.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/moose_wo_deer.png"
+
 # Moose
-moose_time_serie <- subdata_unnested %>% 
+# moose_time_serie <- subdata_unnested %>% 
+moose_time_serie <- subdata_unnested_wo_deer %>% 
   dplyr::select(c(PP,time, Ma, Mj)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(Ma,Mj),
@@ -102,8 +140,16 @@ moose_time_serie <- subdata_unnested %>%
 # Display plot
 moose_time_serie
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = moose_time_serie, width = 8, height = 6)
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/caribou.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/caribou_wo_deer.png"
+
 # Caribou
-caribou_time_serie <- subdata_unnested %>% 
+# caribou_time_serie <- subdata_unnested %>%
+caribou_time_serie <- subdata_unnested_wo_deer %>% 
   dplyr::select(c(PP,time, Na, Nj)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(Na,Nj),
@@ -118,6 +164,12 @@ caribou_time_serie <- subdata_unnested %>%
 
 # Display plot
 caribou_time_serie
+
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = caribou_time_serie, width = 8, height = 6)
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/deer.png"
 
 # Deer
 deer_time_serie <- subdata_unnested %>% 
@@ -136,8 +188,17 @@ deer_time_serie <- subdata_unnested %>%
 # Display plot
 deer_time_serie
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = deer_time_serie, width = 8, height = 6)
+
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/wolf.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/wolf_wo_deer.png"
+
 # Wolf
-wolf_time_serie <- subdata_unnested %>% 
+# wolf_time_serie <- subdata_unnested %>% 
+wolf_time_serie <- subdata_unnested_wo_deer %>% 
   dplyr::select(c(PP,time,P)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(P),
@@ -153,9 +214,16 @@ wolf_time_serie <- subdata_unnested %>%
 # Display plot
 wolf_time_serie
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = wolf_time_serie, width = 8, height = 6)
+
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Time_series/PP_0_10_wo_deer.png"
 
 # For a same PP value, see the difference between PP = 0 and PP = 10
-PP_0_10 <- subdata_unnested %>% 
+PP_0_10 <- subdata_unnested_wo_deer %>% 
   dplyr::select(c(PP,time:Cj)) %>% 
   mutate_all(as.numeric) %>% 
   pivot_longer(cols = c(V:Cj),
@@ -171,13 +239,21 @@ PP_0_10 <- subdata_unnested %>%
 
 PP_0_10
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = PP_0_10, width = 8, height = 6)
+
 
 # ------------------------------------------------------------------------------
 # --------------------------- Phase space --------------------------------------
 # ------------------------------------------------------------------------------
 
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_moose_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_moose_wolf_PP_0_10_wo_deer.png"
+
 # Adult_moose_wolf
-phase_plot_adult_moose_wolf <- subdata_unnested %>% 
+# phase_plot_adult_moose_wolf <- subdata_unnested %>% 
+phase_plot_adult_moose_wolf <- subdata_unnested_wo_deer %>% 
   mutate_all(as.numeric) %>% 
   dplyr::select(c(PP, time, Ma, P)) %>% 
   ggplot(aes(x=Ma, y=P, color =time)) +
@@ -189,9 +265,17 @@ phase_plot_adult_moose_wolf <- subdata_unnested %>%
 
 phase_plot_adult_moose_wolf
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = PP_0_10, width = 8, height = 6)
+
+
+# Define the file path and name for saving the plot
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_moose_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_moose_wolf_PP_0_10_wo_deer.png"
 
 # Juvenile_moose_wolf
-phase_plot_juvenile_moose_wolf <- subdata_unnested %>%
+# phase_plot_juvenile_moose_wolf <- subdata_unnested %>%
+  phase_plot_juvenile_moose_wolf <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Mj, P)) %>%
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Mj, etc. In the same order of selection by dplyr::select, just above
@@ -203,12 +287,18 @@ phase_plot_juvenile_moose_wolf <- subdata_unnested %>%
 
 phase_plot_juvenile_moose_wolf
 
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = PP_0_10, width = 8, height = 6)
+
+
 # Juvenile_caribou_wolf
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_caribou_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_caribou_wolf_PP_0_10_wo_deer.png"
 
-phase_plot_juvenile_caribou_wolf <- subdata_unnested %>%
+# phase_plot_juvenile_caribou_wolf <- subdata_unnested %>%
+phase_plot_juvenile_caribou_wolf <- subdata_unnested_wo_deer%>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Nj, P)) %>%
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Mj, etc. In the same order of selection by dplyr::select, just above
@@ -228,8 +318,10 @@ ggsave(filename = save_path, plot = phase_plot_juvenile_caribou_wolf, width = 8,
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_caribou_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_caribou_wolf_PP_0_10_wo_deer.png"
 
-phase_plot_adult_caribou_wolf <- subdata_unnested %>%
+# phase_plot_adult_caribou_wolf <- subdata_unnested %>%
+phase_plot_adult_caribou_wolf <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Na, P)) %>%
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Mj, etc. In the same order of selection by dplyr::select, just above
@@ -249,8 +341,10 @@ ggsave(filename = save_path, plot = phase_plot_adult_caribou_wolf, width = 8, he
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_deer_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_deer_wolf_PP_0_10_wo_deer.png"
 
-phase_plot_adult_deer_wolf <- subdata_unnested %>%
+# phase_plot_adult_deer_wolf <- subdata_unnested %>%
+phase_plot_adult_deer_wolf <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Ca, P)) %>%
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Mj, etc. In the same order of selection by dplyr::select, just above
@@ -272,8 +366,10 @@ ggsave(filename = save_path, plot = phase_plot_adult_deer_wolf, width = 8, heigh
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_deer_wolf_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_deer_wolf_PP_0_10_wo_deer.png"
 
-phase_plot_juvenile_deer_wolf <- subdata_unnested %>%
+# phase_plot_juvenile_deer_wolf <- subdata_unnested %>%
+phase_plot_juvenile_deer_wolf <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Cj, P)) %>%
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Mj, etc. In the same order of selection by dplyr::select, just above
@@ -294,8 +390,10 @@ ggsave(filename = save_path, plot = phase_plot_juvenile_deer_wolf, width = 8, he
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/deciduous_moose_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/deciduous_moose_PP_0_10_wo_deer.png"
 
-phase_plot_deciduous_moose <- subdata_unnested %>%
+# phase_plot_deciduous_moose <- subdata_unnested %>%
+phase_plot_deciduous_moose <- subdata_unnested_deer %>%
   mutate_all(as.numeric) %>%
   mutate(M_tot = Mj+Ma) %>% 
   dplyr::select(c(PP, time, U, M_tot)) %>%
@@ -317,8 +415,10 @@ ggsave(filename = save_path, plot = phase_plot_deciduous_moose, width = 8, heigh
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/deciduous_deer_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/deciduous_deer_PP_0_10_wo_deer.png"
 
-phase_plot_deciduous_deer <- subdata_unnested %>%
+# phase_plot_deciduous_deer <- subdata_unnested %>%
+phase_plot_deciduous_deer <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   mutate(C_tot = Cj+Ca) %>% 
   dplyr::select(c(PP, time, U, C_tot)) %>%
@@ -340,8 +440,10 @@ ggsave(filename = save_path, plot = phase_plot_deciduous_deer, width = 8, height
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/lichen_caribou_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/lichen_caribou_PP_0_10_wo_deer.png"
 
-phase_plot_lichen_caribou <- subdata_unnested %>%
+# phase_plot_lichen_caribou <- subdata_unnested %>%
+phase_plot_lichen_caribou <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   mutate(N_tot = Nj+Na) %>% 
   dplyr::select(c(PP, time, U, N_tot)) %>%
@@ -364,8 +466,10 @@ ggsave(filename = save_path, plot = phase_plot_lichen_caribou, width = 8, height
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_moose_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_moose_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_adult_moose <- subdata_unnested %>%
+# wolf_functional_response_adult_moose <- subdata_unnested %>%
+wolf_functional_response_adult_moose <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Ma, rfonc_P_Ma)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -385,8 +489,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_adult_moose, width 
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_moose_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_moose_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_juvenile_moose <- subdata_unnested %>%
+# wolf_functional_response_juvenile_moose <- subdata_unnested %>%
+wolf_functional_response_juvenile_moose <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Mj, rfonc_P_Mj)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -406,8 +512,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_juvenile_moose, wid
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_caribou_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_caribou_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_juvenile_caribou <- subdata_unnested %>%
+# wolf_functional_response_juvenile_caribou <- subdata_unnested %>%
+wolf_functional_response_juvenile_caribou <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Nj, rfonc_P_Nj)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -427,8 +535,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_juvenile_caribou, w
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_caribou_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_caribou_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_adult_caribou <- subdata_unnested %>%
+# wolf_functional_response_adult_caribou <- subdata_unnested %>%
+wolf_functional_response_adult_caribou <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Na, rfonc_P_Na)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -448,8 +558,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_adult_caribou, widt
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_deer_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/adult_deer_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_adult_deer <- subdata_unnested %>%
+# wolf_functional_response_adult_deer <- subdata_unnested %>%
+wolf_functional_response_adult_deer <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Ca, rfonc_P_Ca)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -470,8 +582,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_adult_deer, width =
 
 # Define the file path and name for saving the plot
 save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_deer_wolf_rfonc_PP_0_10.png"
+save_path <- "~/Automation_Primary_productivity/Plots/Phase_space/juvenile_deer_wolf_rfonc_PP_0_10_wo_deer.png"
 
-wolf_functional_response_juvenile_deer <- subdata_unnested %>%
+# wolf_functional_response_juvenile_deer <- subdata_unnested %>%
+wolf_functional_response_juvenile_deer <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>%
   dplyr::select(c(PP, time, Cj, rfonc_P_Cj)) %>% 
   ggplot(aes(x = .[[3]], y = .[[4]], color = .[[2]])) + # x = pick the 3rd column: Ma, etc. In the same order of selection by dplyr::select, just above
@@ -488,6 +602,10 @@ ggsave(filename = save_path, plot = wolf_functional_response_juvenile_deer, widt
 
 
 
+# ------------------------------------------------------------------------------
+# -------------------- Look at the final densities -----------------------------
+# ------------------------------------------------------------------------------
+
 # Pick the final densities 
 
 # Time series
@@ -496,7 +614,8 @@ subdata_unnested <- all_simulations %>%
   map_dfr(as.data.frame)
 
 
-test <- subdata_unnested %>% 
+test <- subdata_unnested %>%
+# test <- subdata_unnested_wo_deer %>%
   mutate_all(as.numeric) %>% 
   group_by(PP) %>% 
   dplyr::select(1:10)
@@ -518,10 +637,13 @@ p <- ggplot(long_df_final_times, aes(x = PP, y = density)) +
   labs(title = "Final Species density according to PP value", x = "PP", y = "Final density") +
   facet_wrap(~species, scales = "free")
 
+p
 
-p <- ggplot(long_df_final_times, aes(x = PP, y = density)) +
-  geom_point()+
-  geom_smooth()  # You can change the method to your desired smoothing method
+# Define the file path and name for saving the plot
+# save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species_wo_deer.png"
+save_path <- "~/Automation_Primary_productivity/Plots/final_densities_all_species.png"
+# Save the plot as a PNG file
+ggsave(filename = save_path, plot = p, width = 8, height = 6)
 
 
 ggplot_build(p)$data
