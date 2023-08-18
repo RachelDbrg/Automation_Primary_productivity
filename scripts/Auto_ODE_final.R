@@ -17,7 +17,7 @@ source("Static_fauna_parameters.R")
 
 source("Evolution_vegetation.R")
 
-source("test_model_equations.R")
+# source("test_model_equations.R")
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 source("intermediate_res.R")
@@ -43,7 +43,8 @@ res <- nested_test %>%
   mutate(outputs = map2(nested_test$PP, nested_test$data, ~make_ODE(.x, .y)))
   # mutate(outputs = make_ODE(PP, data))
 
-saveRDS(res, file = "all_simulations.R")
+# saveRDS(res, file = "all_simulations.R")
+saveRDS(res, file = "all_simulations_without_deer.R")
 
 
 
