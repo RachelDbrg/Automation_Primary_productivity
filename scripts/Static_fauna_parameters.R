@@ -78,8 +78,8 @@ e_UM = mu_M * (912.5)^-1
 
 # ---- DEER ---- 
 # ca_init = 3.9
-# ca_init = 2.1
-ca_init = 0
+ca_init = 2.1
+# ca_init = 0
 # ca_init = 0.000000004
 # ca_init = 0
 
@@ -102,12 +102,12 @@ tau_c = 2
 
 # ---- WOLF ----
 # p_init = 0.0031
-# p_init = 0.004
+p_init = 0.004
 # p_init = 0.008442148
 # p_init = 0.010974793
 # p_init = 0.005909504
 # p_init = 0.016884297
-p_init = 0.086884297
+# p_init = 0.086884297
 
 # p_init = 0.008442148
 
@@ -115,9 +115,9 @@ p_init = 0.086884297
 # p_init = 0.0031 * 0.5
 
 # p_init = 0
-# a_P = 65.116
+a_P = 65.116
 # a_P = 30
-a_P = 130
+# a_P = 130
 
 p_croiss = 0.36/2
 mu_P = 2.0683

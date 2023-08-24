@@ -4,6 +4,8 @@ rm(list = ls(all.names = TRUE))
 library(deSolve)
 
 
+setwd("~/Automation_Primary_productivity/scripts")
+
 # on several PP values
 source("Auto_gen_PP_related_parameters.R")
 
@@ -43,8 +45,12 @@ res <- nested_test %>%
   mutate(outputs = map2(nested_test$PP, nested_test$data, ~make_ODE(.x, .y)))
   # mutate(outputs = make_ODE(PP, data))
 
+# ter <- res %>% 
+#   head(1)
+
 # saveRDS(res, file = "all_simulations.R")
-saveRDS(res, file = "all_simulations_without_deer.R")
+# saveRDS(res, file = "all_simulations_without_deer.R")
+saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
 
 
 

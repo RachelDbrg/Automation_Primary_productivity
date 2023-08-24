@@ -1,12 +1,14 @@
 rm(list = ls(all.names = TRUE))
 
 setwd("C:/Users/lab/Documents/Automation_Primary_productivity/scripts")
+setwd("~/Automation_Primary_productivity/res_simulations")
 
 library(tidyverse)
 
 # Load the df containing all the simulations 
 all_simulations <- readRDS ("all_simulations.R")
 all_simulations_wo_deer <- readRDS ("all_simulations_without_deer.R")
+all_simulations_sc_1 <- readRDS ("all_simulations_scenario1.R")
 
 # Subset the data
 # PP values that we want to look at
@@ -30,6 +32,11 @@ subdata_unnested <- subdata %>%
   map_dfr(as.data.frame)
 
 subdata_unnested_wo_deer <- subdata_wo_deer %>% 
+  pull (outputs) %>% 
+  map_dfr(as.data.frame)
+
+
+sub <- all_simulations_sc_1 %>% 
   pull (outputs) %>% 
   map_dfr(as.data.frame)
 
@@ -666,19 +673,32 @@ equations <- p$data %>%
 # ------------------------------------------------------------------------------¸
 # Safety in number -- apparent mutualism?
 
+subdata_unnested <- all_simulations %>% 
+  pull (outputs) %>% 
+  map_dfr(as.data.frame)
+
+subdata_unnested_wo_deer <- all_simulations_wo_deer %>% 
+  pull (outputs) %>% 
+  map_dfr(as.data.frame)
+
 apparent_mutualism <- subdata_unnested %>% 
   mutate(all_prey_wo_caribou = Ma + Mj + Ca + Cj, 
          rfonc_caribou = rfonc_P_Nj + rfonc_P_Na) %>% 
   dplyr::select(PP, time, all_prey_wo_caribou, rfonc_P_Cj, rfonc_P_Ca,
-                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou) %>% 
-  mutate_all(as.numeric)
+                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou,
+                Ma, Mj, Ca, Cj, Na, Nj) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(moose_density = Ma+Mj)
+
 
 apparent_mutualism_wo_deer <- subdata_unnested_wo_deer %>% 
   mutate(all_prey_wo_caribou = Ma + Mj + Ca + Cj, 
          rfonc_caribou = rfonc_P_Nj + rfonc_P_Na) %>% 
   dplyr::select(PP, time, all_prey_wo_caribou, rfonc_P_Cj, rfonc_P_Ca,
-                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou) %>% 
-  mutate_all(as.numeric)
+                rfonc_P_Mj, rfonc_P_Ma, rfonc_P_Nj, rfonc_P_Na, rfonc_caribou,
+                Ma, Mj, Ca, Cj, Na, Nj) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(moose_density = Ma+Mj)
 
 
 
@@ -687,3 +707,102 @@ apparent_mutualism_wo_deer %>%
              y = rfonc_caribou,
              color = as.factor(PP)))+
   geom_point()
+
+
+# What are the values for which the functional response is the highest?
+high_rfonc <- apparent_mutualism %>% 
+  group_by(PP) %>% 
+  filter(rfonc_caribou == max(rfonc_caribou)) %>% 
+  mutate(scenario = "deer")
+
+
+high_rfonc_no_deer <- apparent_mutualism_wo_deer %>% 
+  group_by(PP) %>% 
+  filter(rfonc_caribou == max(rfonc_caribou)) %>% 
+  mutate(scenario = "nodeer")
+
+
+merge_high_rfonc <- full_join(high_rfonc,
+                              high_rfonc_no_deer)
+
+
+merge_high_rfonc %>% 
+  ggplot(aes(x = PP,
+             y = rfonc_caribou,
+             color = as.factor(scenario)))+
+  geom_point()
+
+
+merge_high_rfonc %>% 
+  ggplot(aes(x = all_prey_wo_caribou,
+             y = rfonc_caribou,
+             color = as.factor(PP)))+
+  geom_point()+
+  facet_grid(~scenario,
+             scales = "free")
+
+
+
+merge_high_rfonc <- merge_high_rfonc %>% 
+  mutate(moose_density = Ma+Mj)
+
+
+# 3d version of it
+
+library(rgl)
+library(plotly)
+
+# Create example data
+x <- merge_high_rfonc$all_prey_wo_caribou
+y <- merge_high_rfonc$rfonc_caribou
+z <- merge_high_rfonc$PP
+
+
+plot_ly(x=x, y=y, z=z, type="scatter3d", mode="markers", color=merge_high_rfonc$moose_density)
+
+
+# What is the strongest correlation? Rfonc on caribou and moose density or total
+# prey density?
+
+
+merge_high_rfonc %>% 
+  ggplot(aes(x = moose_density,
+             y = rfonc_caribou,
+             color = PP,
+             shape = as.factor(scenario)))+
+  geom_point()
+
+
+# Correlation plot
+
+install.packages("corrplot")
+library(corrplot)
+
+cor_matrix <- cor(apparent_mutualism)
+corrplot(cor_matrix, method = "color", type = "full", order = "hclust")
+
+
+
+tre <- apparent_mutualism_wo_deer %>% 
+  dplyr::select(-c(Ca,Cj,
+                   rfonc_P_Ca, rfonc_P_Cj))
+
+cor_matrix <- cor(tre)
+corrplot(cor_matrix, method = "color", type = "full", order = "hclust")
+
+
+
+# Full correlation plot
+
+corr <- subdata_unnested %>% 
+  dplyr::select(1:31)
+
+cor_matrix <- cor(corr)
+corrplot(cor_matrix, method = "color", type = "full", order = "hclust")
+
+
+corr <- subdata_unnested_wo_deer %>% 
+  dplyr::select(c(1:8),c(11:14), c(17:21), c(24:28), c(30:31))
+
+cor_matrix <- cor(corr)
+corrplot(cor_matrix, method = "color", type = "full", order = "hclust")
