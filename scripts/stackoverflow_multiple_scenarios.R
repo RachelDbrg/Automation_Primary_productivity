@@ -2,6 +2,7 @@ library(deSolve)
 library(ggplot2)
 library(purrr)
 
+
 model <- function(t, y, p) {
   N <- y[[1]]
   M <- y[[2]]
