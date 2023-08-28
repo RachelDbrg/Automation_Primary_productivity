@@ -69,7 +69,7 @@ calculate_parameters <- function(PP) {
 generate_parameter_dataframe <- function() {
   
   # Create a vector with "PP" values from 0 to 10 with incrementation of 0.1
-  pp_values <- seq(0, 10, by = 0.1)
+  pp_values <- seq(0, 1, by = 0.1)
   
   # Use map_dfc() to calculate the parameters for each "PP" value and combine them into a data frame
   parameter_data <- map(pp_values, calculate_parameters)
