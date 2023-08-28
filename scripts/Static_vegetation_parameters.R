@@ -4,7 +4,19 @@ t_perturb = 100
 
 # Vegetaux
 # Lichen 
-v_init = 5e5 # qte initiale
+# v_init = 3e5 # qte initiale
+# 
+# v_init = 3e5 # qte initiale
+
+# v_init = 1e1 # qte initiale
+# v_init = 1e2 # qte initiale
+# v_init = 1e3 # qte initiale
+# v_init = 1e4 # qte initiale
+# v_init = 1e5 # qte initiale
+v_init = 3e5 # qte initiale
+
+
+
 v_croiss = 0.06 # facteur de croissance
 # k_v = 5e5 # capacite de charge max
 # kVnorm =1.4*10^5 #kg/km2
@@ -15,8 +27,16 @@ kVlow = 0.2*kVnorm     # kg/km², valeur pour laquelle on atteint 50# de perte
 
 
 # Feuillus
-# u_init = 4e5
+# u_init = 1e1
+# u_init = 1e2
+# u_init = 1e3
+# u_init = 1e4
+# u_init = 1e5
 u_init = 4e5
+
+
+
+# u_init = 1e1
 # u_init = 4e9
 kUlow = 2e5
 kUpeak_0 = 5.6e5
