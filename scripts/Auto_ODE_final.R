@@ -1,5 +1,5 @@
 
-rm(list = ls(all.names = TRUE))
+# rm(list = ls(all.names = TRUE))
 
 library(deSolve)
 
@@ -31,6 +31,10 @@ source("make_ODE_function.R")
 
 source("Species_equations.R")
 
+
+
+my_function <- function(simulation_index, ...){
+  
 result_df <- generate_parameter_dataframe()
 
 
@@ -50,9 +54,62 @@ res <- nested_test %>%
 
 # saveRDS(res, file = "all_simulations.R")
 # saveRDS(res, file = "all_simulations_without_deer.R")
-saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario2.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario4.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario5.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario6.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario7.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario8.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario9.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario10.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario11.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario12.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario13.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario14.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario15.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario16.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario17.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario19.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario20.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario21.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario22.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario23.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario24.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario25.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario26.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario27.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario28.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario29.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario30.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario31.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario32.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario33.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario34.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario35.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario36.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario37.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario38.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario39.R")
 
 
+filename <- paste0("~/Automation_Primary_productivity/res_simulations2/all_simulations_scenario", simulation_index, ".R")
+saveRDS(res, file = filename)
+
+}
+
+# simulation_index <- 1
+
+my_function(simulation_index)
+
+# Increment simulation index
+simulation_index <- simulation_index + 1
+
+
+# my_function(simulation_index)
+# 
+# # Increment simulation index
+# simulation_index <- simulation_index + 1
 
 # test_model_auto <- test$outputs[[1]] %>% 
 #   filter(time == 666)
