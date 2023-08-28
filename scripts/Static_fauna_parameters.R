@@ -9,10 +9,22 @@
 
 # na_init = 0.086
 # na_init = 0.0076
-na_init = 0.082755085
+# na_init = 0.082755085
 # nj_init = na_init*0.1
 
+
+
 # na_init = 0
+# na_init = 0.0076
+na_init = 0.082755085
+# na_init = 0.8
+
+
+
+
+# na_init = 0.05
+# na_init = 0.1
+
 nj_init = na_init*0.1
 
 n_croiss = 0.25  # Growth
@@ -36,18 +48,22 @@ chi_N = n_croiss * ((a_N * e_VN * kVnorm)
 # ---- MOOSE ---- 
 coef = 1
 
-# ma_init = 0
+# ma_init = 1
 
 # ma_init = 0.1
 # ma_init = 0.12807083025
-# ma_init = 0.0896
-ma_init = 0.166
+ma_init = 0.0896
+# ma_init = 0.166
 
 # ma_init = 0.1  * coef
 # ma_init = 0.00000000001
 
 # ma_init = 0
+# ma_init = 0.0896
+# ma_init = 0.12807083025
 # ma_init = 1
+
+
 # ma_init = 6e-02
 mj_init = ma_init*0.1
 
@@ -78,10 +94,17 @@ e_UM = mu_M * (912.5)^-1
 
 # ---- DEER ---- 
 # ca_init = 3.9
-ca_init = 2.1
-# ca_init = 0
+# ca_init = 2.1
+# ca_init = 10
 # ca_init = 0.000000004
+
+
 # ca_init = 0
+# ca_init = 0.05
+# ca_init = 0.5
+ca_init = 5
+
+
 
 cj_init = ca_init*0.1
 
@@ -102,14 +125,19 @@ tau_c = 2
 
 # ---- WOLF ----
 # p_init = 0.0031
-p_init = 0.004
+# p_init = 0.004
 # p_init = 0.008442148
 # p_init = 0.010974793
 # p_init = 0.005909504
 # p_init = 0.016884297
 # p_init = 0.086884297
 
-# p_init = 0.008442148
+# p_init = 0.008442148¸
+
+p_init = 0
+# p_init = 0.004
+# p_init = 0.01
+# p_init = 0.08
 
 
 # p_init = 0.0031 * 0.5
