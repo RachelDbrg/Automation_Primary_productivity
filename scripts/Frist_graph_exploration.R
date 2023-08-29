@@ -701,6 +701,14 @@ apparent_mutualism_wo_deer <- subdata_unnested_wo_deer %>%
   mutate(moose_density = Ma+Mj)
 
 
+apparent_mutualism %>% 
+  filter(PP ==0) %>% 
+  ggplot(aes(x = all_prey_wo_caribou,
+             y = rfonc_caribou,
+             color = as.factor(time)))+
+  geom_point()
+
+
 
 apparent_mutualism_wo_deer %>% 
   ggplot(aes(x = all_prey_wo_caribou,
@@ -806,3 +814,56 @@ corr <- subdata_unnested_wo_deer %>%
 
 cor_matrix <- cor(corr)
 corrplot(cor_matrix, method = "color", type = "full", order = "hclust")
+
+
+
+
+# --------
+
+test <- subdata_unnested %>% 
+  # head(3000) %>% 
+  mutate(proportion_N = rfonc_P_Na * P /Na,
+         proportion_M = rfonc_P_Ma * P /Ma,
+         proies_tot = Ma + Mj + Ca + Cj,
+         diff_gowth = Na-lag(Na),
+         diff_time = time-lag(time),
+         tx_croiss_N = (diff_gowth/diff_time)/Na*100)
+
+
+
+test %>% 
+  ggplot(aes(x = proies_tot)) +
+  geom_point(aes(y =  proportion_N))+
+  geom_point(aes(y = proportion_M, color = "red"))
+
+
+
+test %>% 
+  ggplot(aes(x = P,
+             y = rfonc_P_Na,
+             color = as.factor(PP)))+
+  geom_point()
+
+
+test %>% 
+  
+  ggplot(aes(x = proies_tot)) +
+  geom_point(aes(y =  tx_croiss_N, color = as.factor(PP)))
+
+
+test %>% 
+  ggplot(aes(x = time, y = Na)) +
+  # geom_point(aes(y =  tx_croiss_N))
+  geom_point()
+
+
+
+test <- subdata_unnested %>% 
+  filter(PP == 1) %>% 
+  mutate(proportion_N = rfonc_P_Na * P /Na,
+         proportion_M = rfonc_P_Ma * P /Ma,
+         proies_tot = Ma + Mj + Ca + Cj,
+         diff_gowth = Na-lag(Na),
+         diff_time = time-lag(time),
+         tx_croiss_N = (diff_gowth/diff_time)/Na*100) %>% 
+  mutate_all(~as.numeric(.))
