@@ -34,7 +34,7 @@ calculate_parameters <- function(PP) {
   chi_M = m_croiss * ((a_M * e_UM * kUpeak)/
                         (1+a_M * h_UM * kUpeak) - mu_M)^-1
   
-  # Dear carrying capacity
+  # Deer carrying capacity
   k_c= ((11.43-4.74)*PP +4.74) * coef
   
   # Deer growth rate
