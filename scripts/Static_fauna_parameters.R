@@ -52,8 +52,8 @@ coef = 1
 
 # ma_init = 0.1
 # ma_init = 0.12807083025
-ma_init = 0.0896
-# ma_init = 0.166
+# ma_init = 0.0896
+ma_init = 0.166
 
 # ma_init = 0.1  * coef
 # ma_init = 0.00000000001
@@ -99,10 +99,10 @@ e_UM = mu_M * (912.5)^-1
 # ca_init = 0.000000004
 
 
-# ca_init = 0
+ca_init = 0
 # ca_init = 0.05
 # ca_init = 0.5
-ca_init = 5
+# ca_init = 5
 
 
 
@@ -130,11 +130,11 @@ tau_c = 2
 # p_init = 0.010974793
 # p_init = 0.005909504
 # p_init = 0.016884297
-# p_init = 0.086884297
+p_init = 0.086884297
 
 # p_init = 0.008442148¸
 
-p_init = 0
+# p_init = 0
 # p_init = 0.004
 # p_init = 0.01
 # p_init = 0.08
