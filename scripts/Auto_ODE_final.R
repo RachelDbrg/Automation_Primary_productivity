@@ -52,8 +52,14 @@ res <- nested_test %>%
 # ter <- res %>% 
 #   head(1)
 
-# saveRDS(res, file = "all_simulations.R")
-# saveRDS(res, file = "all_simulations_without_deer.R")
+# saveRDS(res, file = "all_simulations_long_period.R")
+# saveRDS(res, file = "all_simulations_without_deer_long_period.R")
+saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_high_density.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low_density.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/average_density.R")
+
+
+
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario2.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario4.R")
@@ -93,17 +99,17 @@ res <- nested_test %>%
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario39.R")
 
 
-filename <- paste0("~/Automation_Primary_productivity/res_simulations2/all_simulations_scenario", simulation_index, ".R")
-saveRDS(res, file = filename)
+# filename <- paste0("~/Automation_Primary_productivity/res_simulations2/all_simulations_scenario", simulation_index, ".R")
+# saveRDS(res, file = filename)
 
 }
 
-# simulation_index <- 1
+simulation_index <- 1
 
 my_function(simulation_index)
 
 # Increment simulation index
-simulation_index <- simulation_index + 1
+# simulation_index <- simulation_index + 1
 
 
 # my_function(simulation_index)
