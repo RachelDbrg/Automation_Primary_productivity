@@ -13,7 +13,8 @@ t_perturb = 100
 # v_init = 1e3 # qte initiale
 # v_init = 1e4 # qte initiale
 # v_init = 1e5 # qte initiale
-v_init = 3e5 # qte initiale
+# v_init = 3e5 # qte initiale
+v_init = 5e5 # qte initiale
 
 
 
@@ -41,8 +42,10 @@ u_init = 4e5
 kUlow = 2e5
 kUpeak_0 = 5.6e5
 # kUstable_0 = 1e6
-kUstable_0 = 2e5
+# kUstable_0 = 2e5
 
+# kUstable_0 = 2e8
+kUstable_0 = 2e10
 
 ##Arbustes W :
 # Stades de succession, variation selon le temps et la productivite PP
