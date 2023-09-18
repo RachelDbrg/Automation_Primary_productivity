@@ -2,7 +2,6 @@
 
 library(tidyverse)
 
-
 # Define the folder path
 folder_path <- "~/Automation_Primary_productivity/res_simulations2"
 
@@ -51,17 +50,47 @@ for (i in seq_along(selected_objects)) {
   assign(paste0("results_", obj_name), results)
 }
 
-# qw <- sc1 %>% 
-#   pull(outputs) %>% 
-#   map_dfr(as.data.frame) %>% 
-#   mutate_all(as.numeric) %>% 
-#   group_by(PP) %>% 
-#   filter(time == 0.00 | time == 800.00) %>%
-#   select(1:10, PP) %>% 
-#   mutate(N_init = Na + Nj, M_init = Ma + Mj, C_init = Ca + Cj) %>% 
-#   select(-c(4:6, "Ca", "Cj")) %>%
-#   mutate(scenario = i)
+qweqwrt <- sc1 %>%
+  pull(outputs) %>%
+  map_dfr(as.data.frame) %>%
+  mutate_all(as.numeric) %>%
+  group_by(PP) %>%
+  filter(time == 0.00 | time == 800.00) %>%
+  select(1:10, PP) %>%
+  mutate(N_init = Na + Nj, M_init = Ma + Mj, C_init = Ca + Cj) %>%
+  select(-c(4:6, "Ca", "Cj")) %>%
+  mutate(scenario = i)
 
+
+dasfg <- sc1 %>%
+  pull(outputs) %>%
+  map_dfr(as.data.frame) %>%
+  mutate_all(as.numeric) 
+
+
+# Colonnes spécifiques que vous souhaitez conserver
+specific_columns <- c("time", "U", "V", "Na", "Nj", 
+                      "Ca", "Cj", "P", "Ma", "Mj")
+
+
+pattern <- "rfonc"
+
+# Use grep to find column names matching the pattern
+matching_columns <- grep(pattern, names(dasfg), value = TRUE)
+
+
+# Utilisez la fonction subset pour sélectionner les colonnes spécifiques et celles correspondant au motif regex
+selected_data <- subset(dasfg, select = c(specific_columns, grep(pattern, names(dasfg), value = TRUE)))
+
+
+qwr <- selected_data %>% 
+  head(801) %>% 
+  mutate(M = Ma+Mj) %>% 
+  ggplot(aes(x = M,
+             y = rfonc_P_Ma))+
+  geom_point()
+
+qwr
 
 
 # Merge all scenarios in one df
@@ -493,5 +522,161 @@ test %>%
               y = Rate_percent, 
               color = P))+
   geom_point()
+# ===============================================================================
 
-         
+
+# Which scenarios are the furthest from what is expected with Messier 1994?
+
+
+# DONE - see the "match_messier1994" script
+
+
+# ================================================================================
+
+# Quick test for functional response
+
+
+write.csv(merged_df_full, "C:/Users/lab/Documents/Automation_Primary_productivity/res_simulations2/full_merged_df.csv", row.names=FALSE)
+
+
+
+
+# Define the folder path
+folder_path <- "~/Automation_Primary_productivity/res_simulations2"
+
+# List files in the folder
+file_names <- list.files(folder_path, full.names = TRUE)
+
+# Select files that start with "all_simulations_scenario"
+selected_files <- file_names[grep("all_simulations_scenario", file_names)]
+
+# Read RDS files and store them in a list
+data_list <- lapply(selected_files, readRDS)
+
+# Filter out tibble elements from the list
+tibble_elements <- data_list %>% 
+  keep(is_tibble)
+
+
+# Convert each item in data_list to a data frame and assign names
+for (i in seq_along(tibble_elements)) {
+  df_name <- paste0("sc", i)
+  assign(df_name, as.data.frame(tibble_elements[[i]]))
+}
+
+
+# List all the objects in the environment
+all_objects <- ls()
+
+# Select the objects that match the desired pattern
+selected_objects <- all_objects[grep("^sc", all_objects)]
+
+# Loop through selected data frames and apply the actions
+for (i in seq_along(selected_objects)) {
+  obj_name <- selected_objects[i]
+  df <- get(obj_name)
+  results <- df %>% 
+    pull(outputs) %>% 
+    map_dfr(as.data.frame) %>% 
+    mutate_all(as.numeric) %>% 
+    group_by(PP) %>% 
+    # filter(time == 0.00 | time == 800.00) %>%
+    select(1:10, PP, rfonc_P_Na, rfonc_P_Nj) %>% 
+    mutate(N = Na + Nj, M = Ma + Mj, C = Ca + Cj) %>% 
+    select(-c(4:7, "Ca", "Cj")) %>%
+    mutate(scenario = i)
+  
+  assign(paste0("results_", obj_name), results)
+}
+
+
+# Merge all scenarios in one df
+# List all the objects in the environment
+all_objects <- ls()
+
+# Select the objects that match the desired pattern
+selected_objects <- all_objects[grep("^results_sc", all_objects)]
+
+# Merge the selected data frames
+rfonc_df_full <- do.call(rbind, lapply(selected_objects, get))
+
+
+sites <- rfonc_df_full %>% 
+  filter(time == 0) %>% 
+  mutate(site = ifelse(time == 0 & C == 0, "east", "west"))
+  
+
+sites_test <- rfonc_df_full
+qwe <- full_join(sites, sites_test)
+
+
+qwe <- qwe %>% 
+  group_by(PP, scenario) %>% 
+  fill(site, .direction = "down")
+
+
+qwert <- qwe %>%   
+  filter(time == 800) %>% 
+  mutate(proies_tot = M + C,
+         rep_fonc_N = rfonc_P_Na+rfonc_P_Nj)
+
+
+qwert %>% 
+  filter(site == "east") %>% 
+  mutate(masse_proies = (M * 400 + C *60)) %>% 
+  ggplot(aes(x = masse_proies,
+             y = rep_fonc_N,
+             color = factor(round(M,1))))+
+  geom_point()
+
+east <- qwert %>% 
+  filter(site == "east", 
+         M != 0)
+
+max_row_east <- east[east$rep_fonc_N == max(east$rep_fonc_N), ]
+
+
+
+qwert %>% 
+  filter(site == "west") %>% 
+  mutate(masse_proies = (M * 400 + C *60)) %>% 
+  ggplot(aes(x = masse_proies,
+             y = rep_fonc_N,
+             color = factor(round(M,1))))+
+  geom_point()
+
+qwert
+
+west <- qwert %>% 
+  filter(site == "west", 
+         M != 0)
+
+max_row_west <- west[west$rep_fonc_N == max(west$rep_fonc_N), ]
+
+
+
+# For a same value of fonctional response, the total prey density is different in 
+# west and east
+
+qwert %>% 
+  ggplot(aes(x = round(rep_fonc_N, 2),
+             y = proies_tot,
+             color = factor(site)))+
+  geom_point()
+
+
+# For each site, what is mean value of the total prey, at each 0.2 rfonc 
+
+qwert %>% 
+  mutate(rounded_rpf = round(rep_fonc_N,2)) %>% 
+  group_by(rounded_rpf) %>% 
+  nest() %>% 
+  pull(data) %>% 
+  map_dfr(as.data.frame) %>% 
+  select(rounded_rpf, site, proies_tot)
+
+
+
+# ==============================================================================
+growth_rates_test <- full_merged_df %>% 
+  filter( time == 0 | time == 800)
