@@ -14,10 +14,10 @@ all_simulations_sc_1 <- readRDS ("all_simulations_scenario1.R")
 # PP values that we want to look at
 
 subdata <- all_simulations %>% 
-  filter(PP %in% c(seq(0,10,1)))
+  filter(PP %in% c(seq(0,1,0.1)))
 
 subdata_wo_deer <- all_simulations_wo_deer %>% 
-  filter(PP %in% c(seq(0,10,1)))
+  filter(PP %in% c(seq(0,1,0.1)))
 
 # For each of the PP scenarios, extract the final densities (ie the densities
 # obtained at the last time step)
@@ -614,15 +614,19 @@ ggsave(filename = save_path, plot = wolf_functional_response_juvenile_deer, widt
 # ------------------------------------------------------------------------------
 
 # Pick the final densities 
-
 # Time series
+
 subdata_unnested <- all_simulations %>% 
   pull (outputs) %>% 
   map_dfr(as.data.frame)
 
 
-# test <- subdata_unnested %>%
 test <- subdata_unnested_wo_deer %>%
+  mutate_all(as.numeric) %>% 
+  group_by(PP) %>% 
+  dplyr::select(1:10)
+
+test <- subdata_unnested %>%
   mutate_all(as.numeric) %>% 
   group_by(PP) %>% 
   dplyr::select(1:10)
