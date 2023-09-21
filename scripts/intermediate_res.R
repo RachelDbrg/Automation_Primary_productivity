@@ -229,8 +229,17 @@ intermediate_res <-  function(y,parms){
   # res <- c(chi_P)
   # return(chi_P)
   
-
-  rep_fonc_MU = ((a_M * U * (Ma+Mj))/(1 + a_M * h_UM * U))
+  # Functional response of moose on deciduous (in kg/year per moose individual)
+  rep_fonc_MU = ((a_M * U)/(1 + a_M * h_UM * U))
+  
+  # Total response of moose on deciduous (total biomass eaten by the moose population)
+  rep_totale_MU = ((a_M * U * (Ma+Mj))/(1 + a_M * h_UM * U))
+  
+  # Functional response of moose on deciduous (in kg/year per moose individual)
+  rep_fonc_CU = ((a_C * U)/(1 + a_C * h_UC * U))
+  
+  # Total response of moose on deciduous (total biomass eaten by the moose population)
+  rep_totale_CU = ((a_C * U * (Ca+Cj))/(1 + a_C * h_UC * U))
   
   # Not enough food so no growth
   # Set the reproductive value to 0 if wolves don't get
@@ -317,7 +326,10 @@ intermediate_res <-  function(y,parms){
               test1,
               test3,
               evol_P,
-              test4))
+              test4,
+              rep_totale_MU,
+              rep_fonc_CU,
+              rep_totale_CU))
   
 }
 
