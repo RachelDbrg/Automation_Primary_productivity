@@ -167,13 +167,16 @@ make_ODE <- function(PP, data){
                         "p_init",
                         "test4",
                         "k_U",
-                        "k_V")
+                        "k_V",
+                        "rep_totale_MU",
+                        "rep_fonc_CU",
+                        "rep_totale_CU")
   
   
   # 
   # # 
   # Get the names of columns to rename (11 to 47)
-  columns_to_rename <- paste0("V", 11:48)
+  columns_to_rename <- paste0("V", 11:51)
 
   # Rename specific columns using rename_at()
   res <- res %>%
