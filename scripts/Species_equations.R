@@ -107,6 +107,9 @@ equa_diff_sp <- function(t,y, Parms){
     test3 <- int_rlt[[16]]
     evol_P <- int_rlt[[17]]
     test4 <- int_rlt[[18]]
+    rep_totale_MU <- int_rlt[[19]]
+    rep_fonc_CU <- int_rlt[[20]]
+    rep_totale_CU <- int_rlt[[21]]
     
     # Evolution des capacites de charge de la vgtation
     # en fct des perturbations
@@ -226,6 +229,9 @@ equa_diff_sp <- function(t,y, Parms){
                  p_init,
                  test4,
                  k_U,
-                 k_V))
+                 k_V,
+                 rep_totale_MU,
+                 rep_fonc_CU,
+                 rep_totale_CU))
   })
 }
