@@ -94,12 +94,12 @@ e_UM = mu_M * (912.5)^-1
 
 # ---- DEER ---- 
 # ca_init = 3.9
-# ca_init = 2.1
+ca_init = 2.1
 # ca_init = 10
 # ca_init = 0.000000004
 
 
-ca_init = 0
+# ca_init = 0
 # ca_init = 0.05
 # ca_init = 0.5
 # ca_init = 5
