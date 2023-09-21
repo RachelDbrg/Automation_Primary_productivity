@@ -192,4 +192,31 @@ test <- result_df[1:3,]
 
 
 
+# ==============
+
+
+low_density_east <- low_density
+
+# List files ending with "east"
+east_files <- list.files(pattern = "east$")
+
+# Iterate through each file
+for (file_name in east_files) {
+  # Read the data from the file
+  data <- read.csv(file_name)  # You may need to adjust the read function based on your data format
+  
+  # Filter rows where time == 2000
+  filtered_data <- subset(data, time == 2000)
+  
+  # Extract the NAME from the file name
+  name <- gsub("_density.*", "", file_name)
+  
+  # Create an object with the filtered data
+  assign(paste0("fd_", name), filtered_data)
+}
+
+
+
+
+
 
