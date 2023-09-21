@@ -52,12 +52,21 @@ res <- nested_test %>%
 # ter <- res %>% 
 #   head(1)
 
+
+# EST
 # saveRDS(res, file = "all_simulations_long_period.R")
 # saveRDS(res, file = "all_simulations_without_deer_long_period.R")
-saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_high_density.R")
-# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low_density.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/high_density.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_low_density.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/average_density.R")
 
+
+# OUEST
+# saveRDS(res, file = "all_simulations_long_period.R")
+# saveRDS(res, file = "all_simulations_without_deer_long_period.R")
+saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_high_density_west.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low_density_west.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/average_density_west.R")
 
 
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
