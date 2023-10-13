@@ -54,6 +54,7 @@ coef = 1
 # ma_init = 0.12807083025
 # ma_init = 0.0896
 ma_init = 0.166
+# ma_init = 2
 
 # ma_init = 0.1  * coef
 # ma_init = 0.00000000001
@@ -90,6 +91,7 @@ mu_M = 1.5272e+07
 e_UM = mu_M * (912.5)^-1
 # chi_M = m_croiss * ((a_M * e_UM * kUpeak)/
 #                       (1+a_M * h_UM * kUpeak) - mu_M)^-1
+
 
 
 # ---- DEER ---- 

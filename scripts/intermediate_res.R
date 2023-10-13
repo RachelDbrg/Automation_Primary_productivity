@@ -90,7 +90,8 @@ intermediate_res <-  function(y,parms){
   
   # Calcul des densites totales de proies du systeme
   # proies_tot <- M_tot+N_tot+C_tot + 2
-  proies_tot <- M_tot+N_tot+C_tot + 2.2204e-16
+  # proies_tot <- M_tot+N_tot+C_tot + 2.2204e-16
+  proies_tot <- M_tot+N_tot* 0.3 + C_tot*0.2 + 2.2204e-16
   
   # Calcul des preferences du loup par espece : en fct 
   # de leur densite relative
@@ -147,12 +148,12 @@ intermediate_res <-  function(y,parms){
   
   # Calcul des reponses fonctionnelles pour chaque espece
   # et chaque stade de vie
-  rfonc_P_Ma <- (a_P * pref_P_Ma * Ma) / den_rfonc_P
-  rfonc_P_Mj <- (a_P * pref_P_Mj * Mj) / den_rfonc_P
-  rfonc_P_Na <- (a_P * pref_P_Na * Na) / den_rfonc_P
-  rfonc_P_Nj <- (a_P * pref_P_Nj * Nj) / den_rfonc_P
-  rfonc_P_Cj <- (a_P * pref_P_Cj * Cj) / den_rfonc_P
-  rfonc_P_Ca <- (a_P * pref_P_Ca * Ca) / den_rfonc_P
+  rfonc_P_Ma <- (a_P * pref_P_Ma * Ma) / den_rfonc_P * phi
+  rfonc_P_Mj <- (a_P * pref_P_Mj * Mj) / den_rfonc_P * phi
+  rfonc_P_Na <- (a_P * pref_P_Na * Na) / den_rfonc_P * phi
+  rfonc_P_Nj <- (a_P * pref_P_Nj * Nj) / den_rfonc_P * phi
+  rfonc_P_Cj <- (a_P * pref_P_Cj * Cj) / den_rfonc_P * phi
+  rfonc_P_Ca <- (a_P * pref_P_Ca * Ca) / den_rfonc_P * phi
   
   
   # rfonc_P_Ma <- 0
@@ -269,7 +270,8 @@ intermediate_res <-  function(y,parms){
   
   # chi_P = surplus_NRJ * ((0.1537-0)/(6.69-2.07))
   
-  k_P = abs(((58.7 * (rfonc_tot - 0.03)) / (0.76 + rfonc_tot))/1000)
+  # k_P = abs(((58.7 * (rfonc_tot - 0.03)) / (0.76 + rfonc_tot))/1000)
+  k_P = abs(((58.7 * (proies_tot - 0.03)) / (0.76 + proies_tot))/1000)
   
   # Doesn't allow k_P to be < 0 (otherwise, leads to growth
   # of the population even if there is no preys)

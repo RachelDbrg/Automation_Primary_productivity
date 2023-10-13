@@ -28,14 +28,14 @@ calculate_parameters <- function(PP) {
   
   ## Animals
   # Moose carrying capacity
-  k_m = ((2-0.84)*PP + 0.84) * coef
+  k_m = ((2-0.84)*PP + 0.84) * delta
   
   # Moose growth rate
   chi_M = m_croiss * ((a_M * e_UM * kUpeak)/
                         (1+a_M * h_UM * kUpeak) - mu_M)^-1
   
   # Deer carrying capacity
-  k_c= ((11.43-4.74)*PP +4.74) * coef
+  k_c= ((11.43-4.74)*PP +4.74) * delta
   
   # Deer growth rate
   chi_C = c_croiss * 

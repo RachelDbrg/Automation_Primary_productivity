@@ -44,8 +44,13 @@ kUpeak_0 = 5.6e5
 # kUstable_0 = 1e6
 # kUstable_0 = 2e5
 
+# kUstable_0 = 1e5
+# kUstable_0 = 1e5
+# kUstable_0 = 1e5
+# kUstable_0 = 1e5
+# kUstable_0 = 1e5
+# kUstable_0 = 1e5
 kUstable_0 = 2e10
-# kUstable_0 = 2e10
 
 ##Arbustes W :
 # Stades de succession, variation selon le temps et la productivite PP

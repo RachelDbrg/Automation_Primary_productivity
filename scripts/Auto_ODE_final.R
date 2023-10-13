@@ -1,10 +1,24 @@
 
-# rm(list = ls(all.names = TRUE))
+rm(list = ls(all.names = TRUE))
 
 library(deSolve)
 
 
 setwd("~/Automation_Primary_productivity/scripts")
+
+
+# Ajutement des carrying capacite des proies
+
+# delta = 1
+delta = 50
+# delta = 0.5
+
+# delta = 10
+
+# Ajutement des rep fonctionnelle du loup
+# varie entre 0 (0 rep fonc donc 0 loups possible) à 1
+
+phi = 0.6
 
 # on several PP values
 source("Auto_gen_PP_related_parameters.R")
@@ -59,14 +73,21 @@ res <- nested_test %>%
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/high_density.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_low_density.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/average_density.R")
-
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low8_density.R")
 
 # OUEST
 # saveRDS(res, file = "all_simulations_long_period.R")
 # saveRDS(res, file = "all_simulations_without_deer_long_period.R")
-saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_high_density_west.R")
-# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low_density_west.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/high_density_west.R")
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_low_density_west.R")
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/average_density_west.R")
+
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/extra_low_density_west.R")
+
+# saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low8_density_west.R")
+
+# saveRDS(res, file = "~/Automation_Primary_productivity/Messier_figure/sim7.R")
+saveRDS(res, file = "~/Automation_Primary_productivity/Messier_figure/simB8.R")
 
 
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
