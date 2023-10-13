@@ -3,3 +3,8 @@ Messier_figure
 res_simulations
 res_simulations2
 Varying_prey_density
+.Rproj.user
+wolf_diet_merged.rds
+all_simulations_scenario40.RDS
+all_simulations_without_deer_long_period.R
+all_simulations_long_period.R
