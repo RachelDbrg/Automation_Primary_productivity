@@ -1,5 +1,5 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+all_simulations.R
+Messier_figure
+res_simulations
 res_simulations2
+Varying_prey_density
