@@ -536,3 +536,183 @@ bool_Messier %>%
        color= "Zone",
        x = "Total prey density (ind/km2)",
        y = "Predation rate (number of prey eaten / total available prey)")
+
+
+
+
+# ==============================================================================
+library(tidyverse)
+east <- readRDS("~/Automation_Primary_productivity/scripts/PP_and_delta/east_all.RDS")
+west <- readRDS("~/Automation_Primary_productivity/scripts/PP_and_delta/west_all.RDS")
+
+
+east <- east %>% 
+  mutate(zone = "est") %>% 
+  filter(time == 2000)
+
+
+west <- west %>% 
+  mutate(zone = "west") %>% 
+  filter(time == 2000)
+
+both_species <- bind_rows(east,
+                          west)
+
+
+both_species %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) %>% 
+  filter(biomass_tot <= 700) %>%
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>%
+  mutate(Zone = recode(zone, est = 'East', west = 'West')) %>% 
+  ggplot(aes(x = biomass_tot,
+             y = value,
+             color = Zone))+
+  geom_point(size = 2)+
+  # geom_smooth(method = "loess")+
+  scale_color_manual(values = c("East" = "#757575", "West" = "#c0b12c"))+
+  # geom_smooth()+
+  # facet_wrap(~predation_rate, scales = "free")+
+  labs(title = "Fluctuation in predation rate with total prey biomass",
+       subtitle = "Zoom on the caribou predation rate, when total prey biomass is <= 700" ~(kg/km^2),
+       color= "Zone",
+       x = "Total prey biomass" ~(kg/km^2),
+       y = "Per capita \n killing rate")+
+  theme_minimal()+
+  theme(legend.title = element_blank(),
+        legend.text = element_text(size=12),
+        axis.title.y = element_text(size = 12, angle = 0, hjust = 0, vjust = 0.5),
+        axis.title.x = element_text(size = 12),
+        legend.position = "bottom")+
+  guides(color = guide_legend(override.aes = list(size=8)))
+
+
+
+
+
+east_values <- east %>% 
+  # filter(zone=="west") %>% 
+  filter(proies_tot <= 10) %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot)
+
+
+rank_caribou_east <- which.max(east_values$taux_predation_caribou)
+
+east_values[rank_caribou_east,]
+# proies_tot = 0.347438   
+# taux_predation_caribou = 0.01428118         
+# Densite orignal= 0.3018041   
+# Densite cerf= 0     
+# Densite caribou = 0.1521131      
+# Loup = 0.005959745      
+
+
+data_east <- east_values[rank_caribou_east,] %>% 
+  mutate(biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer,
+         proportion_deer =  biomass_Deer*100/biomass_tot,
+         proportion_Caribour =  biomass_Caribou*100/biomass_tot,
+         proportion_Moose =  biomass_Moose*100/biomass_tot,
+         proportion_tot = biomass_tot*100/biomass_tot) %>% 
+  filter(biomass_tot <= 700) %>% 
+  pivot_longer(cols = c(biomass_Moose, biomass_Deer, biomass_Caribou),
+               names_to = "species",
+               values_to = "value")
+
+
+
+data_west <- west_values[rank_caribou_west,] %>% 
+  mutate(biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer,
+         proportion_deer =  biomass_Deer*100/biomass_tot,
+         proportion_Caribour =  biomass_Caribou*100/biomass_tot,
+         proportion_Moose =  biomass_Moose*100/biomass_tot,
+         proportion_tot = biomass_tot*100/biomass_tot) %>% 
+  filter(biomass_tot <= 700) %>% 
+  pivot_longer(cols = c(biomass_Moose, biomass_Deer, biomass_Caribou),
+               names_to = "species",
+               values_to = "value")
+
+
+test <- bind_rows(data_east, data_west)
+
+
+
+library(cowplot)
+
+test %>% 
+  mutate(species = recode(species, biomass_Caribou = 'Caribou',
+                       biomass_Moose = 'Moose',
+                       biomass_Deer = 'Deer'),
+         Zone = recode(zone, est = 'East', west = 'West')) %>% 
+  ggplot(aes(x = Zone, y = value))+
+  geom_col(aes(fill = species), color = "black")+
+  scale_fill_manual(values = c("Caribou" = "#009688", "Deer" = "#FFEB3B", "Moose" = "#BDBDBD"))+
+  theme_minimal()+
+  labs(title = "Comparison of the species composition and biomass",
+       subtitle = "Zoom on the values corresponding to the inflection points marked as",
+       color= "Zone",
+       y = "Total \n prey \n biomass" ~(kg/km^2))+
+  theme(axis.title.x = element_blank(),
+        legend.title = element_blank(),
+        legend.text = element_text(size=12),
+        axis.title.y = element_text(size = 12, angle = 0, hjust = 0, vjust = 0.5),
+        axis.text.x = element_text(size = 12),
+        legend.position = "bottom")
+  
+
+# Some other two lines we wish on the plot as OX axis title
+line_1c <- expression("Various fonts:" ~ bolditalic("bolditalic") ~ bold("bold") ~ italic("italic"))
+line_2c <- expression("this" ~~ sqrt(x, y) ~~ "or this" ~~ sum(x[i], i==1, n) ~~ "math expression")
+# the ~~ ads a bit more space than ~ between the expression's components
+
+
+test + coord_cartesian(clip = "off") +
+  annotation_custom(grid::textGrob(line_1c), xmin = 3.5, xmax = 3.5, ymin = 7.3, ymax = 7.3) +
+  annotation_custom(grid::textGrob(line_2c), xmin = 3.5, xmax = 3.5, ymin = 5.5, ymax = 5.5)
+
+
+
+west_values <- west %>% 
+  # filter(zone=="west") %>% 
+  filter(proies_tot <= 10) %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot)
+
+
+rank_caribou_west <- which.max(west_values$taux_predation_caribou)
+
+west_values[rank_caribou_west,]
+# proies_tot = 0.2750035    
+# taux_predation_caribou = 0.01508752                 
+# Densite orignal= 0.1309282    
+# Densite cerf= 0.4846327      
+# Densite caribou = 0.1571625       
+# Loup = 0.003350669       
+
