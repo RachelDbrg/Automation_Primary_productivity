@@ -1,4 +1,5 @@
-sim10 <- readRDS("~/Automation_Primary_productivity/Messier_figure/After_correction/delta_PP.R")
+sim10 <- readRDS("~/Automation_Primary_productivity/Messier_figure/After_correction/east_densities.R")
+sim10_west <- readRDS("~/Automation_Primary_productivity/Messier_figure/After_correction/west_densities.R")
 
 
 sim10init <- sim10 %>% 
@@ -6,18 +7,40 @@ sim10init <- sim10 %>%
   map_dfr(as.data.frame)
 
 
-sim1_out <- sim10 %>% 
+sim1_out <- sim10_west %>% 
   pull (outputs) %>% 
   map_dfr(as.data.frame) %>% 
   mutate_all(as.numeric) 
+
+saveRDS(sim1_out, file = "west_all.rds")
   
   
-  
-  mutate(zone = "est",
-         delta = 0.1,
-         phi = 0.3,
-         sc = "sim1") %>% 
-  filter(time == 2000)
+sim1_out %>% 
+  filter(time == 2000,
+         proies_tot <= 3)  %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot) %>% 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>%
+  ggplot(aes(x = proies_tot,
+             y = value,
+             color = delta))+
+  geom_point()+
+  # geom_smooth()+
+  # facet_wrap(~predation_rate, scales = "free")+
+  labs(title = "Fluctuation in predation rate with total prey density",
+       subtitle = "Zoom on the caribou, when total prey density is <= 2 ind/km2",
+       color= "Zone",
+       x = "Total prey density (ind/km2)",
+       y = "Predation rate (number of prey eaten / total available prey)")
 
 
 
