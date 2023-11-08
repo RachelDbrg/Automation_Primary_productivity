@@ -12,7 +12,7 @@ generate_parameter_dataframe <- function() {
 # Create the scenarios dataset
 scenarios <- expand.grid(
   PP = seq(0, 1, 0.1),
-  delta = seq(1, 1.1, 0.1))
+  delta = seq(0.01, 10, 0.1))
 
 
 # test_fct <- function(delta){
