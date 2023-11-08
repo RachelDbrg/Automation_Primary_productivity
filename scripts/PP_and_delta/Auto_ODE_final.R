@@ -94,7 +94,7 @@ res <- nested_test %>%
 # saveRDS(res, file = "~/Automation_Primary_productivity/Varying_prey_density/low8_density_west.R")
 
 # saveRDS(res, file = "~/Automation_Primary_productivity/Messier_figure/sim7.R")
-saveRDS(res, file = "~/Automation_Primary_productivity/Messier_figure/After_correction/delta_PP.R")
+saveRDS(res, file = "~/Automation_Primary_productivity/Messier_figure/After_correction/east_densities.R")
 
 
 # saveRDS(res, file = "~/Automation_Primary_productivity/res_simulations/all_simulations_scenario1.R")
