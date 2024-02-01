@@ -9,6 +9,8 @@ evol_vg <- function(t,data,PP){
   # Need to specify where to find the columns
   # where the values are stored
   kUstable <- data$kUstable
+  # print(paste("kUstable=", kUstable))
+  
   kUpeak <- data$kUpeak
   t_kstable <- data$t_kstable
   t_kpeak <- data$t_kpeak
@@ -20,6 +22,7 @@ evol_vg <- function(t,data,PP){
   kUcoeff2 <- data$kUcoeff2
   kWcoeff1 <- data$kWcoeff1
   kWcoeff2 <- data$kWcoeff2
+  chi_M <- data$chi_M
   
 
   
@@ -83,6 +86,9 @@ evol_vg <- function(t,data,PP){
     k_W = kWstable
     k_V = kVnorm
   }
+  
+  # print(paste("k_U_evol_vg=", k_U))
+  
   # return(list(c(k_U,k_W,k_V)))
   res <- c(k_U,k_W,k_V)
   # res <- c(k_U,k_V)
