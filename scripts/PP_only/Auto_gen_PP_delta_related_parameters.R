@@ -12,6 +12,8 @@ generate_parameter_dataframe <- function() {
 # Create the scenarios dataset
 scenarios <- expand.grid(
   PP = seq(0, 1, 0.1),
+  # PP = seq(0, 1, 1),
+  # PP = 0,
   # delta = seq(0.01, 10, 0.1))
   delta = 1)
 
@@ -28,6 +30,8 @@ calculate_parameters <- function(PP, delta) {
   # 
   # Stable deciduous carrying capacity
   kUstable <- (1+(PP/2))* kUstable_0 * 2.4
+  # kUstable <- 9900 * PP + 100
+  # kUstable <- 1000 * PP + 100
   
   # Shrubs growth rate
   w_0 <-  (1+4*PP)*300      # kg/(km² an), taux de recroissance initial
@@ -42,26 +46,41 @@ calculate_parameters <- function(PP, delta) {
   
   ## Animals
   # Moose carrying capacity
-  k_m = ((2-0.84)*PP + 0.84) * delta
+  # k_m = ((2-0.84)*PP + 0.84) * delta
+  
+  # k_m = 0.000002*kUstable - 0.679
 
   
   # Devrait être exprimée en fonction de la quantité de feuillus!!!
   
-  # Moose growth rate
-  chi_M = m_croiss * ((a_M * e_UM * kUpeak)/
-                        (1+a_M * h_UM * kUpeak) - mu_M)^-1
+  # Moose conversion of vegetation into newborns
+  chi_M = m_croiss * 
+    ((a_M * e_UM * kUpeak)/(1+a_M * h_UM * kUpeak) - mu_M)^-1
+  
+  # print(paste("chi_M", chi_M))
+  # # print(paste("m_croiss", m_croiss))
+  # print(paste("(a_M * e_UM * kUpeak)", (a_M * e_UM * kUpeak)))
+  # print(paste("(1+a_M * h_UM * kUpeak)", (1+a_M * h_UM * kUpeak)))
+  # print(paste("(a_M * e_UM * kUpeak)/(1+a_M * h_UM * kUpeak)", (a_M * e_UM * kUpeak)/(1+a_M * h_UM * kUpeak)))
   
   # Deer carrying capacity
-  k_c= ((11.43-4.74)*PP +4.74) * delta
+  # k_c= ((11.43-4.74)*PP +4.74) * delta
   
   # Deer growth rate
   chi_C = c_croiss *
     ((a_C*e_UC*kUpeak)/(1+a_C*h_UC*kUpeak)- mu_C)^-1
   
+  # print(paste("chi_C=", chi_C))
+  # print(paste("c_croiss=", c_croiss))
+  # print(paste("(a_C*e_UC*kUpeak)=", (a_C*e_UC*kUpeak)))
+  # print(paste("(1+a_C*h_UC*kUpeak)=", (1+a_C*h_UC*kUpeak)))
+  # print(paste("(a_C*e_UC*kUpeak)/(1+a_C*h_UC*kUpeak)=", (a_C*e_UC*kUpeak)/(1+a_C*h_UC*kUpeak)))
+  # print(paste("chi_C=", chi_C))
+  
   # --------------------------------------------------------
   
-  t_perturb = 100            # years
-  # #t_pertub = 0
+  t_perturb = 2000           # years
+  # t_perturb = 10
   
   # Definition des moments suivant la perturbation
   t_low = t_perturb + 5           # years : temps pour atteindre le minimum de
@@ -76,7 +95,7 @@ calculate_parameters <- function(PP, delta) {
   kWcoeff2 = kWpeak - (kWstable - kWpeak)/(t_kstable - t_kpeak) * t_kpeak
   
   return(data.frame(PP, delta, u_croiss, kUpeak, kUstable, w_0, kWpeak, kWstable,
-                    k_m, k_c, chi_M, chi_C, t_low, t_kpeak,t_kstable,
+                    chi_M, chi_C, t_low, t_kpeak,t_kstable,
                     kUcoeff1, kUcoeff2, kWcoeff1, kWcoeff2, t_perturb))
   
   # return(data.frame(PP, delta, u_croiss, kUpeak))
@@ -92,8 +111,8 @@ df_parameter_values <- do.call(rbind, apply(scenarios, 1, function(row) calculat
 
 # Rename the columns if needed
 colnames(df_parameter_values) <- c("PP", "delta", "u_croiss", "kUpeak",
-                       "kUstable", "w_0", "kWpeak", "kWstable",
-                       "k_m", "k_c", "chi_M", "chi_C", "t_low", "t_kpeak","t_kstable",
+                       "kUstable", "w_0", "kWpeak", "kWstable", "chi_M", "chi_C",
+                       "t_low", "t_kpeak","t_kstable",
                        "kUcoeff1", "kUcoeff2", "kWcoeff1", "kWcoeff2", "t_perturb")
 
 
