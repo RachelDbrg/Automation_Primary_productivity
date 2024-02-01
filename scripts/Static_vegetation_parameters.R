@@ -14,7 +14,9 @@ t_perturb = 100
 # v_init = 1e4 # qte initiale
 # v_init = 1e5 # qte initiale
 # v_init = 3e5 # qte initiale
-v_init = 5e5 # qte initiale
+# v_init = 5e5 # qte initiale
+
+v_init = 5e5
 
 
 
