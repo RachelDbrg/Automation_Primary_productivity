@@ -294,6 +294,8 @@ test_est <- do.call("rbind", mget(ls(pattern = "^simA")))
 
 saveRDS(test_est, file = "test_est.RDS")
 
+# test_est <- readRDS("east_densities.R")
+
 
 test_est %>% 
   filter(time ==2000) %>% 
@@ -557,6 +559,15 @@ west <- west %>%
 
 both_species <- bind_rows(east,
                           west)
+
+
+
+
+east %>% 
+  ggplot(aes(x = delta,
+             y = Ma))+
+  geom_line()+
+  facet_wrap(~PP)
 
 
 both_species %>% 
