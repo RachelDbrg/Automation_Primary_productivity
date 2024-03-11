@@ -27,6 +27,7 @@ calculate_parameters <- function(PP, delta) {
   kUpeak  <-  (1 + PP/2)*kUpeak_0
   # 
   # Stable deciduous carrying capacity
+  # kUstable <- (1+(PP/2))* kUstable_0 * 2.4
   kUstable <- (1+(PP/2))* kUstable_0 * 2.4
   
   # Shrubs growth rate
@@ -43,7 +44,9 @@ calculate_parameters <- function(PP, delta) {
   ## Animals
   # Moose carrying capacity
   k_m = ((2-0.84)*PP + 0.84) * delta
-
+  # 
+  # k_m = 0.000002*U - 0.679
+  
   
   # Devrait être exprimée en fonction de la quantité de feuillus!!!
   
@@ -84,7 +87,7 @@ calculate_parameters <- function(PP, delta) {
   
   return(data.frame(PP, delta, u_croiss, kUpeak, kUstable, w_0, kWpeak, kWstable,
                     k_m, k_c, chi_M, chi_C, t_low, t_kpeak,t_kstable,
-                    kUcoeff1, kUcoeff2, kWcoeff1, kWcoeff2, t_perturb))
+                    kUcoeff1, kUcoeff2, kWcoeff1, kWcoeff2, t_perturb, k_n, chi_N))
   
   # return(data.frame(PP, delta, u_croiss, kUpeak))
 }
@@ -101,7 +104,7 @@ df_parameter_values <- do.call(rbind, apply(scenarios, 1, function(row) calculat
 colnames(df_parameter_values) <- c("PP", "delta", "u_croiss", "kUpeak",
                        "kUstable", "w_0", "kWpeak", "kWstable",
                        "k_m", "k_c", "chi_M", "chi_C", "t_low", "t_kpeak","t_kstable",
-                       "kUcoeff1", "kUcoeff2", "kWcoeff1", "kWcoeff2", "t_perturb")
+                       "kUcoeff1", "kUcoeff2", "kWcoeff1", "kWcoeff2", "t_perturb", "k_n", "chi_N")
 
 
 return(df_parameter_values)
