@@ -28,7 +28,7 @@ na_init = 0.082755085
 nj_init = na_init*0.1
 
 n_croiss = 0.25  # Growth
-k_n = 0.2       # Carrying capacity (for a limited 
+# k_n = 0.2       # Carrying capacity (for a limited 
 # disturbed landscape, see Stewart et al 2020)
 
 
@@ -45,8 +45,8 @@ h_UN  = 8.81e-4 * 0.33 # Handling time
 e_UN = 11.8e3 # NRJ intake
 
 # Conversation rate of NRJ --> juveniles
-chi_N = n_croiss * ((a_N * e_VN * kVnorm)
-                    /(1+a_N * h_VN * kVnorm) - mu_N)^-1
+# chi_N = n_croiss * ((a_N * e_VN * kVnorm)
+#                     /(1+a_N * h_VN * kVnorm) - mu_N)^-1
 
 
 # ---- MOOSE ---- 
@@ -100,12 +100,12 @@ e_UM = mu_M * (912.5)^-1
 
 # ---- DEER ---- 
 # ca_init = 3.9
-ca_init = 2.1
+# ca_init = 2.1
 # ca_init = 10
 # ca_init = 0.000000004
 # 
 # 
-# ca_init = 0
+ca_init = 0
 # ca_init = 0.05
 # ca_init = 0.5
 # ca_init = 5
@@ -204,7 +204,7 @@ h_P_Cj = h_P_Ma * epsi_Caj
 parms <- c(v_croiss, kVnorm,a_P,w_Ma,w_Mj,w_Na,w_Nj,w_Cj,w_Ca,
            h_P_Ma, h_P_Mj, h_P_Na, h_P_Nj,h_P_Cj,h_P_Ca,
            epsi_Maj, epsi_MN, epsi_Naj, epsi_Caj,epsi_MC,
-           mu_P, chi_N, p_croiss)
+           mu_P, p_croiss)
 
 
 # Stock all the initials values of parameters of 
