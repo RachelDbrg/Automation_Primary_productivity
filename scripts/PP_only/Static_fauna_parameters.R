@@ -65,8 +65,8 @@ chi_N = n_croiss * ((a_N * e_VN * kVnorm)
 coef = 1
 
 
-# ma_init = 0.166
-ma_init = 0
+ma_init = 0.166
+# ma_init = 0
 
 mj_init = ma_init*0.1
 
@@ -174,7 +174,8 @@ tau_c = 1/6
 # ===========================
 # Factice additional prey Q
 
-qa_init = 2.1
+qa_init = 0
+# qa_init = 2.1
 qj_init = qa_init*0.1
 
 h_UQ = 1.0959e-03
