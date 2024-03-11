@@ -84,7 +84,7 @@ my_function <- function(simulation_index, ...){
   
   
   
-  saveRDS(res, file = "~/Automation_Primary_productivity/Final_plots/CPN.R")
+  saveRDS(res, file = "~/Automation_Primary_productivity/Final_plots/CPN_PP_aug.R")
   
   
   
