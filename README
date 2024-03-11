@@ -1,1 +1,5 @@
 README
+
+Main working directory is now in scripts/one_more_prey_lichen_decrease_PP. The model now take into account: 
+- the decrease of lichen biomass with PP
+- the presence of an extra additional prey
