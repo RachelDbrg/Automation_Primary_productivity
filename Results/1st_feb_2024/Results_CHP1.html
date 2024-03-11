@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="RD">
+
+<title>Results_CHP1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="Results_CHP1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Results_CHP1_files/libs/quarto-html/quarto.js"></script>
+<script src="Results_CHP1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Results_CHP1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Results_CHP1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Results_CHP1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Results_CHP1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Results_CHP1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Results_CHP1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Results_CHP1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Results_CHP1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>RD </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="impact-of-species-composition-on-the-effect-of-primary-productivity-in-a-3-trophic-levels-system" class="level1">
+<h1>1. Impact of species composition on the effect of primary productivity in a 3 trophic levels system</h1>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Les changements climatiques et les transformations du paysage d’origigne anthropique tendent à rendre les systèmes plus productifs <span class="citation" data-cites="serrouya2021">(<a href="#ref-serrouya2021" role="doc-biblioref">Serrouya et al. 2021</a>)</span>. Les conséquences de ces changements de productivité sur les systèmes trophiques demeurent mal connus, en raison de la complexité des mécanismes, malgré l’urgence du besoin de mieux connaître les systèmes à des fins de conservation.</p>
+</section>
+<section id="question" class="level2">
+<h2 class="anchored" data-anchor-id="question">Question</h2>
+<p>How does terrestrial eutrophication affects indirect predator-prey relationship?</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>A partir d’un modèle prédateurs-proies, basé sur des équations différentielles, nous avons pu simuler les densités de grands herbivores de la forêt boréale (orignal, cerf, caribou) et de leur prédateur commun (le loup gris).</p>
+<p>Ici, je présente les résultats de 10 simulations, où les compositions en espèces varient (voir <a href="#tbl-sp_compo">Table&nbsp;1</a>):</p>
+<ul>
+<li><p>3 simulations avec les proies seules: pour vérifier qu’elles atteignent bien des densités à l’équilibre différentes en fonction de la productivité</p></li>
+<li><p>3 simulations avec 1 proie et le prédateur</p></li>
+<li><p>3 simulations avec 2 proies et le prédateur</p></li>
+<li><p>1 simulation avec toutes les proies et le prédateur</p></li>
+</ul>
+<div id="tbl-sp_compo" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Composition en espèces des simulations présentées dans cette section</caption>
+<colgroup>
+<col style="width: 29%">
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nom de la simulation</th>
+<th style="text-align: center;">Orignal (moose)</th>
+<th style="text-align: center;">Caribou</th>
+<th style="text-align: center;">Cerf (Deer)</th>
+<th style="text-align: center;">Loup (wolf)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>M</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>MP</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>NP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>CP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>CNP</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>MPC</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td>NPM</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td>NPMC</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pour chacun de ces scénarios, 10 simulations sont faites, où la productivité varie entre 0 et 1, par pas de 0.1. Pour notre modèle, cela signifie que la quantité de végétation <strong>feuillue</strong> <strong>varie</strong> <strong>linéairememt</strong> avec la <strong>productivité</strong> (en l’absence d’herbivores) entre 240000 kg/km2 (PP = 0) et 360000 kg/km2 (PP = 1) (Voir <a href="#fig-deciduous_PP">Figure&nbsp;1</a>).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sim1 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/N.R"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sim1 <span class="ot">&lt;-</span>sim1 <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"N"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sim1 <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> U))<span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Productivity index"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Deciduous density (kg/km2)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-deciduous_PP" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-deciduous_PP-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Linear relationship between deciduous density and productivity in our model</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load the simulations</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sim1 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/N.R"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sim2 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/NP.R"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>sim3 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/NPM.R"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>sim4 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/NPMC.R"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sim5 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/M.R"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sim6 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/MP.R"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>sim7 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/MPC.R"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sim8 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/C.R"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>sim9 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/CP.R"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>sim10 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/CPN.R"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>sim11 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/Final_plots/CPN_PP_aug.R"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Unnest the data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>sim1 <span class="ot">&lt;-</span>sim1 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"N"</span>) </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>sim2 <span class="ot">&lt;-</span>sim2 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"NP"</span>) </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>sim3 <span class="ot">&lt;-</span>sim3 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"NPM"</span>) </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>sim4 <span class="ot">&lt;-</span> sim4 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"NPMC"</span>) </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>sim5 <span class="ot">&lt;-</span>sim5 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"M"</span>) </span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>sim6 <span class="ot">&lt;-</span>sim6 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"MP"</span>) </span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>sim7 <span class="ot">&lt;-</span>sim7 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"MPC"</span>) </span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>sim8 <span class="ot">&lt;-</span>sim8 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"C"</span>) </span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>sim9 <span class="ot">&lt;-</span>sim9 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"CP"</span>) </span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>sim10 <span class="ot">&lt;-</span>sim10 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"CNP"</span>) </span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>sim11 <span class="ot">&lt;-</span>sim11 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"sim11"</span>) </span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Merge all simulations in 1 df</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim1, sim2)</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim3)</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim4)</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim5)</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim6)</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim7)</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim8)</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim9)</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(merged, sim10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="a.-species-density-through-time-according-to-species-composition-scenarios-and-productivity" class="level3">
+<h3 class="anchored" data-anchor-id="a.-species-density-through-time-according-to-species-composition-scenarios-and-productivity">a. Species density through time, according to species composition scenarios and productivity</h3>
+<section id="i.-prey-species-only" class="level4">
+<h4 class="anchored" data-anchor-id="i.-prey-species-only">i. Prey species only</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"M"</span>, <span class="st">"C"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ca"</span>,<span class="st">"Na"</span>, <span class="st">"Ma"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-prey_only" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-prey_only-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Prey dynamics according to productivity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Les simulations de la <a href="#fig-prey_only">Figure&nbsp;2</a> nous permettent de voir que les espèces se nourrissant sur les feuillus (cerfs et orignaux) atteignent des densités d’équilibre différentes en fonction de la productivité, ce qui est attendu. La densité de caribous elle ne varie pas en fonction de la productivité, ce qui est aussi attendu, car la quantité de lichens sur laquelle il se nourrit n’est pas dépendante de la productivité.</p>
+</section>
+<section id="ii.-one-prey-species-predator" class="level4">
+<h4 class="anchored" data-anchor-id="ii.-one-prey-species-predator">ii. One prey species + predator</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NP"</span>, <span class="st">"MP"</span>, <span class="st">"CP"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ca"</span>,<span class="st">"Na"</span>, <span class="st">"Ma"</span>, <span class="st">"Pa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-one_prey_predator" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-one_prey_predator-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Prey and predator dynamics according to productivity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Les simulations de la <a href="#fig-one_prey_predator">Figure&nbsp;3</a> montrent les densités de proies dans des systèmes où elles sont la seule source de nourriture disponible pour le prédateur (voir <a href="#tbl-sp_compo">Table&nbsp;1</a> pour la composition spécifique des systèmes). Dans le système CP , on observe qu’en dessous d’une certaine productivité (et donc d’une quantité de nourriture), les cerfs atteignent rapidement leur densité d’équilibre (identique à celle obtenue en l’absence de prédateur), car la population de prédateur s’effondre car il n’y a pas assez de proies pour la supporter. Au delà d’un indice de productivité égal à 0.4, la population de loups est capable de se maintenir et force les effectifs de cerfs à des densités ~ 0.25 ind/km2. Dans le système MP, les loups peuvent co-exister dès un indice de productivité &gt;= 0.2. On remarque que l’impact de la prédation sur les densités finales semble être moins fort dans le cas de l’orignal (densité à l’équilibre avec ou sans prédateur est ± similaire, autour de 0,1 ind/km2, versus un passage de 1 ind/km2 à 0.25 ind/km2 pour le cerf. Cela est dû à la différence de “profitabilité” énergétique des proies, car notre modèle considère que la consommation d’un cerf équivaut à la consommation de 20% d’un orignal). Puisque les densités à l’équilibre des orignaux restent relativement différentes en fonction de la productivité, on retrouve des densités de prédateur différentes en fonction de la productivité. Finalement, dans le système NP, la population de caribou n’est pas capable de maintenir la population de loups à elle seule. Cette dernière s’effondre et les caribous atteignent leur capacité de carge.</p>
+</section>
+<section id="iii.-two-prey-species-predator" class="level4">
+<h4 class="anchored" data-anchor-id="iii.-two-prey-species-predator">iii. Two prey species + predator</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CNP"</span>, <span class="st">"MPC"</span>, <span class="st">"NPM"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ca"</span>,<span class="st">"Na"</span>, <span class="st">"Ma"</span>, <span class="st">"Pa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-two_prey_predator" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-two_prey_predator-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Prey and predator dynamics according to productivity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Les simulations de la <a href="#fig-two_prey_predator">Figure&nbsp;4</a> montrent les densités de deux proies et celle de leur prédateur commun (voir <a href="#tbl-sp_compo">Table&nbsp;1</a> pour la composition spécifique des systèmes). Le système CNP semble provoquer des oscillations dans les densités des espèces présentes, à priori induites par le comportement de la pop de cerfs en présence du prédateur (oscillations déjà présentes dans la <a href="#fig-one_prey_predator">Figure&nbsp;3</a>). On remarque aussi que les densités de prédateurs tendent à converger vers des valeurs relativement similaires (autour de 0.002 ind/km2), de même que pour le caribou (autour de 0.04 ind/km2), pour la plupart des valeurs de productivité. Dans le scénario MCP, les loups plafonnent rapidement à leurs valeurs de capacités de charge, déterminée à partir de l’abondance de nourriture pour eux. Les simulations donnent rapidement des valeurs d’équilibre stable. Enfin, pour le scénario NPM, on observe une forte réduction dans la population d’orignaux par rapport au scénario précédent, ce qui suggère que la forte abondance des cerfs permettait de diminuer considérablement l’influence de la prédation sur l’orignal. On obtient des densités relativement similaires à celles du système où seuls les orignaux sont présents comme proie du loup (voir <a href="#fig-one_prey_predator">Figure&nbsp;3</a>). Pourtant, la diminution de la densité de caribou montre bien qu’ils “supportent” une partie de la prédation. On remarque par ailleurs que les densités de la population de caribou semblent converger vers les mêmes valeurs, sauf dans le cas où la population est capable d’atteindre sa capacité de charge, car la population de prédateur est effondrée (PP = 0).</p>
+</section>
+<section id="iv.-all-prey" class="level4">
+<h4 class="anchored" data-anchor-id="iv.-all-prey">iv. All prey</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ca"</span>,<span class="st">"Na"</span>, <span class="st">"Ma"</span>, <span class="st">"Pa"</span>, <span class="st">"Ca"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-all_prey" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-all_prey-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: All prey and predator dynamics according to productivity</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Finalement, le scénario “NPMC” intègre toutes les proies et le prédateur. Dans ce cas-ci, on observe que les densités d’orignal, de cerf et de loups sont globalement très similaires à celles obtenues par le scénario “MCP”. Toutefois, la diminution de la densité du caribou suggère qu’il supporte lui aussi une part de la prédation, et que cette part varie avec la productivité.</p>
+<ul>
+<li><p>Voir autre visualiation qui pourrait permettre une meilleure comparaison des densités avec ou sans prédateur?</p></li>
+<li><p>Voir aussi pour rajouter capacités de charge sur les graphs (voir éventuellement quantifier la diff entre celle ci et la densité des animaux)</p></li>
+</ul>
+</section>
+</section>
+<section id="b.-all-species-final-densities-according-to-composition-and-productivity" class="level3">
+<h3 class="anchored" data-anchor-id="b.-all-species-final-densities-according-to-composition-and-productivity">b. All species final densities according to composition and productivity</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, <span class="st">"k_m"</span>, <span class="st">"Mj"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"U"</span>, <span class="st">"Ca"</span>, <span class="st">"Pa"</span>, <span class="st">"Na"</span>, <span class="st">"Ma"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"U"</span>  <span class="sc">~</span> <span class="st">"deciduous"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(sc)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Productivity index"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-final_densities" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-final_densities-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Prey and predator final densities, for different species composition and productivity values</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-final_densities">Figure&nbsp;6</a> montre les densités finales des espèces en fonction de la productivité et de la composition en espèce du système. On remarque que les densités finales du loup peuvent résumer en 4 groupes:</p>
+<ul>
+<li><p>densité nulle: obtenue pour le scénario avec les caribous seulement, car cette espèce n’est pas capable de maintenir à elle seule les loups (<em>scenarios C, N, M, NP)</em></p></li>
+<li><p>Densité ~ 0.002 ind/km2 pour les scénarios CP et CNP: la présence des caribous ne change pas beaucoup les densités finales. (<em>scenarios CP, CNP)</em></p></li>
+<li><p>Densité ~ 0.004 ind/km2 pour les scénarios MP et et NPM. Là encore, la présence de caribous ne fait pas une grande différence, même si elle permet de soutenir un peu plus de loups (0.0040 vs 0.0045 ind/km2) (<em>scenarios MP, NPM)</em></p></li>
+<li><p>Densité ~0.006 ind/km2 pour les scénarios MPC, NPMC: la présence synchrone de cerfs et d’orignaux permet d’atteindre les densités maximales de loups.</p></li>
+</ul>
+<p>On remarque par ailleurs que le profil de la relation entre densité de loups et la productivité dépend de la composition spécifique, et que cette relation n’est pas toujours linéaire.</p>
+</section>
+<section id="c.-focus-on-caribou-wolf-situation" class="level3">
+<h3 class="anchored" data-anchor-id="c.-focus-on-caribou-wolf-situation">c.&nbsp;Focus on “caribou-wolf” situation</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span> <span class="sc">&amp;</span> na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Na"</span>, <span class="st">"Pa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CNP"</span>, <span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> density, <span class="at">color =</span> species), <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Na"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Pa"</span> <span class="ot">=</span> <span class="st">"red"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Na"</span> <span class="ot">=</span> <span class="st">"Caribou"</span>, <span class="st">"Pa"</span> <span class="ot">=</span> <span class="st">"wolf"</span>)) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Species"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Productivity index"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Caribou density (ind/km2)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-caribou_wolf" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-caribou_wolf-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;7: Caribou and wolf final densities, for different species composition and productivity values</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La figure <a href="#fig-caribou_wolf">Figure&nbsp;7</a> montre la densité de caribous et de loups associée, en fonction de la productivité, pour 3 scénarios de composition d’espèces différents. On remarque que dans le scénario CNP, les densités de caribous atteintes sont les plus faibles (moins de 0.05 ind/km2), ce qui pouvait déjà être apercu sur la <a href="#fig-two_prey_predator">Figure&nbsp;4</a>. On remarque aussi que cette densité de caribou semble se maintenir malgré des valeurs de productivité plus forte. Pour les scénarios NPM et NPMC, les densités de caribous atteignent des valeurs minimums relativement semblables (autour de 0.06 inds/km2). Dans les deux cas, l’augmentation de la productivité semble induire une “remontée” des effectifs de caribous, et celle-ci semble être plus rapide dans le scénario “NPMC”. Ainsi, malgré une densité de loups plus forte dans ce scénario, les caribous ont des densités plus fortes que dans le scénario “CNP”, ce qui suggère que la présence des orginaux permet de tamponner l’effet de prédation sur le caribou (~rôle pour la conservation avec les campagnes d’abbatage d’orignaux pour réduire la compétition apparente).</p>
+</section>
+<section id="d.-link-between-moose-and-caribou-density---trying-to-reproduce-labadie-2022-figure-with-our-model" class="level3">
+<h3 class="anchored" data-anchor-id="d.-link-between-moose-and-caribou-density---trying-to-reproduce-labadie-2022-figure-with-our-model">d.&nbsp;Link between moose and caribou density - Trying to reproduce Labadie 2022 figure with our model</h3>
+<p><img src="images/labadie2022.PNG" class="img-fluid" width="611"></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span> <span class="sc">&amp;</span> na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Na"</span>, <span class="st">"Ma"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(plot = rfonc_P_Na/365*100)%&gt;% View()</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> M_tot)) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> rfonc_P_Ma<span class="sc">/</span><span class="dv">365</span><span class="sc">*</span><span class="dv">100</span>, <span class="at">color =</span> <span class="st">"Moose"</span>), <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> rfonc_P_Na<span class="sc">/</span><span class="dv">365</span><span class="sc">*</span><span class="dv">100</span>, <span class="at">color =</span> <span class="st">"Caribou"</span>), <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sc, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Moose"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>, <span class="st">"Caribou"</span> <span class="ot">=</span> <span class="st">"orange"</span>)) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Species"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Moose density / km2"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of prey killed per wolf / 100 days"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-caribou_moose" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-caribou_moose-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;8: Variations of moose and caribou killed per wolf over 100 days, according to moose density</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ne donne pas vraiment les mêmes ordres de grandeur que la figure de Guillemette, en particulier pour le caribou.</p>
+<p>A revoir?</p>
+</section>
+<section id="f.-inflection-point" class="level3">
+<h3 class="anchored" data-anchor-id="f.-inflection-point">f.&nbsp;Inflection point</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sc) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>, na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tot_response_caribou =</span> rfonc_P_Na<span class="sc">*</span>Pa,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_caribou =</span> tot_response_caribou<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_moose =</span> rfonc_P_Ma<span class="sc">*</span>Pa,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_moose =</span> tot_response_moose<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_cerf =</span> rfonc_P_Ca<span class="sc">*</span>Pa,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_cerf =</span> tot_response_cerf<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Moose =</span> <span class="dv">400</span><span class="sc">*</span>M_tot,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Caribou =</span> <span class="dv">100</span><span class="sc">*</span>N_tot,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Deer =</span> <span class="dv">70</span><span class="sc">*</span>C_tot,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_tot =</span> biomass_Moose<span class="sc">+</span> biomass_Caribou<span class="sc">+</span>biomass_Deer) <span class="sc">|&gt;</span> </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(taux_predation_caribou,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                        taux_predation_moose,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                        taux_predation_cerf),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"predation_rate"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(predation_rate <span class="sc">==</span> <span class="st">"taux_predation_caribou"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> M_tot, <span class="at">y =</span> value, <span class="at">color =</span> sc))<span class="sc">+</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> M_tot, <span class="at">y =</span> value, <span class="at">color =</span> sc), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Moose density / km2"</span>,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predation rate on caribou"</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Predation rate on caribou depending on different metrics of the system"</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-inflection_point_2</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">|&gt;</span> </span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sc) <span class="sc">|&gt;</span> </span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>, na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tot_response_caribou =</span> rfonc_P_Na<span class="sc">*</span>Pa,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_caribou =</span> tot_response_caribou<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_moose =</span> rfonc_P_Ma<span class="sc">*</span>Pa,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_moose =</span> tot_response_moose<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_cerf =</span> rfonc_P_Ca<span class="sc">*</span>Pa,</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_cerf =</span> tot_response_cerf<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Moose =</span> <span class="dv">400</span><span class="sc">*</span>M_tot,</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Caribou =</span> <span class="dv">100</span><span class="sc">*</span>N_tot,</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Deer =</span> <span class="dv">70</span><span class="sc">*</span>C_tot,</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_tot =</span> biomass_Moose<span class="sc">+</span> biomass_Caribou<span class="sc">+</span>biomass_Deer) <span class="sc">|&gt;</span> </span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(taux_predation_caribou,</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>                        taux_predation_moose,</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>                        taux_predation_cerf),</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"predation_rate"</span>,</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(predation_rate <span class="sc">==</span> <span class="st">"taux_predation_caribou"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> biomass_tot, <span class="at">y =</span> value, <span class="at">color =</span> sc))<span class="sc">+</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> biomass_tot, <span class="at">y =</span> value, <span class="at">color =</span> sc), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Total prey biomass (kg/km2)"</span>,</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predation rate on caribou"</span>,</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Predation rate on caribou depending on different metrics of the system"</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-inflection_point_3</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">|&gt;</span> </span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sc) <span class="sc">|&gt;</span> </span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>, na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tot_response_caribou =</span> rfonc_P_Na<span class="sc">*</span>Pa,</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_caribou =</span> tot_response_caribou<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_moose =</span> rfonc_P_Ma<span class="sc">*</span>Pa,</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_moose =</span> tot_response_moose<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_cerf =</span> rfonc_P_Ca<span class="sc">*</span>Pa,</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_cerf =</span> tot_response_cerf<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Moose =</span> <span class="dv">400</span><span class="sc">*</span>M_tot,</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Caribou =</span> <span class="dv">100</span><span class="sc">*</span>N_tot,</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Deer =</span> <span class="dv">70</span><span class="sc">*</span>C_tot,</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_tot =</span> biomass_Moose<span class="sc">+</span> biomass_Caribou<span class="sc">+</span>biomass_Deer) <span class="sc">|&gt;</span> </span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(taux_predation_caribou,</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>                        taux_predation_moose,</span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>                        taux_predation_cerf),</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"predation_rate"</span>,</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(predation_rate <span class="sc">==</span> <span class="st">"taux_predation_caribou"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> biomass_Moose <span class="sc">+</span> biomass_Caribou, <span class="at">y =</span> value, <span class="at">color =</span> sc))<span class="sc">+</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> biomass_Moose <span class="sc">+</span> biomass_Caribou, <span class="at">y =</span> value, <span class="at">color =</span> sc), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Moose + Deer biomass (kg/km2)"</span>,</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predation rate on caribou"</span>,</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Predation rate on caribou depending on different metrics of the system"</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-inflection_point_4</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>merged <span class="sc">|&gt;</span> </span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sc) <span class="sc">|&gt;</span> </span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>, na_init <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tot_response_caribou =</span> rfonc_P_Na<span class="sc">*</span>Pa,</span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_caribou =</span> tot_response_caribou<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_moose =</span> rfonc_P_Ma<span class="sc">*</span>Pa,</span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_moose =</span> tot_response_moose<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_response_cerf =</span> rfonc_P_Ca<span class="sc">*</span>Pa,</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>         <span class="at">taux_predation_cerf =</span> tot_response_cerf<span class="sc">/</span>proies_tot,</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Moose =</span> <span class="dv">400</span><span class="sc">*</span>M_tot,</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Caribou =</span> <span class="dv">100</span><span class="sc">*</span>N_tot,</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_Deer =</span> <span class="dv">70</span><span class="sc">*</span>C_tot,</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>         <span class="at">biomass_tot =</span> biomass_Moose<span class="sc">+</span> biomass_Caribou<span class="sc">+</span>biomass_Deer) <span class="sc">|&gt;</span> </span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(taux_predation_caribou,</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>                        taux_predation_moose,</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>                        taux_predation_cerf),</span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"predation_rate"</span>,</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(predation_rate <span class="sc">==</span> <span class="st">"taux_predation_caribou"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sc <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NPM"</span>, <span class="st">"NPMC"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> value, <span class="at">color =</span> sc))<span class="sc">+</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> value, <span class="at">color =</span> sc), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Productivity index"</span>,</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predation rate on caribou"</span>,</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-inflection_point_1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-inflection_point_1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9: Predation rate on caribou depending on different metrics of the system</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-inflection_point_1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-inflection_point_1-2.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;10: Predation rate on caribou depending on different metrics of the system</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-inflection_point_1-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-inflection_point_1-3.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;11: Predation rate on caribou depending on different metrics of the system</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-inflection_point_1-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-inflection_point_1-4.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;12: Predation rate on caribou depending on different metrics of the system</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Dans les figures 9 à 12, on voit comment le taux de prédation sur le caribou varie en fonction de la biomasse de proies disponibles dans le système, en comparant les scénarios avec et sans cerfs. Pour le scenario “NPM” le début “plat” est dû au fait qu’en dessous d’une certaine quantité (~biomasse) de proies, la population de loups ne peut pas se maintenir, donc la prédation sur le caribou est nulle.</p>
+<p>Cette figure permet de prédire que la présence d’une proie alternative supplémentaire (le cerf), entraine un taux de prédation du caribou plus élevé, (ce qui était déjà un peu observable à la <a href="#fig-caribou_wolf">Figure&nbsp;7</a>, où la densité de caribou minimale était la plus faible entre ces deux scénarios). On observe également que le pic dans le taux de prédation survient pour des densités d’orignaux et pour des densités combinées d’orignaux et de cerfs plus basses dans le scénario où les cerfs sont présents. Ainsi, la présence de cerfs semble d’une part augmenter l’intensité de la prédation sur le caribou (pic plus haut), et d’autre part diluer plus rapidement le risque (pic déplacé vers la gauche).</p>
+</section>
+<section id="e.-addition-of-another-prey" class="level3">
+<h3 class="anchored" data-anchor-id="e.-addition-of-another-prey">e. Addition of another prey</h3>
+<p>Enfin, on a voulu tester comment notre modèle réagirait si l’on ajoutait une nouvelle proie dans notre système. Selon ce qu’on a observé avec nos précédents résultats, on s’attend à ce que la présence d’une proie supplémentaire accentue encore la pression de prédation sur le caribou (en permettant à plus de loups de se maintenir dans le système), et que cette prédation diminue encore plus rapidement que dans le scénario “NPMC” de la <strong>?@fig-inflection_point</strong>.</p>
+<p>Pour des raisons de simplicité, j’ai repris exactement les mêmes paramètres que ceux du cerf dans notre système. D’après la littérature, cela pourrait revenir à l’ajout du cerf à queue noir (Odocoileus hemionus columbianus), que l’on retrouve dans l’Ouest du Canada.</p>
+<section id="i.-without-moose" class="level4">
+<h4 class="anchored" data-anchor-id="i.-without-moose">i. Without moose</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sim_NPCQ <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/one_more_prey/sim1.R"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sim_NPCQ <span class="ot">&lt;-</span>sim_NPCQ <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"NPCQ"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sim_NPCQ <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(PP == "0.7") %&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(sc == "sim18") |&gt; </span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(diff_C = k_c - Ca,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># diff_M = k_m - Ma) %&gt;% </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, Qa, Qj),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"U"</span>  <span class="sc">~</span> <span class="st">"deciduous"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Qa"</span>  <span class="sc">~</span> <span class="st">"factice prey"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"deciduous"</span>, <span class="st">"deer"</span>, <span class="st">"wolf"</span>, <span class="st">"moose"</span>, <span class="st">"caribou"</span>, <span class="st">"factice prey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(species %in% c("Ma")) %&gt;%</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-factice_prey_without_moose" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-factice_prey_without_moose-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;13: Species densities when a factice prey is introduced in the system, without moose</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ii.-with-moose" class="level4">
+<h4 class="anchored" data-anchor-id="ii.-with-moose">ii. With moose</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sim_NMPCQ <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"~/Automation_Primary_productivity/one_more_prey/sim2.R"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sim_NMPCQ <span class="ot">&lt;-</span>sim_NMPCQ <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(outputs) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(as.data.frame) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(as.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sc =</span> <span class="st">"NMPCQ"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sim_NMPCQ <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, Qa, Qj),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"U"</span>  <span class="sc">~</span> <span class="st">"deciduous"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Qa"</span>  <span class="sc">~</span> <span class="st">"factice prey"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"deciduous"</span>, <span class="st">"deer"</span>, <span class="st">"wolf"</span>, <span class="st">"moose"</span>, <span class="st">"caribou"</span>, <span class="st">"factice prey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(species %in% c("Ma")) %&gt;%</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(PP)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Productivity index"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-factice_prey_with_moose" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-factice_prey_with_moose-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;14: Species densities when a factice prey is introduced in the system, with moose</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="iii.-comparison-of-both" class="level4">
+<h4 class="anchored" data-anchor-id="iii.-comparison-of-both">iii. Comparison of both</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>comparison_factice_prey <span class="ot">&lt;-</span> <span class="fu">rbind</span>(sim_NMPCQ, sim_NPCQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>comparison_factice_prey <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, Qa, Qj),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"U"</span>  <span class="sc">~</span> <span class="st">"deciduous"</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Qa"</span>  <span class="sc">~</span> <span class="st">"factice prey"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"deciduous"</span>, <span class="st">"deer"</span>, <span class="st">"wolf"</span>, <span class="st">"caribou"</span>, <span class="st">"factice prey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(species %in% c("Ma")) %&gt;%</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(sc)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>PP, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-factice_prey_comp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-factice_prey_comp-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;15: Species densities when a factice prey is introduced in the system, comparison between system with and without moose</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Dans les figures <a href="#fig-factice_prey_without_moose">Figure&nbsp;13</a> et <a href="#fig-factice_prey_with_moose">Figure&nbsp;14</a>, on observe comment les dynamiques des systèmes varient avec l’ajout d’une nouvelle proie, en présence ou en absence d’orignaux. En leur absence (<a href="#fig-factice_prey_without_moose">Figure&nbsp;13</a>), on retrouve des oscillations similaires à celles observées dans le système NCP ( <a href="#fig-two_prey_predator">Figure&nbsp;4</a>), induites par les oscillations des proies (cerfs et proie factice). Le basculement entre les oscillations et des densités d’équilibre stable semble se faire lorsque l’indice de productivité est égal ou supérieur à 0.7 dans ce cas. On remarque également que ces oscillations s’estompent lorsque l’orignal est présent (<a href="#fig-factice_prey_with_moose">Figure&nbsp;14</a>). Dans ce système ci, on n’observe plus de dynamiques oscillatoires, mais dès valeurs d’équilibre, dès de faibles valeurs de productivité. En comparant les systèmes avec et sans orignal, la <a href="#fig-factice_prey_comp">Figure&nbsp;15</a> montre que les loups arrivent plus “tôt” (ie pour des valeurs de productivité + basse) à leur densité maximale lorsque les orignaux sont présents. La manière dont les densités des proies communes dans les deux modèles (cerfs et caribous) varient en fonction de la productivité semble être différente en fonction de la présence ou non de l’orignal. Pour le caribou par exemple, il semble que les densités soient plus hautes lorsque l’orignal est présent, pour des valeurs de productivité intermédiaires (entre 0.2 et 0.6). En supportant une partie de la prédation, l’orignal entrainerait ainsi une diminution plus rapide de la pression de prédation sur le caribou. On remarque quelque chose de similaire sur les autres proies (cerf et proie factice), donc les effectifs sont plus hauts dans le système avec orignaux, mais pour uen fenêtre de de valeurs de productivité différente (entre 0.3 et 0.8).</p>
+</section>
+<section id="iv.-how-does-the-system-reacts-when-more-prey-are-present" class="level4">
+<h4 class="anchored" data-anchor-id="iv.-how-does-the-system-reacts-when-more-prey-are-present">iv. How does the system reacts when more prey are present?</h4>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Add columns filled with zero so we can merge both tables</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>merged_test <span class="ot">&lt;-</span> merged <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Qa =</span> <span class="dv">0</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">Qj =</span> <span class="dv">0</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">rfonc_P_Qj =</span> <span class="dv">0</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rfonc_P_Qa =</span> <span class="dv">0</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pref_P_Qj =</span> <span class="dv">0</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pref_P_Qa =</span> <span class="dv">0</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">Qa_supplementary_NRJ =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="fu">c</span>(Qa, Qj), <span class="at">.after =</span> <span class="st">"Pj"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(sc, <span class="at">.after =</span> <span class="st">"Qa_supplementary_NRJ"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"delta(pouic)"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"transition_adu"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"limite_enviro1"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"limite_enviro2"</span>))</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>comparison_factice_prey <span class="ot">&lt;-</span> comparison_factice_prey <span class="sc">%&gt;%</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"pouic"</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"conv_adu"</span>,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"limit_enviro1"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"limit_enviro2"</span>))</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>merged_all <span class="ot">&lt;-</span> <span class="fu">rbind</span>(merged_test, comparison_factice_prey)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>merged_all <span class="sc">%&gt;%</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, Qa, Qj),</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Qa"</span>  <span class="sc">~</span> <span class="st">"factice prey"</span>,</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"deer"</span>, <span class="st">"wolf"</span>, <span class="st">"moose"</span>, <span class="st">"caribou"</span>, <span class="st">"factice prey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(species %in% c("Ma")) %&gt;%</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(sc)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(species<span class="sc">~</span>PP, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (years)"</span>,</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="Results_CHP1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>merged_all <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PP) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, Ma, Pa, Pj, Ca, Na, Qa, Qj),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"species"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"density"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ca"</span> <span class="sc">~</span> <span class="st">"deer"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Pa"</span>  <span class="sc">~</span> <span class="st">"wolf"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Ma"</span>  <span class="sc">~</span> <span class="st">"moose"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Na"</span>  <span class="sc">~</span> <span class="st">"caribou"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Qa"</span>  <span class="sc">~</span> <span class="st">"factice prey"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(species)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  ))<span class="sc">%&gt;%</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"deer"</span>, <span class="st">"wolf"</span>, <span class="st">"moose"</span>, <span class="st">"caribou"</span>, <span class="st">"factice prey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#filter(species %in% c("caribou")) %&gt;%</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#filter(sc %in% c("NMPCQ", "NPCQ", "NPM", "NPMC")) %&gt;%</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_line(aes(x = time, y = density), linewidth = 1.1)+</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> PP, <span class="at">y =</span> density, <span class="at">color =</span> <span class="fu">factor</span>(sc)), <span class="at">linewidth =</span> <span class="fl">1.1</span>)<span class="sc">+</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Productivity index"</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density (ind/km2)"</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Species composition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-final_densities_all_sc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Results_CHP1_files/figure-html/fig-final_densities_all_sc-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;16: Prey and predator final densities, for different species composition and productivity values</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La figure <a href="#fig-final_densities_all_sc">Figure&nbsp;16</a> montre les variations dans les densités finales des espèces de proies et de prédateur, en fonction de la productivité. Pour le loup, on remarque que la réponse numérique de sa population n’est pas linéaire avec l’augmentation de la productivité. En particulier, la forme de la réponse semble varier en fonction de la composition spécifique du système. La densité maximale de loups (atteinte de leur capacité limite) est atteinte lorsque l’indice de productivité est maximum, dans les scénarios NPMC, MPC, NMPCQ et NPCQ. De dernier est d’ailleurs le seul où cette forte densité de loups est atteinte en l’absence d’orignaux. Pour les caribous, l’impact de la prédation (ie “à quel point” la population diminue sous l’influence du loup) en fonction de la productivité semble elle aussi très variable en fonction de la composition spécifique du système. En général, nos modèles suggèrent que la présence du cerf comme seule autre proie alternative entraine la pression de prédation la plus élevée, parmi l’ensemble des compositions spécifiques testé, et cet effet semble d’autant plus fort que la productivité est élevée. Au contraire, de nombreuses autres compositions spécifiques (N, NP, NPM, NPMC, CNP,NMPCQ, NPCQ) tendent à maintenir les caribous à leur capacité de charge lorsque la productivité est forte. Plus le système est composé de nombreuses espèces, qui sont des proies alternatives du caribou, plus il semble que la valeur de productivité pour laquelle les caribous atteignent leur capacité limite est faible (ex: NMPCQ vs.&nbsp;NPMC ou NPM par ex.)</p>
+
+</section>
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-serrouya2021" class="csl-entry" role="listitem">
+Serrouya, Robert, Melanie Dickie, Clayton Lamb, Harry van Oort, Allicia P. Kelly, Craig DeMars, Philip D. McLoughlin, et al. 2021. <span>“Trophic Consequences of Terrestrial Eutrophication for a Threatened Ungulate.”</span> <em>Proceedings. Biological Sciences</em> 288 (1943): 20202811. <a href="https://doi.org/10.1098/rspb.2020.2811">https://doi.org/10.1098/rspb.2020.2811</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1467 @@
+---
+title: "Results_CHP1"
+author: "RD"
+bibliography: Biblio.bib
+format:
+   pdf: 
+      echo: false
+      output-file: "Results_CHP1_V2"
+     #code-fold: true
+     #warning: false
+     #code-link: true
+---
+
+# 1. Impact of species composition on the effect of primary productivity in a 3 trophic levels system
+
+## Context
+
+Les changements climatiques et les transformations du paysage d'origigne anthropique tendent à rendre les systèmes plus productifs [@serrouya2021]. Les conséquences de ces changements de productivité sur les systèmes trophiques demeurent mal connus, en raison de la complexité des mécanismes, malgré l'urgence du besoin de mieux connaître les systèmes à des fins de conservation.
+
+## Question
+
+How does terrestrial eutrophication affects indirect predator-prey relationship?
+
+## Methods
+
+A partir d'un modèle prédateurs-proies, basé sur des équations différentielles, nous avons pu simuler les densités de grands herbivores de la forêt boréale (orignal, cerf, caribou) et de leur prédateur commun (le loup gris).
+
+Ici, je présente les résultats de 10 simulations, où les compositions en espèces varient (voir @tbl-sp_compo):
+
+-   3 simulations avec les proies seules: pour vérifier qu'elles atteignent bien des densités à l'équilibre différentes en fonction de la productivité
+
+-   3 simulations avec 1 proie et le prédateur
+
+-   3 simulations avec 2 proies et le prédateur
+
+-   1 simulation avec toutes les proies et le prédateur
+
+| Nom de la simulation | Orignal (moose) | Caribou | Cerf (Deer) | Loup (wolf) |
+|----------------------|:---------------:|:-------:|:-----------:|:-----------:|
+| M                    |        X        |         |             |             |
+| N                    |                 |    X    |             |             |
+| C                    |                 |         |      X      |             |
+| MP                   |        X        |         |             |      X      |
+| NP                   |                 |    X    |             |      X      |
+| CP                   |                 |         |      X      |      X      |
+| CNP                  |                 |    X    |      X      |      X      |
+| MPC                  |        X        |         |      X      |      X      |
+| NPM                  |        X        |    X    |             |      X      |
+| NPMC                 |        X        |    X    |      X      |      X      |
+
+: Composition en espèces des simulations présentées dans cette section {#tbl-sp_compo}
+
+Pour chacun de ces scénarios, 10 simulations sont faites, où la productivité varie entre 0 et 1, par pas de 0.1. Pour notre modèle, cela signifie que la quantité de végétation **feuillue** **varie** **linéairememt** avec la **productivité** (en l'absence d'herbivores) entre 240000 kg/km2 (PP = 0) et 360000 kg/km2 (PP = 1) (Voir @fig-deciduous_PP).
+
+```{r}
+library(tidyverse)
+sim1 <- readRDS("~/Automation_Primary_productivity/Final_plots/N.R")
+
+sim1 <-sim1 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "N")
+```
+
+```{r}
+#| label: fig-deciduous_PP
+#| fig-cap: "Linear relationship between deciduous density and productivity in our model"
+
+sim1 %>% 
+  filter(time == 300)%>% 
+  ggplot(aes(x = PP, y = U))+
+  geom_point()+
+  labs(x = "Productivity index",
+       y = "Deciduous density (kg/km2)")
+```
+
+## Results
+
+```{r}
+# 1. Load the simulations
+sim1 <- readRDS("~/Automation_Primary_productivity/Final_plots/N.R")
+sim2 <- readRDS("~/Automation_Primary_productivity/Final_plots/NP.R")
+sim3 <- readRDS("~/Automation_Primary_productivity/Final_plots/NPM.R")
+sim4 <- readRDS("~/Automation_Primary_productivity/Final_plots/NPMC.R")
+sim5 <- readRDS("~/Automation_Primary_productivity/Final_plots/M.R")
+sim6 <- readRDS("~/Automation_Primary_productivity/Final_plots/MP.R")
+sim7 <- readRDS("~/Automation_Primary_productivity/Final_plots/MPC.R")
+sim8 <- readRDS("~/Automation_Primary_productivity/Final_plots/C.R")
+sim9 <- readRDS("~/Automation_Primary_productivity/Final_plots/CP.R")
+sim10 <- readRDS("~/Automation_Primary_productivity/Final_plots/CPN.R")
+sim11 <- readRDS("~/Automation_Primary_productivity/Final_plots/CPN_PP_aug.R")
+
+
+# 2. Unnest the data
+library(tidyverse)
+sim1 <-sim1 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "N") 
+
+sim2 <-sim2 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "NP") 
+
+
+sim3 <-sim3 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "NPM") 
+
+sim4 <- sim4 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "NPMC") 
+
+sim5 <-sim5 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "M") 
+
+sim6 <-sim6 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "MP") 
+
+sim7 <-sim7 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "MPC") 
+
+
+sim8 <-sim8 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "C") 
+
+sim9 <-sim9 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "CP") 
+
+sim10 <-sim10 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "CNP") 
+
+sim11 <-sim11 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "sim11") 
+
+
+# 3. Merge all simulations in 1 df
+merged <- bind_rows(sim1, sim2)
+merged <- bind_rows(merged, sim3)
+merged <- bind_rows(merged, sim4)
+merged <- bind_rows(merged, sim5)
+merged <- bind_rows(merged, sim6)
+merged <- bind_rows(merged, sim7)
+merged <- bind_rows(merged, sim8)
+merged <- bind_rows(merged, sim9)
+merged <- bind_rows(merged, sim10)
+```
+
+### a. Species density through time, according to species composition scenarios and productivity
+
+#### i. Prey species only
+
+```{r}
+carrying_capacities <- merged |> 
+  filter(time == 300) |> 
+  select(c(PP, sc, k_m, k_U, k_V, k_c, k_n, k_P)) |> 
+  pivot_longer(cols = -c(PP, sc),
+               names_to = "species",
+               values_to = "value") |> 
+  group_by(sc, PP) |> 
+  filter(sc %in% c("N", "M", "C")) %>%
+  mutate(species = case_when(
+    species == "k_m" ~ "moose",
+    species == "k_U" ~ "U",
+    species == "k_V" ~ "V",
+    species == "k_c" ~ "deer",
+    species == "k_n" ~ "caribou",
+    species == "k_P" ~ "wolf",
+    TRUE ~ species
+  )) %>%
+  filter(species %in% c("caribou", "moose", "deer")) 
+```
+
+```{r}
+#| label: fig-prey_only
+#| fig-cap: "Prey dynamics according to productivity. The dashed lines show the estimated carrying capacities for these conditions. For each mono-specific scenario, the dashed line is at the exact same densities that simulated species, meaning that our species reach "
+
+merged %>% 
+  filter(sc %in% c("N", "M", "C")) %>%
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density")%>%
+  filter(species %in% c("Ca","Na", "Ma")) %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    TRUE ~ as.character(species)
+  ))%>%
+  ggplot()+
+  geom_line(aes(x = time, y = density, color = factor(sc)), linewidth = 1.1)+
+  geom_hline(data = carrying_capacities,
+             aes(yintercept = value, linetype = "Carrying Capacity", color = sc),
+             linetype = "dashed", linewidth = 1) +
+  facet_grid(species~PP, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Productivity index")
+```
+
+Les simulations de la @fig-prey_only nous permettent de voir que les espèces se nourrissant sur les feuillus (cerfs et orignaux) atteignent des densités d'équilibre différentes en fonction de la productivité, ce qui est attendu. La densité de caribous elle ne varie pas en fonction de la productivité, ce qui est aussi attendu, car la quantité de lichens sur laquelle il se nourrit n'est pas dépendante de la productivité.
+
+#### ii. One prey species + predator
+
+```{r}
+# Get the carrying capacities per species, per scenario and per productivity
+carrying_capacities <- merged |> 
+  filter(time == 300) |> 
+  select(c(PP, sc, k_m, k_U, k_V, k_c, k_n, k_P)) |> 
+  pivot_longer(cols = -c(PP, sc),
+               names_to = "species",
+               values_to = "value") |> 
+  group_by(sc, PP) |> 
+  filter(sc %in% c("NP", "MP", "CP")) %>%
+  mutate(species = case_when(
+    species == "k_m" ~ "moose",
+    species == "k_U" ~ "U",
+    species == "k_V" ~ "V",
+    species == "k_c" ~ "deer",
+    species == "k_n" ~ "caribou",
+    species == "k_P" ~ "wolf",
+    TRUE ~ species
+  )) %>%
+  filter(species %in% c("caribou", "moose", "deer", "wolf")) 
+```
+
+```{r}
+#| label: fig-one_prey_predator
+#| fig-cap: "Prey and predator dynamics according to productivity. The dashed lines show the estimated carrying capacities for these conditions."
+
+merged %>% 
+  filter(sc %in% c("NP", "MP", "CP")) %>%
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density")%>%
+  filter(species %in% c("Ca","Na", "Ma", "Pa")) %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Pa"  ~ "wolf",
+    TRUE ~ as.character(species)
+  ))%>%
+  ggplot()+
+  geom_line(aes(x = time, y = density, color = factor(sc)), linewidth = 1.1)+
+  geom_hline(data = carrying_capacities,
+             aes(yintercept = value, linetype = "Carrying Capacity", color = sc),
+             linetype = "dashed", linewidth = 1) +
+  facet_grid(species~PP, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Productivity index")
+```
+
+Les simulations de la @fig-one_prey_predator montrent les densités de proies dans des systèmes où elles sont la seule source de nourriture disponible pour le prédateur (voir @tbl-sp_compo pour la composition spécifique des systèmes). Dans le système CP , on observe qu'en dessous d'une certaine productivité (et donc d'une quantité de nourriture), les cerfs atteignent rapidement leur densité d'équilibre (identique à celle obtenue en l'absence de prédateur), car la population de prédateur s'effondre car il n'y a pas assez de proies pour la supporter. Au delà d'un indice de productivité égal à 0.4, la population de loups est capable de se maintenir et force les effectifs de cerfs à des densités \~ 0.25 ind/km2. Dans le système MP, les loups peuvent co-exister dès un indice de productivité \>= 0.2. On remarque que l'impact de la prédation sur les densités finales semble être moins fort dans le cas de l'orignal (densité à l'équilibre avec ou sans prédateur est ± similaire, autour de 0,1 ind/km2, versus un passage de 1 ind/km2 à 0.25 ind/km2 pour le cerf. Cela est dû à la différence de "profitabilité" énergétique des proies, car notre modèle considère que la consommation d'un cerf équivaut à la consommation de 20% d'un orignal). Puisque les densités à l'équilibre des orignaux restent relativement différentes en fonction de la productivité, on retrouve des densités de prédateur différentes en fonction de la productivité. Finalement, dans le système NP, la population de caribou n'est pas capable de maintenir la population de loups à elle seule. Cette dernière s'effondre et les caribous atteignent leur capacité de carge.
+
+#### iii. Two prey species + predator
+
+```{r}
+# Get the carrying capacities per species, per scenario and per productivity
+carrying_capacities <- merged |> 
+  filter(time == 300) |> 
+  select(c(PP, sc, k_m, k_U, k_V, k_c, k_n, k_P)) |> 
+  pivot_longer(cols = -c(PP, sc),
+               names_to = "species",
+               values_to = "value") |> 
+  group_by(sc, PP) |> 
+  filter(sc %in% c("CNP", "MPC", "NPM")) %>%
+  mutate(species = case_when(
+    species == "k_m" ~ "moose",
+    species == "k_U" ~ "U",
+    species == "k_V" ~ "V",
+    species == "k_c" ~ "deer",
+    species == "k_n" ~ "caribou",
+    species == "k_P" ~ "wolf",
+    TRUE ~ species
+  )) %>%
+  filter(species %in% c("caribou", "moose", "deer", "wolf")) 
+```
+
+```{r}
+#| label: fig-two_prey_predator
+#| fig-cap: "Prey and predator dynamics according to productivity. The dashed lines show the estimated carrying capacities for these conditions."
+merged %>% 
+  filter(sc %in% c("CNP", "MPC", "NPM")) %>%
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density")%>%
+  filter(species %in% c("Ca","Na", "Ma", "Pa")) %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Pa"  ~ "wolf",
+    TRUE ~ as.character(species)
+  ))%>%
+  ggplot()+
+  geom_line(aes(x = time, y = density, color = factor(sc)), linewidth = 1.1)+
+  geom_hline(data = carrying_capacities,
+             aes(yintercept = value, linetype = "Carrying Capacity", color = sc),
+             linetype = "dashed", linewidth = 1) +
+  facet_grid(species~PP, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Productivity index")
+```
+
+Les simulations de la @fig-two_prey_predator montrent les densités de deux proies et celle de leur prédateur commun (voir @tbl-sp_compo pour la composition spécifique des systèmes). Le système CNP semble provoquer des oscillations dans les densités des espèces présentes, à priori induites par le comportement de la pop de cerfs en présence du prédateur (oscillations déjà présentes dans la @fig-one_prey_predator). On remarque aussi que les densités de prédateurs tendent à converger vers des valeurs relativement similaires (autour de 0.002 ind/km2), de même que pour le caribou (autour de 0.04 ind/km2), pour la plupart des valeurs de productivité. Dans le scénario MCP, les loups plafonnent rapidement à leurs valeurs de capacités de charge, déterminée à partir de l'abondance de nourriture pour eux. Les simulations donnent rapidement des valeurs d'équilibre stable. Enfin, pour le scénario NPM, on observe une forte réduction dans la population d'orignaux par rapport au scénario précédent, ce qui suggère que la forte abondance des cerfs permettait de diminuer considérablement l'influence de la prédation sur l'orignal. On obtient des densités relativement similaires à celles du système où seuls les orignaux sont présents comme proie du loup (voir @fig-one_prey_predator). Pourtant, la diminution de la densité de caribou montre bien qu'ils "supportent" une partie de la prédation. On remarque par ailleurs que les densités de la population de caribou semblent converger vers les mêmes valeurs, sauf dans le cas où la population est capable d'atteindre sa capacité de charge, car la population de prédateur est effondrée (PP = 0).
+
+#### iv. All prey
+
+```{r}
+carrying_capacities <- merged |> 
+  filter(time == 300) |> 
+  select(c(PP, sc, k_m, k_U, k_V, k_c, k_n, k_P)) |> 
+  pivot_longer(cols = -c(PP, sc),
+               names_to = "species",
+               values_to = "value") |> 
+  group_by(sc, PP) |> 
+  filter(sc %in% c("NPMC")) %>%
+  mutate(species = case_when(
+    species == "k_m" ~ "Ma",
+    species == "k_U" ~ "U",
+    species == "k_V" ~ "V",
+    species == "k_c" ~ "Ca",
+    species == "k_n" ~ "Na",
+    species == "k_P" ~ "Pa",
+    TRUE ~ species
+  )) |> 
+  filter(species %in% c("Na", "Ma", "Ca", "Pa")) 
+  
+```
+
+```{r}
+#| label: fig-all_prey_carr_cap
+#| fig-cap: "All prey and predator dynamics according to productivity. The dashed black line shows the estimated carrying capacities for these conditions"
+
+# ---------------------------------
+# 2. Plot them on the previous graph
+merged %>%
+  filter(sc %in% c("NPMC")) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density") %>%
+  #filter(species %in% c("U", "V","Ca", "Pa", "Na", "Ma", "Cj")) %>%
+  filter(species %in% c("Na", "Ma", "Ca","Pa")) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = density, color = sc), linewidth = 1.1) +
+  geom_hline(data = carrying_capacities,
+             aes(yintercept = value, linetype = "Carrying Capacity"),
+             linetype = "dashed", linewidth = 1, color = "black") +
+  facet_grid(species ~ PP, scales = "free") +
+  labs(color = "Species composition",
+       linetype = "Legend Title for Carrying Capacity")
+```
+
+Finalement, le scénario "NPMC" intègre toutes les proies et le prédateur. Dans ce cas-ci, on observe que les densités d'orignal, de cerf et de loups sont globalement très similaires à celles obtenues par le scénario "MCP". Toutefois, la diminution de la densité du caribou suggère qu'il supporte lui aussi une part de la prédation, et que cette part varie avec la productivité.
+
+### Voir autre visualiation qui pourrait permettre une meilleure comparaison des densités avec ou sans prédateur?
+
+```{r}
+merged %>%
+  filter(PP == 0) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, "k_m", "Mj"),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("U", "Ca", "Pa", "Na", "Ma"))
+
+```
+
+### b. All species final densities according to composition and productivity
+
+```{r}
+#| label: fig-final_densities
+#| fig-cap: "Prey and predator final densities, for different species composition and productivity values"
+
+
+merged %>% 
+  group_by(PP) %>% 
+  filter(time == 300) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, "k_m", "Mj"),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("U", "Ca", "Pa", "Na", "Ma")) %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Pa"  ~ "wolf",
+    species == "U"  ~ "deciduous",
+    TRUE ~ as.character(species)
+  ))%>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = PP, y = density, color = factor(sc)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")+
+  labs(x = "Productivity index",
+       y = "Density (ind/km2)",
+       color = "Species composition")
+```
+
+La @fig-final_densities montre les densités finales des espèces en fonction de la productivité et de la composition en espèce du système. On remarque que les densités finales du loup peuvent résumer en 4 groupes:
+
+-   densité nulle: obtenue pour le scénario avec les caribous seulement, car cette espèce n'est pas capable de maintenir à elle seule les loups (*scenarios C, N, M, NP)*
+
+-   Densité \~ 0.002 ind/km2 pour les scénarios CP et CNP: la présence des caribous ne change pas beaucoup les densités finales. (*scenarios CP, CNP)*
+
+-   Densité \~ 0.004 ind/km2 pour les scénarios MP et et NPM. Là encore, la présence de caribous ne fait pas une grande différence, même si elle permet de soutenir un peu plus de loups (0.0040 vs 0.0045 ind/km2) (*scenarios MP, NPM)*
+
+-   Densité \~0.006 ind/km2 pour les scénarios MPC, NPMC: la présence synchrone de cerfs et d'orignaux permet d'atteindre les densités maximales de loups.
+
+On remarque par ailleurs que le profil de la relation entre densité de loups et la productivité dépend de la composition spécifique, et que cette relation n'est pas toujours linéaire.
+
+##### Zoom sur le caribou
+
+```{r}
+##| label: fig-final_densities
+#| fig-cap: "Prey and predator final densities, for different species composition and productivity values"
+
+
+merged %>% 
+  group_by(PP) %>% 
+  filter(time == 300) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, "k_m", "Mj"),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("U", "Ca", "Pa", "Na", "Ma")) %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Pa"  ~ "wolf",
+    species == "U"  ~ "deciduous",
+    TRUE ~ as.character(species)
+  ))%>%
+  filter(species == "caribou",
+         density != 0) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = PP, y = density, color = factor(sc)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")+
+  labs(x = "Productivity index",
+       y = "Density (ind/km2)",
+       color = "Species composition")
+```
+
+### c. Focus on "caribou-wolf" situation
+
+```{r}
+#| label: fig-caribou_wolf
+#| fig-cap: "Caribou and wolf final densities, for different species composition and productivity values"
+
+
+merged %>% 
+  group_by(PP) %>% 
+  filter(time == 300 & na_init != 0) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("Na", "Pa")) %>%
+  filter(sc %in% c("CNP", "NPM", "NPMC")) %>%
+  ggplot() +
+  geom_line(aes(x = PP, y = density, color = species), linewidth = 1.1) +
+  facet_wrap(~sc, scales = "free") +
+  scale_color_manual(values = c("Na" = "blue", "Pa" = "red"), labels = c("Na" = "Caribou", "Pa" = "wolf")) +
+  labs(color = "Species",
+       x = "Productivity index",
+       y = "Caribou density (ind/km2)")
+```
+
+La figure @fig-caribou_wolf montre la densité de caribous et de loups associée, en fonction de la productivité, pour 3 scénarios de composition d'espèces différents. On remarque que dans le scénario CNP, les densités de caribous atteintes sont les plus faibles (moins de 0.05 ind/km2), ce qui pouvait déjà être apercu sur la @fig-two_prey_predator. On remarque aussi que cette densité de caribou semble se maintenir malgré des valeurs de productivité plus forte. Pour les scénarios NPM et NPMC, les densités de caribous atteignent des valeurs minimums relativement semblables (autour de 0.06 inds/km2). Dans les deux cas, l'augmentation de la productivité semble induire une "remontée" des effectifs de caribous, et celle-ci semble être plus rapide dans le scénario "NPMC". Ainsi, malgré une densité de loups plus forte dans ce scénario, les caribous ont des densités plus fortes que dans le scénario "CNP", ce qui suggère que la présence des orginaux permet de tamponner l'effet de prédation sur le caribou (\~rôle pour la conservation avec les campagnes d'abbatage d'orignaux pour réduire la compétition apparente).
+
+### d. Link between moose and caribou density - Trying to reproduce Labadie 2022 figure with our model
+
+![](images/labadie2022.PNG){width="611"}
+
+```{r}
+#| label: fig-caribou_moose
+#| fig-cap: "Variations of moose and caribou killed per wolf over 100 days, according to moose density"
+
+merged %>% 
+  group_by(PP) %>% 
+  filter(time == 300 & na_init != 0) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("Na", "Ma")) %>%
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  #mutate(plot = rfonc_P_Na/365*100)%>% View()
+  ggplot(aes(x = M_tot)) +
+  geom_line(aes(y = rfonc_P_Ma/365*100, color = "Moose"), linewidth = 1.1) +
+  geom_line(aes(y = rfonc_P_Na/365*100, color = "Caribou"), linewidth = 1.1) +
+  facet_wrap(~sc, scales = "free") +
+  scale_color_manual(values = c("Moose" = "darkgreen", "Caribou" = "orange")) +
+  labs(color = "Species",
+       x = "Moose density / km2",
+       y = "Number of prey killed per wolf / 100 days")
+
+
+```
+
+Ne donne pas vraiment les mêmes ordres de grandeur que la figure de Guillemette, en particulier pour le caribou.
+
+A revoir?
+
+### f. Inflection point
+
+```{r}
+#| fig-cap: "Predation rate on caribou depending on different metrics of the system"
+#| label: fig-inflection_point_1
+
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  ggplot()+
+  geom_point(aes(x = M_tot, y = value, color = sc))+
+  geom_line(aes(x = M_tot, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose density / km2",
+       y = "Predation rate on caribou",
+       color = "Species composition")
+
+#| fig-cap: "Predation rate on caribou depending on different metrics of the system"
+#| label: fig-inflection_point_2
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  ggplot()+
+  geom_point(aes(x = biomass_tot, y = value, color = sc))+
+  geom_line(aes(x = biomass_tot, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Total prey biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")
+
+#| fig-cap: "Predation rate on caribou depending on different metrics of the system"
+#| label: fig-inflection_point_3
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  ggplot()+
+  geom_point(aes(x = biomass_Moose + biomass_Deer, y = value, color = sc))+
+  geom_line(aes(x = biomass_Moose + biomass_Deer, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")
+
+#| fig-cap: "Predation rate on caribou depending on different metrics of the system"
+#| label: fig-inflection_point_4
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  ggplot()+
+  geom_point(aes(x = PP, y = value, color = sc))+
+  geom_line(aes(x = PP, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Productivity index",
+       y = "Predation rate on caribou",
+       color = "Species composition")
+```
+
+Dans les figures 9 à 12, on voit comment le taux de prédation sur le caribou varie en fonction de la biomasse de proies disponibles dans le système, en comparant les scénarios avec et sans cerfs. Pour le scenario "NPM" le début "plat" est dû au fait qu'en dessous d'une certaine quantité (\~biomasse) de proies, la population de loups ne peut pas se maintenir, donc la prédation sur le caribou est nulle.
+
+Cette figure permet de prédire que la présence d'une proie alternative supplémentaire (le cerf), entraine un taux de prédation du caribou plus élevé, (ce qui était déjà un peu observable à la @fig-caribou_wolf, où la densité de caribou minimale était la plus faible entre ces deux scénarios). On observe également que le pic dans le taux de prédation survient pour des densités d'orignaux et pour des densités combinées d'orignaux et de cerfs plus basses dans le scénario où les cerfs sont présents. Ainsi, la présence de cerfs semble d'une part augmenter l'intensité de la prédation sur le caribou (pic plus haut), et d'autre part diluer plus rapidement le risque (pic déplacé vers la gauche).
+
+```{r}
+#| fig-cap: "Predation rate on caribou depending on different metrics of the system"
+#| label: fig-inflection_point_3
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  #filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  ggplot()+
+  geom_point(aes(x = biomass_Moose + biomass_Deer, y = value, color = sc))+
+  geom_line(aes(x = biomass_Moose + biomass_Deer, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+```
+
+### e. Addition of another prey
+
+Enfin, on a voulu tester comment notre modèle réagirait si l'on ajoutait une nouvelle proie dans notre système. Selon ce qu'on a observé avec nos précédents résultats, on s'attend à ce que la présence d'une proie supplémentaire accentue encore la pression de prédation sur le caribou (en permettant à plus de loups de se maintenir dans le système), et que cette prédation diminue encore plus rapidement que dans le scénario "NPMC" de la @fig-inflection_point.
+
+Pour des raisons de simplicité, j'ai repris exactement les mêmes paramètres que ceux du cerf dans notre système. D'après la littérature, cela pourrait revenir à l'ajout du cerf à queue noir (Odocoileus hemionus columbianus), que l'on retrouve dans l'Ouest du Canada.
+
+#### i. Without moose
+
+```{r}
+sim_NPCQ <- readRDS("~/Automation_Primary_productivity/one_more_prey/sim1.R")
+
+sim_NPCQ <-sim_NPCQ %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "NPCQ")
+```
+
+```{r}
+#| label: fig-factice_prey_without_moose
+#| fig-cap: "Species densities when a factice prey is introduced in the system, without moose"
+
+sim_NPCQ %>%
+  group_by(PP) %>%
+  # filter(PP == "0.7") %>%
+  # filter(sc == "sim18") |> 
+  # mutate(diff_C = k_c - Ca,
+         # diff_M = k_m - Ma) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Pa"  ~ "wolf",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "U"  ~ "deciduous",
+    species == "Qa"  ~ "factice prey",
+    TRUE ~ as.character(species)
+  ))%>%
+  filter(species %in% c("deciduous", "deer", "wolf", "moose", "caribou", "factice prey")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(PP)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Productivity index")
+```
+
+#### ii. With moose
+
+```{r}
+sim_NMPCQ <- readRDS("~/Automation_Primary_productivity/one_more_prey/sim2.R")
+
+sim_NMPCQ <-sim_NMPCQ %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "NMPCQ")
+```
+
+```{r}
+#| label: fig-factice_prey_with_moose
+#| fig-cap: "Species densities when a factice prey is introduced in the system, with moose"
+
+sim_NMPCQ %>% 
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Pa"  ~ "wolf",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "U"  ~ "deciduous",
+    species == "Qa"  ~ "factice prey",
+    TRUE ~ as.character(species)
+  ))%>%
+  filter(species %in% c("deciduous", "deer", "wolf", "moose", "caribou", "factice prey")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(PP)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Productivity index")
+```
+
+#### iii. Comparison of both
+
+```{r}
+comparison_factice_prey <- rbind(sim_NMPCQ, sim_NPCQ)
+```
+
+```{r}
+#| label: fig-factice_prey_comp
+#| fig-cap: "Species densities when a factice prey is introduced in the system, comparison between system with and without moose"
+
+comparison_factice_prey %>%
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Pa"  ~ "wolf",
+    species == "Na"  ~ "caribou",
+    species == "U"  ~ "deciduous",
+    species == "Qa"  ~ "factice prey",
+    TRUE ~ as.character(species)
+  ))%>%
+  filter(species %in% c("deciduous", "deer", "wolf", "caribou", "factice prey")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(sc)), linewidth = 1.1)+
+  facet_grid(species~PP, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Species composition")
+```
+
+Dans les figures @fig-factice_prey_without_moose et @fig-factice_prey_with_moose, on observe comment les dynamiques des systèmes varient avec l'ajout d'une nouvelle proie, en présence ou en absence d'orignaux. En leur absence (@fig-factice_prey_without_moose), on retrouve des oscillations similaires à celles observées dans le système NCP ( @fig-two_prey_predator), induites par les oscillations des proies (cerfs et proie factice). Le basculement entre les oscillations et des densités d'équilibre stable semble se faire lorsque l'indice de productivité est égal ou supérieur à 0.7 dans ce cas. On remarque également que ces oscillations s'estompent lorsque l'orignal est présent (@fig-factice_prey_with_moose). Dans ce système ci, on n'observe plus de dynamiques oscillatoires, mais dès valeurs d'équilibre, dès de faibles valeurs de productivité. En comparant les systèmes avec et sans orignal, la @fig-factice_prey_comp montre que les loups arrivent plus "tôt" (ie pour des valeurs de productivité + basse) à leur densité maximale lorsque les orignaux sont présents. La manière dont les densités des proies communes dans les deux modèles (cerfs et caribous) varient en fonction de la productivité semble être différente en fonction de la présence ou non de l'orignal. Pour le caribou par exemple, il semble que les densités soient plus hautes lorsque l'orignal est présent, pour des valeurs de productivité intermédiaires (entre 0.2 et 0.6). En supportant une partie de la prédation, l'orignal entrainerait ainsi une diminution plus rapide de la pression de prédation sur le caribou. On remarque quelque chose de similaire sur les autres proies (cerf et proie factice), donc les effectifs sont plus hauts dans le système avec orignaux, mais pour uen fenêtre de de valeurs de productivité différente (entre 0.3 et 0.8).
+
+#### iv. How does the system reacts when more prey are present?
+
+```{r}
+#Add columns filled with zero so we can merge both tables
+merged_test <- merged %>%
+  mutate(Qa = 0,
+         Qj = 0,
+         rfonc_P_Qj = 0,
+         rfonc_P_Qa = 0,
+         pref_P_Qj = 0,
+         pref_P_Qa = 0,
+         Qa_supplementary_NRJ = 0) %>%
+  relocate(c(Qa, Qj), .after = "Pj") %>%
+  relocate(sc, .after = "Qa_supplementary_NRJ") %>%
+  select(-c("delta(pouic)",
+            "transition_adu",
+            "limite_enviro1",
+            "limite_enviro2"))
+
+comparison_factice_prey <- comparison_factice_prey %>%
+  select(-c("pouic",
+            "conv_adu",
+            "limit_enviro1",
+            "limit_enviro2"))
+
+merged_all <- rbind(merged_test, comparison_factice_prey)
+
+
+merged_all %>%
+  group_by(PP) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Pa"  ~ "wolf",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Qa"  ~ "factice prey",
+    TRUE ~ as.character(species)
+  ))%>%
+  filter(species %in% c("deer", "wolf", "moose", "caribou", "factice prey")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(sc)), linewidth = 1.1)+
+  facet_grid(species~PP, scales = "free")+
+  labs(x = "Time (years)",
+       y = "Density (ind/km2)",
+       color = "Species composition")
+```
+
+```{r}
+#| label: fig-final_densities_all_sc
+#| fig-cap: "Prey and predator final densities, for different species composition and productivity values"
+
+merged_all %>%
+  group_by(PP) %>% 
+  filter(time == 300) %>%
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  mutate(species = case_when(
+    species == "Ca" ~ "deer",
+    species == "Pa"  ~ "wolf",
+    species == "Ma"  ~ "moose",
+    species == "Na"  ~ "caribou",
+    species == "Qa"  ~ "factice prey",
+    TRUE ~ as.character(species)
+  ))%>%
+  #filter(species %in% c("deer", "wolf", "moose", "caribou", "factice prey")) %>%
+  filter(species %in% c("caribou")) %>%
+  filter(density != 0 ) %>%
+  #filter(sc %in% c("NMPCQ", "NPCQ", "NPM", "NPMC")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = PP, y = density, color = factor(sc)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")+
+  labs(x = "Productivity index",
+       y = "Density (ind/km2)",
+       color = "Species composition")
+```
+
+La figure @fig-final_densities_all_sc montre les variations dans les densités finales des espèces de proies et de prédateur, en fonction de la productivité. Pour le loup, on remarque que la réponse numérique de sa population n'est pas linéaire avec l'augmentation de la productivité. En particulier, la forme de la réponse semble varier en fonction de la composition spécifique du système. La densité maximale de loups (atteinte de leur capacité limite) est atteinte lorsque l'indice de productivité est maximum, dans les scénarios NPMC, MPC, NMPCQ et NPCQ. De dernier est d'ailleurs le seul où cette forte densité de loups est atteinte en l'absence d'orignaux. Pour les caribous, l'impact de la prédation (ie "à quel point" la population diminue sous l'influence du loup) en fonction de la productivité semble elle aussi très variable en fonction de la composition spécifique du système. En général, nos modèles suggèrent que la présence du cerf comme seule autre proie alternative entraine la pression de prédation la plus élevée, parmi l'ensemble des compositions spécifiques testé, et cet effet semble d'autant plus fort que la productivité est élevée. Au contraire, de nombreuses autres compositions spécifiques (N, NP, NPM, NPMC, CNP,NMPCQ, NPCQ) tendent à maintenir les caribous à leur capacité de charge lorsque la productivité est forte. Plus le système est composé de nombreuses espèces, qui sont des proies alternatives du caribou, plus il semble que la valeur de productivité pour laquelle les caribous atteignent leur capacité limite est faible (ex: NMPCQ vs. NPMC ou NPM par ex.)
+
+### Autres figures
+
+```{r}
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  filter(biomass_tot <= 700)%>% 
+  ggplot()+
+  geom_point(aes(x = (biomass_Moose + biomass_Deer + biomass_Q ), y = value, color = sc))+
+  geom_line(aes(x = (biomass_Moose + biomass_Deer + biomass_Q ), y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass + Q (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+
+
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  filter(biomass_tot <= 700)%>% 
+  ggplot()+
+  geom_point(aes(x = PP, y = value, color = sc))+
+  geom_line(aes(x = PP, y = value, color = sc, linewidth = 1.1))+
+  labs(x = "PP",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+  
+
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  filter(biomass_tot <= 700)%>% 
+  ggplot()+
+  geom_point(aes(x = (biomass_Moose + biomass_Deer  ), y = value, color = sc))+
+  geom_line(aes(x = (biomass_Moose + biomass_Deer  ), y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  filter(biomass_tot <= 700)%>% 
+  ggplot()+
+  geom_point(aes(x = (biomass_Moose  ), y = value, color = sc))+
+  geom_line(aes(x = (biomass_Moose  ), y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose  (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+
+```
+
+```{r}
+
+merged |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         #tot_response_Q = rfonc_P_Qa*Pa,
+         #taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         #Q_tot = Qa + Qj,
+         #biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC")) %>%
+  filter(biomass_tot <= 700)%>% 
+  ggplot()+
+  geom_point(aes(x = (biomass_Moose + biomass_Deer  ), y = value, color = sc))+
+  geom_line(aes(x = (biomass_Moose + biomass_Deer  ), y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass + Q (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+
+```
+
+```{r}
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  ggplot()+
+  geom_point(aes(x = PP, y = value, color = sc))+
+  geom_line(aes(x = PP, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+```
+
+```{r}
+merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300, na_init != 0) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>% 
+  filter(sc %in% c("NPM", "NPMC", "NMPCQ")) %>%
+  ggplot()+
+  geom_point(aes(x = M_tot, y = value, color = sc))+
+  geom_line(aes(x = M_tot, y = value, color = sc), linewidth = 1.1)+
+  labs(x = "Moose + Deer biomass (kg/km2)",
+       y = "Predation rate on caribou",
+       color = "Species composition")+
+  facet_wrap(~predation_rate, scales = "free")
+```
+
+## Another way of representing predation risk among preys
+
+```{r}
+
+bong <- merged_all |> 
+  group_by(sc) |> 
+  filter(time == 300) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         tot_pred_all = taux_predation_caribou + taux_predation_moose + taux_predation_cerf + taux_predation_Q,
+         prop_moose_diet = tot_response_moose / tot_pred_all,
+         prop_cerf_diet = tot_response_cerf / tot_pred_all,
+         prop_caribou_diet = tot_response_caribou / tot_pred_all,
+         prop_Q_diet = tot_response_Q / tot_pred_all,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |> 
+  #pivot_longer(cols = c(taux_predation_caribou,
+  #                      taux_predation_moose,
+  #                      taux_predation_cerf,
+  #                      taux_predation_Q),
+  #             names_to = "predation_rate",
+  #             values_to = "value")  |> 
+  pivot_longer(cols = c(prop_moose_diet,
+                        prop_caribou_diet,
+                        prop_cerf_diet,
+                        prop_Q_diet),
+               names_to = "prop_diet",
+               values_to = "value")
+
+bong$Count_A <- ifelse(bong$prop_diet == "prop_caribou_diet", bong$value, NA)
+
+ggplot(bong, aes(x = reorder(sc, -Count_A, mean, na.rm = TRUE),
+               y = value,
+               fill = prop_diet))+
+  geom_col(stat="identity")
+
+```
+
+## A quel point le prédateur target l'espèce parmi le nombre de proies totales dinsponibes?
+
+Devrait être proportionnel à leur abondance relative
+
+```{r}
+merged_all |> 
+  #filter(sc == "CP") |>
+  group_by(sc, PP) |> 
+  filter(time == 300) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         tot_pred_all = taux_predation_caribou + taux_predation_moose + taux_predation_cerf + taux_predation_Q,
+         total_pred_diet = tot_response_caribou + tot_response_moose +  tot_response_cerf + tot_response_Q, 
+         prop_moose_diet = tot_response_moose / total_pred_diet,
+         prop_cerf_diet = tot_response_cerf / total_pred_diet,
+         prop_caribou_diet = tot_response_caribou / total_pred_diet,
+         prop_Q_diet = tot_response_Q / total_pred_diet,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |>
+  pivot_longer(cols = c(prop_moose_diet,
+                        prop_caribou_diet,
+                        prop_cerf_diet,
+                        prop_Q_diet),
+               names_to = "prop_diet",
+               values_to = "value") |>
+  ggplot(aes(x = PP, y = value, fill = prop_diet))+
+  geom_col(stat="identity")+
+  facet_wrap(~sc)
+
+
+
+# bong$Count_A <- ifelse(bong$prop_diet == "prop_caribou_diet", bong$value, NA)
+
+#ggplot(bong, aes(x = reorder(sc, -Count_A, mean, na.rm = TRUE),
+#               y = value,
+#               fill = prop_diet))+
+#  geom_col(stat="identity")
+
+
+
+
+#bong |> 
+#  summarise(sum(taux_predation_caribou, taux_predation_moose, taux_predation_cerf, taux_predation_Q)) |> View()
+```
+
+# Souligner les différences de stabilités selon les systèmes et les composition spécifiques
+
+On cherche une manière de visualiser les propriétés de stabilisation des systèmes selon leur composition spécifique et la productivité.
+
+Visualisation de ce qu'on peut considérer comme stable ou non
+
+```{r}
+test_stab <- merged_all |>
+  pivot_longer(cols= c(Na, Nj, Ma, Mj, Ca, Cj, Qa, Qj),
+               names_to = "prey",
+               values_to = "value") |>
+  group_by(prey) |>
+  mutate(diff = (value - lag(value)),
+         is_stable = ifelse(round(diff, 6) == 0, "Yes", "No")) |>
+  filter(sc == "CNP",
+         prey == "Na")|>
+  ggplot(aes(x = time))+
+  geom_point(aes(y = value, color = is_stable))+
+  facet_wrap(~PP)
+
+
+test_stab
+```
+
+On voudrait que les 3/4 premiers subplots soient considérerés comme stables.
+
+Pour évaluer si les systèmes sont stables, on regarde 2 choses:
+
+-   D'abord si la différence dans les densités entre 2 pas de temps, pour chaque espèce et chaque scénario est \< 0.00001.
+
+-   Ensuite, si les 300 derniers points (!= 300 derniers pas de temps) ont eu vrai à la condition précédente.
+
+```{r}
+test_stab <- merged_all |>
+  pivot_longer(cols= c(Na, Nj, Ma, Mj, Ca, Cj, Qa, Qj),
+               names_to = "prey",
+               values_to = "value") |>
+  group_by(prey) |>
+  mutate(diff = (value - lag(value)),
+         is_stable = ifelse(round(diff, 5) == 0, "Yes", "No")) 
+```
+
+Ajout d'une colonne qui examine si le système est stable sur 2 pas de temps de consécutifs (si oui, alors, switch = FALSE).
+
+```{r}
+# Create a new column to track stability change
+test_stab <- test_stab |>
+  group_by(prey, PP, sc) |>
+  mutate(switch = ifelse(is_stable != lag(is_stable), "TRUE", "FALSE"))
+```
+
+Évaluation des 300 derniers points pour voir si ils étaient stables.
+
+```{r}
+grouped_data <- test_stab |>
+  select(c(prey, sc, PP, value, is_stable)) |>
+  group_by(prey, sc, PP)
+```
+
+Define the function that checks the 500 lasts points
+
+```{r}
+check_stability <- function(df) {
+  last_50 <- tail(df, 300)   
+return(all(last_50$is_stable == "Yes")) }
+```
+
+```{r}
+tailes <- grouped_data |>
+  summarise(true_stability = check_stability(cur_data()), .groups = "drop")
+```
+
+On ajoute la colonne "true_stability" au reste de notre df qui évalue la stabilité + locale
+
+```{r}
+result <- test_stab %>%
+  select(c(PP, sc, time, prey, value, is_stable, switch)) |> 
+  left_join(tailes, by = c("sc", "PP", "prey"))
+
+```
+
+On stocke les simulations stables dans un objet
+
+```{r}
+stables_events <- result |>
+  #filter(prey == "Qa") |>
+  filter(switch == TRUE & true_stability == TRUE) |> 
+  group_by(sc, PP, prey) |> 
+  mutate(max_switch_time = max(time)) |> 
+  select(c(sc, PP, prey, max_switch_time)) |> 
+  distinct(sc, PP, .keep_all = TRUE) |>  
+  mutate(stab_color = if_else(max_switch_time < 100, "< 100 years",
+                              if_else(max_switch_time < 200, "< 200 years",
+                                      if_else(max_switch_time < 300, "< 300 years", "unstable"))))
+```
+
+Même chose pour les simulations instables
+
+```{r}
+unstables_events <- result |>
+  #filter(prey == "Qa") |>
+  filter(true_stability == FALSE)|> 
+  group_by(sc, PP, prey) |> 
+  mutate(max_switch_time = 100000000) |> 
+  select(c(sc, PP, prey, max_switch_time)) |> 
+  distinct(sc, PP, .keep_all = TRUE) |>  
+  mutate(stab_color = if_else(max_switch_time < 100, "< 100 years",
+                              if_else(max_switch_time < 200, "< 200 years",
+                                      if_else(max_switch_time < 300, "< 300 years", "unstable"))))
+```
+
+On joint les 2 df
+
+```{r}
+joined_df <- rbind(unstables_events, stables_events)
+```
+
+## Graph
+
+First, reorder the scenarios levels based on the complexity (ie the nbe of characters in the sc name)
+
+```{r}
+sc_factor <- factor(joined_df$sc)
+
+# Extract unique levels
+unique_levels <- as.character(levels(sc_factor))
+
+# Sort levels based on number of characters
+sorted_levels <- unique_levels[order(nchar(unique_levels))]
+
+# Reassign levels in sorted order
+sc_factor <- factor(sc_factor, levels = sorted_levels)
+
+# Reassign levels in sorted order
+joined_df$sc <- factor(joined_df$sc, levels = sorted_levels)
+
+
+```
+
+```{r}
+joined_df |>
+  #filter(prey == "Ca") |> 
+  ggplot(aes(x = sc, y = PP, fill = stab_color)) +
+  geom_tile(color = "black") +
+  scale_fill_manual(values = c("< 100 years" = "green", 
+                                "< 200 years" = "yellow", 
+                                "< 300 years" = "orange", 
+                                "unstable" = "red")) +
+  facet_wrap(~prey)+
+  labs(x = "sc", y = "PP") 
+```
+
+## Reproduction of DeRoy2020
+
+```{r}
+merged_all |> 
+  #filter(sc == "CP") |>
+  group_by(sc, PP) |> 
+  filter(time == 300) |> 
+  mutate(tot_response_caribou = rfonc_P_Na*Pa,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*Pa,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*Pa,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         tot_response_Q = rfonc_P_Qa*Pa,
+         taux_predation_Q = tot_response_Q/proies_tot,
+         tot_pred_all = taux_predation_caribou + taux_predation_moose + taux_predation_cerf + taux_predation_Q,
+         total_pred_diet = tot_response_caribou + tot_response_moose +  tot_response_cerf + tot_response_Q, 
+         prop_moose_diet = tot_response_moose / total_pred_diet,
+         prop_cerf_diet = tot_response_cerf / total_pred_diet,
+         prop_caribou_diet = tot_response_caribou / total_pred_diet,
+         prop_Q_diet = tot_response_Q / total_pred_diet,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         Q_tot = Qa + Qj,
+         biomass_Q = 70*Q_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer+biomass_Q) |>
+  pivot_longer(cols = c(prop_moose_diet,
+                        prop_caribou_diet,
+                        prop_cerf_diet,
+                        prop_Q_diet),
+               names_to = "prop_diet",
+               values_to = "value") |>
+  pivot_longer(cols = c(tot_response_caribou,
+                        tot_response_moose,
+                        tot_response_cerf,
+                        tot_response_Q),
+               names_to = "tot_response",
+               values_to = "tot_response_value") |> 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf,
+                        taux_predation_Q),
+               names_to = "taux_predation",
+               values_to = "taux_predation_value") |> 
+  pivot_longer(cols = c(Na, Nj,
+                        Ca, Cj,
+                        Ma, Mj,
+                        Qa, Qj),
+               names_to = "prey",
+               values_to = "density") |> 
+  ggplot(aes(x = density, y = tot_response_value, col = PP))+
+  geom_point()+
+  facet_wrap(~prey, scales = "free")
+```
