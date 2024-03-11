@@ -1,0 +1,10 @@
+all_simulations.R
+Messier_figure
+average_density_west.R
+extra_low_density_west.R
+high_density_west.R
+low_density_west.R
+wolf_diet_merged.rds
+.RData
+.RDataTemp
+QGISClipped_eastern_area.R
