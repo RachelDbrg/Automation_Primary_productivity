@@ -1,0 +1,64 @@
+---
+title: "One more prey"
+author: RD
+format: html
+editor: visual
+---
+
+## Prey Q being another white tailed deer
+
+```{r}
+test <- readRDS("~/Automation_Primary_productivity/one_more_prey/test.R")
+sim1 <- readRDS("~/Automation_Primary_productivity/one_more_prey/sim1.R")
+```
+
+```{r}
+library(tidyverse)
+test <-test %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "test") 
+
+sim1 <-sim1 %>% 
+  pull(outputs) %>% 
+  map_dfr(as.data.frame) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(sc = "sim1") 
+```
+
+```{r}
+test %>% 
+  group_by(PP) %>% 
+  # filter(PP == "0.7") %>%
+  # filter(sc == "sim18") |> 
+  # mutate(diff_C = k_c - Ca,
+         # diff_M = k_m - Ma) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("U", "Ca", "Pa", "Na", "Ma", "Qa")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(PP)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")
+```
+
+```{r}
+sim1 %>% 
+  group_by(PP) %>% 
+  # filter(PP == "0.7") %>%
+  # filter(sc == "sim18") |> 
+  # mutate(diff_C = k_c - Ca,
+         # diff_M = k_m - Ma) %>% 
+  pivot_longer(cols = c(2:12, Ma, Pa, Pj, Ca, Na, Qa, Qj),
+               names_to = "species",
+               values_to = "density") %>%
+  filter(species %in% c("U", "Ca", "Pa", "Na", "Ma", "Qa")) %>%
+  # filter(species %in% c("Ma")) %>%
+  ggplot()+
+  # geom_line(aes(x = time, y = density), linewidth = 1.1)+
+  geom_line(aes(x = time, y = density, color = factor(PP)), linewidth = 1.1)+
+  facet_wrap(~species, scales = "free")
+```
