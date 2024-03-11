@@ -1,0 +1,501 @@
+---
+title: "Sensitivity analysis"
+author: "RD"
+format: html
+editor: visual
+---
+
+# 0. Packages load
+
+```{r}
+
+library(deSolve)
+library(lhs)
+library(tidyverse)
+library(readxl)
+
+```
+
+# 1. Define initial parameters and make all the combinations that are to be tested
+
+```{r}
+# 1. Load the excel file with the initial values
+excel_data <- read_excel("C:/Users/lab/Documents/Automation_Primary_productivity/scripts/PP_only/parameters_LHS.xlsx")
+excel_data <- excel_data %>% 
+  filter(VALUE != "NA") %>% 
+  select(-c(2)) %>% 
+  rename("Parameter" = "...1") %>%
+  select(Parameter, VALUE)
+
+# parms <- as.list(excel_data)
+parameters <- setNames(excel_data$VALUE, excel_data$Parameter)
+
+
+# Set the variation factor (+/- 15%)
+variation_factor <- 0.15
+
+# Create an empty data frame
+params_combination <- data.frame(matrix(nrow = 0, ncol = length(parameters)))
+colnames(params_combination) <- names(parameters)
+
+# Generate variations for each parameter
+for (param_name in names(parameters)) {
+  param_value <- parameters[param_name]
+  
+  # Create a row with original values
+  original_row <- parameters
+  
+  # Increase the parameter value by 15%
+  increased_row <- parameters
+  increased_row[param_name] <- param_value * (1 + variation_factor)
+  
+  # Decrease the parameter value by 15%
+  decreased_row <- parameters
+  decreased_row[param_name] <- param_value * (1 - variation_factor)
+  
+  # Append the rows to the data frame
+  params_combination <- rbind(params_combination, original_row, increased_row, decreased_row)
+}
+
+# Add a column with the ID of the scenario
+params_combination <- params_combination %>% 
+  mutate(sc = 1:nrow(params_combination)) 
+
+# Set the proper names
+colnames(params_combination) <- names(parameters)
+
+# Keep if to simplicity as the files "vegetation parameters" and 
+# "fauna parameters" work with the "w" vector name
+
+w <- params_combination
+# 
+
+```
+
+One row out of three is a repetition of row 1 Here, a little thingy to avoid the repetitions
+
+```{r}
+# Assuming 'my_data' is your dataframe
+
+#Drop the "scenario" column for comparisons
+z <- w [, -42]
+
+reference_row <- z[1, , drop = FALSE]
+
+# Check if every row is equal to the reference row
+rows_equal_to_reference <- apply(z, 1, function(row) all(row == reference_row))
+
+# Print the result
+#View(rows_equal_to_reference)
+
+indices <- which(rows_equal_to_reference)
+
+
+params_combination <- w[!(seq_len(nrow(w)) %in% indices[-1]), ]
+
+```
+
+# 2. Apply the ODE function, with the proper import of parameters, that comes from the previously generated df
+
+```{r}
+phi=1
+
+for (i in {1:nrow(params_combination)}){
+
+  print(i)
+  
+# i = 1  
+source("Auto_gen_PP_delta_related_parameters.R")
+# source("Auto_gen_PP_delta_related_parameters_caribou_feuillus.R")
+# source("Carrying_capacities_with_deciduous_biomass.R")
+
+# source("Auto_gen_PP_related_parameters.R")
+
+# source("Static_vegetation_parameters.R")
+source("Vegetation_parameters_LHS.R")
+
+# source("Time_dependant_parameters.R")
+
+# source("Parametres_animaux_deers.R")
+# 
+  # source("Static_fauna_parameters.R")
+source("Fauna_parameters_LHS.R")
+
+
+# That's where the change happens
+
+
+# source("Static_fauna_parameters_caribou_feuillus.R")
+
+# source("Evolution_vegetation.R")
+source("Evolution_vegetation.R")
+
+# source("test_model_equations.R")
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+source("intermediate_res.R")
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# source("intermediate_res_DEBUG.R")
+
+source("make_ODE_function.R")
+
+source("Species_equations.R")
+
+# source("Species_equations_caribou_feuillus.R")
+# 
+
+
+my_function <- function(i, ... ){
+  
+  # print(i)
+  result_df <- generate_parameter_dataframe()
+  
+  nested_test <- result_df %>% 
+    mutate(pouic = delta) %>% 
+    group_by(PP,delta) %>% 
+    nest()
+  
+  
+  # list <- list(nested_test$PP, nested_test$data, nested_test$delta)
+  
+  # Apply the ODE solver
+  res <- nested_test %>% 
+    # group_by(PP) %>%
+    ungroup() %>% 
+    mutate(outputs = map2(nested_test$PP, nested_test$data, ~make_ODE(.x, .y))) %>% 
+    rename("pouic" = "delta")
+
+  path <- paste0("~/Automation_Primary_productivity/Sensitivity_analysis/with_deer/", i, ".RDS")
+  # print(path)
+  
+  # saveRDS(res, file = "~/Automation_Primary_productivity/Carrying_capacities/bs.RDS")
+  saveRDS(res, file = path)
+  # print(simulation_index)
+  # simulation_index <- simulation_index + 1
+  # print(simulation_index)
+  # filename <- paste0("~/Automation_Primary_productivity/res_simulations2/all_simulations_scenario", simulation_index, ".R")
+  # saveRDS(res, file = filename)
+  # print(c(Moose_init, Caribou_init, Deer_init))
+}
+
+
+# simulation_index <- num_rows 
+
+my_function(i)
+}
+```
+
+# 3. Look at the results of simulations
+
+```{r}
+# 3. Load all the files in the folder, which names starts with a "bs"
+
+# Define the folder path
+folder_path <- "~/Automation_Primary_productivity/Sensitivity_analysis/wo_deer"
+
+# List files in the folder
+file_names <- list.files(folder_path, full.names = TRUE)
+
+# Select files that start with "all_simulations_scenario"
+selected_files <- file_names[grep("wo_deer", file_names)]
+
+# Read RDS files and store them in a list
+data_list <- lapply(selected_files, readRDS)
+
+# Filter out tibble elements from the list
+tibble_elements <- data_list %>% 
+  keep(is_tibble)
+
+
+# Convert each item in data_list to a data frame and assign names
+for (i in seq_along(tibble_elements)) {
+  df_name <- paste0("wo_deer", i)
+  assign(df_name, as.data.frame(tibble_elements[[i]]))
+}
+
+
+# List all the objects in the environment
+all_objects <- ls()
+
+# Select the objects that match the desired pattern
+selected_objects <- all_objects[grep("wo_deer", all_objects)]
+
+# selected_objects <- list(N1, N2, N3, N4, N5, N6, N7, N8, N9, N10)
+
+# Loop through selected data frames and apply the actions
+for (i in seq_along(selected_objects)) {
+  obj_name <- selected_objects[i]
+  df <- get(obj_name)
+  results <- df %>% 
+    pull(outputs) %>% 
+    map_dfr(as.data.frame) %>% 
+    mutate_all(as.numeric) %>% 
+    # select(1:10, PP) %>% 
+    group_by(PP) %>% 
+    # filter(time == 0.00 | time == 800.00) %>%
+    # mutate(N = Na + Nj, M = Ma + Mj, C = Ca + Cj) %>% 
+    # select(-c(4:7, "Ca", "Cj")) %>%
+    mutate(scenario = i) %>% 
+    filter(time >= 280)
+  
+  assign(paste0("results_", obj_name), results)
+}
+
+
+# Assume you have data frames named bs_1, bs_2, bs_3, ...
+# List all data frames whose names start with "bs"
+bs_data_frames <- mget(ls(pattern = "^results_wo_deer"))
+
+# Merge all data frames in the list
+merged_df <- Reduce(function(x, y) merge(x, y, all = TRUE), bs_data_frames)
+
+#merged_df_wo_deer <- Reduce(function(x, y) merge(x, y, all = TRUE), bs_data_frames)
+  
+
+```
+
+```{r}
+# Save the file 
+saveRDS(merged_df, file = "merged_df_wo_deer.rds")
+```
+
+# 4. Graph exploration
+
+## 4.1 Look if simulations are stabilized or not
+
+```{r}
+merged_df %>%    
+  filter(PP == "0.9") %>%    
+  ggplot(aes(x = time, y = Na, color = factor(scenario)))+
+  geom_line()
+```
+
+To check if equilibruim are stable or not, we compute the difference between density obtained at time == 300 - time == 299. Si en arrondissant a la 5eme decimale, on obtient les mêmes valeurs, alors on considere la simulation comme stable.
+
+```{r}
+merged_df %>%    
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(diff = (Na - lag(Na)),
+         bool = ifelse(round(diff, 5) == 0, "Yes", "No")) |> 
+  filter(diff != "NA") |>
+  select(c(time, scenario, PP, diff, bool))|>
+  group_by(PP, bool)|>
+  summarise(count = n()) %>% 
+  ggplot(aes(x = as.factor(PP), y = count, fill = bool)) +
+  geom_bar(stat = "identity", position = "stack", color = "black") +
+  labs(title = "Count of 'Yes' and 'No' scenarios for each PP value",
+       x = "PP", y = "Count", fill = "Is stable?") +
+  scale_fill_manual(values = c("Yes" = "blue", "No" = "red"))
+```
+
+En fait, ca depend d'à quel endroit on met la limite de différence entre t(299) et t(300) pour considérer ca stable. Ici, en arrondissant à la 3eme decimale, on a toutes les simulations qui sont stables.
+
+```{r}
+merged_df %>%    
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(diff = (Na - lag(Na)),
+         bool = ifelse(round(diff, 3) == 0, "Yes", "No")) |> 
+  filter(diff != "NA") |>
+  select(c(time, scenario, PP, diff, bool))|>
+  group_by(PP, bool)|>
+  summarise(count = n()) %>% 
+  ggplot(aes(x = as.factor(PP), y = count, fill = bool)) +
+  geom_bar(stat = "identity", position = "stack", color = "black") +
+  labs(title = "Count of 'Yes' and 'No' scenarios for each PP value",
+       x = "PP", y = "Count", fill = "Is stable?") +
+  scale_fill_manual(values = c("Yes" = "blue", "No" = "red"))
+```
+
+Mettons que l'on considère avoir assez de précision comme ca, et qu'on suppose que toutes nos simulations sont stables.
+
+## 4.2 For stable simulations, look at the sensitivity to parameters
+
+For the stabilized simulations, look at the sensitivity to parameters. To do that, we measure the absolute difference between final densities of caribou in the case where the parameter varied of ± 15% vs. the "reference" final densities, that it to say, with the initial parameters.
+
+```{r}
+merged_df %>%    
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |>  #select only the stabilised 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = (ref-Na)) |> 
+  filter(time == 300) %>%  
+  select(c(scenario, Na, PP))|> 
+  ggplot(aes(x = scenario, y = Na)) + 
+  geom_point()+
+  facet_wrap(~PP)
+```
+
+Un autre moyen de le regarder est de plotter la distribution de la différence entre les valeurs finales de Na pour les changements de paramètre /t à la valeur nominale (scenario =1)
+
+```{r}
+merged_df %>%    
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = (ref-Na)) |> 
+  #filter(PP == 0) |>
+  group_by(scenario) |> 
+  select(c(time, scenario, PP, diff, ref, Na)) |>
+  ggplot(aes(x = diff))+
+  geom_histogram()+
+  facet_wrap(~PP)
+
+```
+
+## 4.3 For each productivity level, how many influential parameters are there?
+
+Par ex., compte-tenu du graphique au dessus, on s'attend à trouver 2 simulations qui ressortent pour PP = 0, lorsqu'on cherche des simulations dont la densité finale est différente de celle obtenue pour le scenario 1
+
+```{r}
+merged_df %>%    
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = abs(ref-Na),
+         diff2 = ifelse(diff >= 10^-4 , diff, 0)) |> #Resultats dependent pas mal de ce qui est fixé comme seuil
+  #filter(PP == 0) |>
+  group_by(PP) |> 
+  select(c(time, scenario, PP, diff2, ref, Na)) |>
+  filter(diff2 != 0) |>
+  summarize(n())
+
+```
+
+## 4.4 Quantify the magnitude of influence of parameters
+
+```{r}
+merged_df %>%    
+  #filter(PP ==1) %>%
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = abs(ref-Na),
+         diff2 = ifelse(diff >= 10^-4 , diff, 0), #Resultats dependent pas mal de ce qui est fixé comme seuil
+         ref_per = Na / ref) |>  #Serrouya2020: the fold-change in equilibrium densities following partial or complete restoration, calculated as the equilibrium density under the restoration scenario divided by the equilibrium density under the current landscape scenario, as well as the proportion of iterations that resulted in the extinction of each species (< 0.001 animals/km2)
+  #filter(PP == 0) |> 
+  filter(diff2 != 0) |>
+  ggplot(aes(x = scenario, y = ref_per))+
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", linewidth = .9)+
+  geom_col()+
+  facet_wrap(~PP)
+```
+
+## 5. Pour chaque valeur de productivité, trouver les scenarios qui ont conduit à des variations de densité finale
+
+### Check pour les scenarios ayant mené à des densités de caribou + importants que la ref
+
+```{r}
+merged_df %>%    
+  #filter(PP ==1) %>%
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = abs(ref-Na),
+         diff2 = ifelse(diff >= 10^-4 , diff, 0), #Resultats dependent pas mal de ce qui est fixé comme seuil
+         ref_per = Na / ref,
+         abs_test = if_else(ref_per > 1, (ref_per -1)  * 100, ref_per)) |> #Serrouya2020: the fold-change in equilibrium densities following partial or complete restoration, calculated as the equilibrium density under the restoration scenario divided by the equilibrium density under the current landscape scenario, as well as the proportion of iterations that resulted in the extinction of each species (< 0.001 animals/km2)
+  #filter(PP == 0) |> 
+  filter(diff2 != 0, ref_per > 1) |>
+  ggplot(aes(x = as.character(scenario), y = ref_per))+
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", linewidth = .9)+
+  geom_col()+
+  facet_wrap(~PP)
+```
+
+```{r}
+merged_df %>%    
+  #filter(PP ==1) %>%
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref = Na[scenario == 1],
+         diff = abs(ref-Na),
+         diff2 = ifelse(diff >= 10^-4 , diff, 0), #Resultats dependent pas mal de ce qui est fixé comme seuil
+         ref_per = Na / ref,
+         abs_test = if_else(ref_per > 1, (ref_per -1)  * 100, ref_per)) |> #Serrouya2020: the fold-change in equilibrium densities following partial or complete restoration, calculated as the equilibrium density under the restoration scenario divided by the equilibrium density under the current landscape scenario, as well as the proportion of iterations that resulted in the extinction of each species (< 0.001 animals/km2)
+  #filter(PP == 0) |> 
+  filter(diff2 != 0) |>
+  ggplot(aes(x = as.character(scenario), y = ref_per))+
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", linewidth = .9)+
+  geom_col()+
+  facet_wrap(~PP)
+```
+
+On remarque
+
+## Test for changes with the other species
+
+```{r}
+merged_df %>%    
+  #filter(PP ==1) %>%
+  filter(time %in% c(299, 300)) |> 
+  group_by(scenario, PP)%>%   
+  mutate(stable = (Na - lag(Na)),
+         bool = ifelse(round(stable, 3) == 0, "Yes", "No")) |> 
+  filter(stable != "NA") |>
+  filter(bool == "Yes") |> 
+  ungroup()|> 
+  group_by(PP) |>
+  mutate(ref_Na = Na[scenario == 1],
+         ref_Ma = Ma[scenario == 1],
+         ref_Pa = Pa[scenario == 1],
+         #diff = abs(ref-Na),
+         #diff2 = ifelse(diff >= 10^-4 , diff, 0), #Resultats dependent pas mal de ce qui est fixé comme seuil
+         ref_per_Na = Na / ref_Na,
+         ref_per_Ma = Ma / ref_Ma,
+         ref_per_Pa = Pa / ref_Pa) |> #Serrouya2020: the fold-change in equilibrium densities following partial or complete restoration, calculated as the equilibrium density under the restoration scenario divided by the equilibrium density under the current landscape scenario, as well as the proportion of iterations that resulted in the extinction of each species (< 0.001 animals/km2)
+  #filter(PP == 0) |> 
+  #filter(diff2 != 0) |>
+  pivot_longer(cols= c(ref_per_Ma, ref_per_Pa, ref_per_Na),
+               names_to = "sp",
+               values_to = "value")|>
+  ggplot(aes(x = sp))+
+  geom_boxplot(aes(y = value))+
+  facet_wrap(~sp, scales = "free")
+```
+
+```{r}
+library(tidyverse)
+
+
+params_combination |> 
+  mutate(count = n())
+```
