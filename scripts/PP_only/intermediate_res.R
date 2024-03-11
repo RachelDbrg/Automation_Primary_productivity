@@ -6,7 +6,7 @@
 
 
 intermediate_res <-  function(y,parms){
-
+  
   
   
   # Chargement du vecteur y, contenant les densités des
@@ -314,9 +314,9 @@ intermediate_res <-  function(y,parms){
           pref_P_Na * h_P_Na * Na) + 
        (pref_P_Cj * h_P_Cj * Cj +
           pref_P_Ca * h_P_Ca * Ca))
-     # +
-     #   (pref_P_Qj * h_P_Cj * Qj +
-     #      pref_P_Qa * h_P_Ca * Qa))
+  # +
+  #   (pref_P_Qj * h_P_Cj * Qj +
+  #      pref_P_Qa * h_P_Ca * Qa))
   # 
   den_rfonc_P = max(den_rfonc_P, 1e-06)
   
@@ -375,9 +375,9 @@ intermediate_res <-  function(y,parms){
                               epsi_Naj * rfonc_P_Nj)+
                  epsi_MC * (rfonc_P_Ca + 
                               epsi_Caj * rfonc_P_Cj))
-               # +
-               #   epsi_MC * (rfonc_P_Qa +
-               #                epsi_Caj * rfonc_P_Qj))
+  # +
+  #   epsi_MC * (rfonc_P_Qa +
+  #                epsi_Caj * rfonc_P_Qj))
   # 
   rfonc_tot_test <- (rfonc_P_Ma_test + rfonc_P_Mj_test * epsi_Maj +
                        epsi_MN * (rfonc_P_Na_test +
@@ -423,8 +423,8 @@ intermediate_res <-  function(y,parms){
   NRJ_intake = (rfonc_P_Ma + rfonc_P_Mj * (epsi_Maj)
                 + epsi_MN * (rfonc_P_Na + rfonc_P_Nj *epsi_Naj)+
                   epsi_MC * (rfonc_P_Ca + rfonc_P_Cj *epsi_Caj))
-                # +
-                #   epsi_MC * (rfonc_P_Qa + rfonc_P_Qj *epsi_Caj))
+  # +
+  #   epsi_MC * (rfonc_P_Qa + rfonc_P_Qj *epsi_Caj))
   
   NRJ_intake_test = (rfonc_P_Ma_test + rfonc_P_Mj_test * (epsi_Maj)
                      + epsi_MN * (rfonc_P_Na_test + rfonc_P_Nj_test *epsi_Naj)+
@@ -777,16 +777,16 @@ intermediate_res <-  function(y,parms){
                 rfonc_P_Cj,
                 rfonc_P_Ca,
                 rfonc_tot),
-                # rfonc_P_Qj,
-                # rfonc_P_Qa),
+              # rfonc_P_Qj,
+              # rfonc_P_Qa),
               c(pref_P_Mj,
                 pref_P_Ma,
                 pref_P_Nj,
                 pref_P_Na,
                 pref_P_Cj,
                 pref_P_Ca),
-                # pref_P_Qa,
-                # pref_P_Qj),
+              # pref_P_Qa,
+              # pref_P_Qj),
               den_rfonc_P,
               k_P,
               M_tot,
