@@ -136,6 +136,8 @@ equa_diff_sp <- function(t,y, Parms){
     kUcoeff2 <- data$kUcoeff2
     kWcoeff1 <- data$kWcoeff1 
     kWcoeff2 <- data$kWcoeff2
+    k_n <- data$k_n
+    chi_N <- data$chi_N
     
     
     # # Trigger effect
@@ -144,14 +146,17 @@ equa_diff_sp <- function(t,y, Parms){
     
     # Lichen
     # Modèle logistique
-    dVdt <- v_croiss * V * (1 - V/k_V) -
-      ((a_N * V * (Na+Nj))/(1 + a_N * h_VN * V))
+    # dVdt <- v_croiss * V * (1 - V/k_V) -
+    #   ((a_N * V * (Na+Nj))/(1 + a_N * h_VN * V))
+    
+    dVdt <- v_croiss * V * (1 - V/k_V)
     
     # Feuillus
     # Modèle exponentiel
     dUdt <- u_croiss * (1 - U/k_U) -
       ((a_M * U * (Ma+Mj))/(1 + a_M * h_UM * U)) -
-      ((a_C * U * (Ca+Cj))/(1 + a_C * h_UC * U))
+      ((a_C * U * (Ca+Cj))/(1 + a_C * h_UC * U)) - 
+      ((a_N * U * (Na+Nj))/(1 + a_N * h_UN * U))
     
     
     # Caribou adulte
@@ -199,11 +204,19 @@ equa_diff_sp <- function(t,y, Parms){
     # 
     dPdt <- chi_P * surplus_NRJ * P - ((p_croiss/k_P) * P^2)
     
+    # k_m_theorique = U/e_UM
+    k_M_theorique = 0.000002*U - 0.679
+    
+    # https://bioone.org/journals/wildlife-biology/volume-16/issue-3/09-105/Effects-of-simulated-moose-Alces-alces-browsing-on-the-morphology/10.2981/09-105.full
+    # Average quantity eaten by moose = 7.5 kg/month so 90 kg/year
+    
+    # U = densité de feuillus 
+    # e_Um
     
     return (list(c(dVdt, dUdt, dNadt, dNjdt, dMadt, dMjdt,dPdt,
-                   dCadt, dCjdt),
+                   dCadt, dCjdt), #9 items
                  
-                 rfonc_P_Mj,
+                 rfonc_P_Mj, #10
                  rfonc_P_Ma,
                  rfonc_P_Nj,
                  rfonc_P_Na,
@@ -215,7 +228,7 @@ equa_diff_sp <- function(t,y, Parms){
                  pref_P_Mj,
                  pref_P_Ma,
                  pref_P_Nj,
-                 pref_P_Na,
+                 pref_P_Na, #20
                  pref_P_Cj,
                  pref_P_Ca,
                  den_rfonc_P,
@@ -226,7 +239,7 @@ equa_diff_sp <- function(t,y, Parms){
                  M_tot,
                  N_tot,
                  C_tot,
-                 proies_tot,
+                 proies_tot, #30
                  PP,
                  p_croiss,
                  a_P, 
@@ -240,7 +253,7 @@ equa_diff_sp <- function(t,y, Parms){
                  evol_P,
                  ma_init,
                  na_init,
-                 ca_init,
+                 ca_init, #40
                  p_init,
                  # test4,
                  k_U,
@@ -248,6 +261,7 @@ equa_diff_sp <- function(t,y, Parms){
                  rep_totale_MU,
                  rep_fonc_CU,
                  rep_totale_CU,
-                 pouic))
+                 pouic,
+                 k_m_theorique)) #48
   })
 }
