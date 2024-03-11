@@ -55,7 +55,7 @@ make_ODE <- function(PP, data){
              Cj_test = cj_init,
              Pa_test = pa_init,
              Pj_test = pj_init)
-             # Qa_test = qa_init,
+  # Qa_test = qa_init,
   # Qj_test = qj_init)
   
   # times <- seq(0, 1, by = 1)
