@@ -369,7 +369,7 @@ test_est_values[rank_moose,]
 # Densite caribou = 1.16212       
 # Loup = 0.05232203   
 
-
+west <- loadRDS("west_all.RDS")
 
 both_species <- bind_rows(test_est,
                           test_west)
@@ -716,3 +716,61 @@ west_values[rank_caribou_west,]
 # Densite caribou = 0.1571625       
 # Loup = 0.003350669       
 
+
+
+
+
+
+# ======
+both_species %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer) %>% 
+  filter(biomass_tot > 30 & biomass_tot <= 40) %>% 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>%
+  ggplot(aes(x = biomass_tot,
+             y = value,
+             color = P,
+             shape=factor(zone)))+
+  geom_point(size = 2)
+
+
+
+
+# ======
+both_species %>% 
+  mutate(tot_response_caribou = rfonc_P_Na*P,
+         taux_predation_caribou = tot_response_caribou/proies_tot,
+         tot_response_moose = rfonc_P_Ma*P,
+         taux_predation_moose = tot_response_moose/proies_tot,
+         tot_response_cerf = rfonc_P_Ca*P,
+         taux_predation_cerf = tot_response_cerf/proies_tot,
+         biomass_Moose = 400*M_tot,
+         biomass_Caribou = 100*N_tot,
+         biomass_Deer = 70*C_tot,
+         biomass_tot = biomass_Moose+ biomass_Caribou+biomass_Deer,
+         ratio = taux_predation_caribou/taux_predation_moose) %>% 
+  filter(biomass_tot > 30 & biomass_tot <= 40) %>% 
+  pivot_longer(cols = c(taux_predation_caribou,
+                        taux_predation_moose,
+                        taux_predation_cerf),
+               names_to = "predation_rate",
+               values_to = "value") %>% 
+  filter(predation_rate == "taux_predation_caribou") %>%
+  ggplot(aes(x = biomass_tot,
+             y = value,
+             color = tot_response_caribou,
+             shape=factor(zone)))+
+  geom_point(size = 2)
